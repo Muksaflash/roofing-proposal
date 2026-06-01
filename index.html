@@ -1,0 +1,489 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Коммерческое предложение: сайт и AI-автоматизации для roofing-бизнеса."
+    />
+    <title>Коммерческое предложение | Roofing Website & AI</title>
+    <style>
+      :root {
+        --bg: #f6f7f2;
+        --paper: #ffffff;
+        --ink: #1d2328;
+        --muted: #657078;
+        --line: #dce2dc;
+        --accent: #246b4f;
+        --accent-strong: #174735;
+        --warm: #c2822e;
+        --warm-soft: #fff4df;
+        --shadow: 0 18px 50px rgba(29, 35, 40, 0.12);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+        line-height: 1.65;
+      }
+
+      a {
+        color: var(--accent);
+        text-decoration-thickness: 0.08em;
+        text-underline-offset: 0.16em;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        border-bottom: 1px solid rgba(220, 226, 220, 0.9);
+        background: rgba(246, 247, 242, 0.92);
+        backdrop-filter: blur(14px);
+      }
+
+      .topbar-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 14px 0;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        min-width: 0;
+        color: var(--ink);
+        font-weight: 760;
+        letter-spacing: 0;
+      }
+
+      .brand-mark {
+        display: grid;
+        place-items: center;
+        width: 34px;
+        height: 34px;
+        border-radius: 7px;
+        background: var(--accent);
+        color: #fff;
+        font-size: 18px;
+        font-weight: 800;
+      }
+
+      .brand span:last-child {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .actions {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 38px;
+        border: 1px solid var(--line);
+        border-radius: 7px;
+        padding: 8px 13px;
+        background: var(--paper);
+        color: var(--ink);
+        font: inherit;
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 1.1;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      .button.primary {
+        border-color: var(--accent);
+        background: var(--accent);
+        color: #fff;
+      }
+
+      .hero {
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 46px 0 28px;
+      }
+
+      .eyebrow {
+        margin: 0 0 12px;
+        color: var(--accent-strong);
+        font-size: 14px;
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+
+      .hero h1 {
+        max-width: 920px;
+        margin: 0;
+        font-size: clamp(38px, 6vw, 78px);
+        line-height: 0.98;
+        letter-spacing: 0;
+      }
+
+      .hero p {
+        max-width: 760px;
+        margin: 20px 0 0;
+        color: var(--muted);
+        font-size: 19px;
+      }
+
+      .shell {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 320px;
+        gap: 24px;
+        align-items: start;
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto 64px;
+      }
+
+      .document {
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--paper);
+        box-shadow: var(--shadow);
+      }
+
+      .document-inner {
+        padding: clamp(24px, 5vw, 54px);
+      }
+
+      .aside {
+        position: sticky;
+        top: 86px;
+        display: grid;
+        gap: 14px;
+      }
+
+      .summary {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--paper);
+        padding: 20px;
+        box-shadow: 0 10px 34px rgba(29, 35, 40, 0.08);
+      }
+
+      .summary h2 {
+        margin: 0 0 12px;
+        font-size: 18px;
+        line-height: 1.2;
+      }
+
+      .price {
+        margin: 0;
+        color: var(--accent-strong);
+        font-size: 34px;
+        font-weight: 850;
+        line-height: 1;
+      }
+
+      .summary p {
+        margin: 10px 0 0;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .summary-list {
+        display: grid;
+        gap: 8px;
+        margin: 16px 0 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .summary-list li {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        border-top: 1px solid var(--line);
+        padding-top: 8px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .summary-list strong {
+        color: var(--ink);
+        white-space: nowrap;
+      }
+
+      .note {
+        border-color: #f0d7a9;
+        background: var(--warm-soft);
+      }
+
+      #proposal h1 {
+        margin-top: 0;
+        font-size: clamp(32px, 5vw, 54px);
+        line-height: 1.04;
+        letter-spacing: 0;
+      }
+
+      #proposal h2 {
+        margin: 42px 0 12px;
+        padding-top: 18px;
+        border-top: 1px solid var(--line);
+        color: var(--accent-strong);
+        font-size: 28px;
+        line-height: 1.15;
+        letter-spacing: 0;
+      }
+
+      #proposal h3 {
+        margin: 28px 0 8px;
+        color: var(--ink);
+        font-size: 20px;
+        line-height: 1.25;
+      }
+
+      #proposal p {
+        margin: 0 0 14px;
+      }
+
+      #proposal ul {
+        margin: 0 0 18px;
+        padding-left: 24px;
+      }
+
+      #proposal li {
+        margin: 6px 0;
+      }
+
+      #proposal blockquote {
+        margin: 22px 0;
+        border-left: 4px solid var(--warm);
+        padding: 8px 0 8px 16px;
+        color: var(--muted);
+        background: var(--warm-soft);
+      }
+
+      #proposal pre {
+        overflow-x: auto;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        margin: 16px 0 22px;
+        padding: 16px;
+        background: #1d2328;
+        color: #f8faf7;
+        line-height: 1.45;
+      }
+
+      #proposal code {
+        font-family:
+          "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+        font-size: 0.94em;
+      }
+
+      #proposal :not(pre) > code {
+        border: 1px solid var(--line);
+        border-radius: 5px;
+        padding: 2px 5px;
+        background: #f1f4ef;
+        color: var(--accent-strong);
+      }
+
+      .loading,
+      .error {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .footer {
+        width: min(1180px, calc(100% - 32px));
+        margin: -34px auto 38px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      @media (max-width: 900px) {
+        .shell {
+          grid-template-columns: 1fr;
+        }
+
+        .aside {
+          position: static;
+          order: -1;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .topbar-inner {
+          align-items: stretch;
+          flex-direction: column;
+        }
+
+        .actions {
+          justify-content: stretch;
+        }
+
+        .button {
+          flex: 1;
+        }
+
+        .hero {
+          padding-top: 34px;
+        }
+
+        .hero p {
+          font-size: 17px;
+        }
+
+        .document-inner {
+          padding: 22px;
+        }
+      }
+
+      @media print {
+        body {
+          background: #fff;
+        }
+
+        .topbar,
+        .hero,
+        .aside,
+        .footer {
+          display: none;
+        }
+
+        .shell {
+          display: block;
+          width: auto;
+          margin: 0;
+        }
+
+        .document {
+          border: 0;
+          box-shadow: none;
+        }
+
+        .document-inner {
+          padding: 0;
+        }
+
+        #proposal h2 {
+          break-after: avoid;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a class="brand" href="#top" aria-label="К началу страницы">
+          <span class="brand-mark">R</span>
+          <span>Roofing Website & AI</span>
+        </a>
+        <div class="actions">
+          <a class="button" href="commercial-proposal-roofing-ai.md" download>
+            Скачать Markdown
+          </a>
+          <button class="button primary" type="button" onclick="window.print()">
+            Печать / PDF
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-label="Вводная часть">
+        <p class="eyebrow">Коммерческое предложение</p>
+        <h1>Сайт и AI-автоматизации для roofing-бизнеса</h1>
+        <p>
+          Стартовый сайт для заявок, подготовка под рекламу и понятная дорожная
+          карта AI-автоматизаций без лишних затрат на первом этапе.
+        </p>
+      </section>
+
+      <div class="shell">
+        <article class="document" aria-label="Текст предложения">
+          <div class="document-inner">
+            <div id="proposal">
+              <p class="loading">Загружаю предложение...</p>
+            </div>
+          </div>
+        </article>
+
+        <aside class="aside" aria-label="Кратко">
+          <section class="summary">
+            <h2>Кратко по стоимости</h2>
+            <p class="price">$420-$990</p>
+            <p>Дружеский диапазон: от простого сайта до варианта с AI Intake.</p>
+            <ul class="summary-list">
+              <li><span>Start</span><strong>$420</strong></li>
+              <li><span>Start + Leads</span><strong>$700</strong></li>
+              <li><span>Start + AI Intake</span><strong>$990</strong></li>
+            </ul>
+          </section>
+
+          <section class="summary note">
+            <h2>Главная идея</h2>
+            <p>
+              Сначала запускаем сайт и заявки. AI, CRM, соцсети и голосового
+              ассистента добавляем по мере появления реального потока клиентов.
+            </p>
+          </section>
+        </aside>
+      </div>
+    </main>
+
+    <footer class="footer">
+      Markdown-файл остается основным источником текста. Эта страница только
+      красиво показывает его в браузере.
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+    <script>
+      const proposal = document.querySelector("#proposal");
+
+      marked.use({
+        mangle: false,
+        headerIds: true,
+      });
+
+      fetch("commercial-proposal-roofing-ai.md")
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Markdown file was not found.");
+          }
+          return response.text();
+        })
+        .then((markdown) => {
+          proposal.innerHTML = marked.parse(markdown);
+        })
+        .catch(() => {
+          proposal.innerHTML = `
+            <p class="error">
+              Не получилось загрузить Markdown-файл. Проверь, что рядом с
+              index.html лежит файл commercial-proposal-roofing-ai.md.
+            </p>
+          `;
+        });
+    </script>
+  </body>
+</html>
