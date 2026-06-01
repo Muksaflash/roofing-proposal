@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ru">
+<html lang="ru" data-content-version="2026-06-01-ai-options">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -466,7 +466,11 @@
         headerIds: true,
       });
 
-      fetch("commercial-proposal-roofing-ai.md")
+      const contentVersion = document.documentElement.dataset.contentVersion;
+
+      fetch(`commercial-proposal-roofing-ai.md?v=${contentVersion}`, {
+        cache: "no-store",
+      })
         .then((response) => {
           if (!response.ok) {
             throw new Error("Markdown file was not found.");
