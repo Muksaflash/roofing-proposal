@@ -123,6 +123,11 @@
         color: #ffffff;
       }
 
+      .button:disabled {
+        cursor: not-allowed;
+        opacity: 0.55;
+      }
+
       .page {
         width: min(960px, calc(100% - 32px));
         margin: 0 auto;
@@ -285,6 +290,29 @@
         border-radius: 8px;
       }
 
+      input,
+      textarea {
+        width: 100%;
+        border: 1px solid #b9c5bd;
+        border-radius: 7px;
+        padding: 10px 11px;
+        background: #ffffff;
+        color: var(--ink);
+        font: inherit;
+        font-size: 15px;
+      }
+
+      textarea {
+        min-height: 96px;
+        resize: vertical;
+      }
+
+      input:focus,
+      textarea:focus {
+        border-color: var(--accent);
+        outline: 3px solid rgba(35, 104, 79, 0.16);
+      }
+
       .checkboxes {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -299,6 +327,13 @@
         align-items: start;
         color: var(--ink);
         font-size: 14px;
+      }
+
+      .checkbox input {
+        width: 16px;
+        height: 16px;
+        margin: 3px 0 0;
+        accent-color: var(--accent);
       }
 
       .box {
@@ -321,6 +356,39 @@
 
       .note strong {
         color: #193448;
+      }
+
+      .submit-panel {
+        margin: 8px 0 28px;
+        padding: 20px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--soft);
+      }
+
+      .submit-panel h2 {
+        margin-bottom: 8px;
+      }
+
+      .submit-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 12px;
+        align-items: end;
+        margin-top: 14px;
+      }
+
+      .submit-status {
+        min-height: 22px;
+        margin: 12px 0 0;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .hp-field {
+        position: absolute;
+        left: -9999px;
+        opacity: 0;
       }
 
       .footer {
@@ -360,7 +428,8 @@
 
         .quick-list,
         .field-grid,
-        .checkboxes {
+        .checkboxes,
+        .submit-grid {
           grid-template-columns: 1fr;
         }
 
@@ -400,6 +469,19 @@
         .section {
           break-inside: avoid;
         }
+
+        input,
+        textarea {
+          border: 0;
+          border-bottom: 1px solid #b9c5bd;
+          border-radius: 0;
+          padding-right: 0;
+          padding-left: 0;
+        }
+
+        .submit-panel {
+          display: none;
+        }
       }
     </style>
   </head>
@@ -434,6 +516,13 @@
         </header>
 
         <div class="content">
+          <form id="briefForm" method="POST" target="briefSubmitFrame">
+            <input type="hidden" name="source" value="GitHub Pages client brief" />
+            <label class="hp-field">
+              Website
+              <input name="website" tabindex="-1" autocomplete="off" />
+            </label>
+
           <ul class="quick-list" aria-label="Что нужно прислать">
             <li>Логотип</li>
             <li>Фото работ</li>
@@ -455,19 +544,19 @@
               <div class="field">
                 <label>Название компании / Company name</label>
                 <p>Как должно быть написано на сайте.</p>
-                <div class="answer"></div>
+                <input name="companyName" autocomplete="organization" />
               </div>
               <div class="field">
                 <label>Логотип / Logo</label>
                 <p>Прикрепи файл или ссылку. Лучше SVG, PNG или JPG.</p>
-                <div class="answer"></div>
+                <input name="logoLink" placeholder="Ссылка на файл или Drive" />
               </div>
               <div class="field full">
                 <label>Коротко о владельце или компании</label>
                 <p>
                   2-5 предложений: опыт, чем занимаетесь, почему вам доверяют.
                 </p>
-                <div class="answer tall"></div>
+                <textarea name="companyAbout"></textarea>
               </div>
             </div>
           </section>
@@ -484,17 +573,17 @@
               <div class="field">
                 <label>Телефон / Phone</label>
                 <p>Основной номер для звонков и заявок.</p>
-                <div class="answer"></div>
+                <input name="phone" autocomplete="tel" />
               </div>
               <div class="field">
                 <label>Email</label>
                 <p>Почта для заявок и уведомлений.</p>
-                <div class="answer"></div>
+                <input name="email" type="email" autocomplete="email" />
               </div>
               <div class="field full">
                 <label>Дополнительные контакты</label>
                 <p>Адрес, Google Business Profile, Facebook, Instagram, сайт.</p>
-                <div class="answer tall"></div>
+                <textarea name="extraContacts"></textarea>
               </div>
             </div>
           </section>
@@ -515,27 +604,27 @@
                   достаточно указать реальные услуги в блоке ниже.
                 </p>
                 <div class="checkboxes">
-                  <div class="checkbox"><span class="box"></span><span>Roof repair</span></div>
-                  <div class="checkbox"><span class="box"></span><span>Roof replacement</span></div>
-                  <div class="checkbox"><span class="box"></span><span>New roof installation</span></div>
-                  <div class="checkbox"><span class="box"></span><span>Leak repair</span></div>
-                  <div class="checkbox"><span class="box"></span><span>Storm damage repair</span></div>
-                  <div class="checkbox"><span class="box"></span><span>Emergency roof repair</span></div>
-                  <div class="checkbox"><span class="box"></span><span>Residential roofing</span></div>
-                  <div class="checkbox"><span class="box"></span><span>Commercial roofing</span></div>
-                  <div class="checkbox"><span class="box"></span><span>Gutters</span></div>
-                  <div class="checkbox"><span class="box"></span><span>Roof inspection</span></div>
-                  <div class="checkbox"><span class="box"></span><span>General construction</span></div>
-                  <div class="checkbox"><span class="box"></span><span>Exterior repair</span></div>
-                  <div class="checkbox"><span class="box"></span><span>Interior repair</span></div>
-                  <div class="checkbox"><span class="box"></span><span>Remodeling</span></div>
-                  <div class="checkbox"><span class="box"></span><span>Maintenance</span></div>
+                  <label class="checkbox"><input type="checkbox" name="services" value="Roof repair" /><span>Roof repair</span></label>
+                  <label class="checkbox"><input type="checkbox" name="services" value="Roof replacement" /><span>Roof replacement</span></label>
+                  <label class="checkbox"><input type="checkbox" name="services" value="New roof installation" /><span>New roof installation</span></label>
+                  <label class="checkbox"><input type="checkbox" name="services" value="Leak repair" /><span>Leak repair</span></label>
+                  <label class="checkbox"><input type="checkbox" name="services" value="Storm damage repair" /><span>Storm damage repair</span></label>
+                  <label class="checkbox"><input type="checkbox" name="services" value="Emergency roof repair" /><span>Emergency roof repair</span></label>
+                  <label class="checkbox"><input type="checkbox" name="services" value="Residential roofing" /><span>Residential roofing</span></label>
+                  <label class="checkbox"><input type="checkbox" name="services" value="Commercial roofing" /><span>Commercial roofing</span></label>
+                  <label class="checkbox"><input type="checkbox" name="services" value="Gutters" /><span>Gutters</span></label>
+                  <label class="checkbox"><input type="checkbox" name="services" value="Roof inspection" /><span>Roof inspection</span></label>
+                  <label class="checkbox"><input type="checkbox" name="services" value="General construction" /><span>General construction</span></label>
+                  <label class="checkbox"><input type="checkbox" name="services" value="Exterior repair" /><span>Exterior repair</span></label>
+                  <label class="checkbox"><input type="checkbox" name="services" value="Interior repair" /><span>Interior repair</span></label>
+                  <label class="checkbox"><input type="checkbox" name="services" value="Remodeling" /><span>Remodeling</span></label>
+                  <label class="checkbox"><input type="checkbox" name="services" value="Maintenance" /><span>Maintenance</span></label>
                 </div>
               </div>
               <div class="field full">
                 <label>Другие услуги или приоритеты</label>
                 <p>Какие услуги самые важные для сайта и рекламы.</p>
-                <div class="answer tall"></div>
+                <textarea name="otherServices"></textarea>
               </div>
             </div>
           </section>
@@ -552,12 +641,12 @@
               <div class="field full">
                 <label>Города или районы работы / Service areas</label>
                 <p>Например: city, county, neighborhood, ZIP codes.</p>
-                <div class="answer tall"></div>
+                <textarea name="serviceAreas"></textarea>
               </div>
               <div class="field full">
                 <label>Главные локации для продвижения</label>
                 <p>Какие города/районы важнее всего показать на сайте.</p>
-                <div class="answer tall"></div>
+                <textarea name="priorityLocations"></textarea>
               </div>
             </div>
           </section>
@@ -577,12 +666,12 @@
                   Прикрепи 5-15 лучших фото. Можно прислать ссылку на Google
                   Drive, Dropbox или папку.
                 </p>
-                <div class="answer tall"></div>
+                <textarea name="projectPhotos" placeholder="Ссылка на папку или список ссылок"></textarea>
               </div>
               <div class="field full">
                 <label>Подписи к фото, если есть</label>
                 <p>Тип работы, город, before/after, материалы, что было сделано.</p>
-                <div class="answer tall"></div>
+                <textarea name="photoCaptions"></textarea>
               </div>
             </div>
           </section>
@@ -599,12 +688,12 @@
               <div class="field full">
                 <label>Отзывы клиентов / Reviews</label>
                 <p>Текст отзыва, имя клиента, город и рейтинг, если можно указать.</p>
-                <div class="answer tall"></div>
+                <textarea name="reviews"></textarea>
               </div>
               <div class="field full">
                 <label>Ссылка на отзывы</label>
                 <p>Google Business Profile, Yelp, Facebook или другой источник.</p>
-                <div class="answer"></div>
+                <input name="reviewsLink" placeholder="Ссылка на отзывы" />
               </div>
             </div>
           </section>
@@ -624,7 +713,7 @@
                   Например: free estimate, emergency service, licensed/insured,
                   warranty, fast response, local company.
                 </p>
-                <div class="answer tall"></div>
+                <textarea name="importantNotes"></textarea>
               </div>
             </div>
             <div class="note">
@@ -634,6 +723,35 @@
             </div>
           </section>
 
+          <section class="submit-panel" id="submitPanel" aria-label="Отправка брифа" hidden>
+            <h2>Отправить бриф</h2>
+            <p>
+              После подключения Google Apps Script ответы уйдут на email.
+              Сохранение в Google Sheets можно добавить отдельным шагом, если
+              это понадобится.
+            </p>
+            <div class="submit-grid">
+              <div>
+                <label for="accessCode">Passcode</label>
+                <input
+                  id="accessCode"
+                  name="accessCode"
+                  type="password"
+                  autocomplete="off"
+                  placeholder="Код доступа для отправки"
+                  required
+                />
+              </div>
+              <button class="button primary" id="submitButton" type="submit">
+                Отправить
+              </button>
+            </div>
+            <p class="submit-status" id="submitStatus"></p>
+          </section>
+
+          </form>
+          <iframe name="briefSubmitFrame" hidden title="Brief submit frame"></iframe>
+
           <footer class="footer">
             <span>Клиентский бриф для сайта</span>
             <span>Файлы лучше прислать одной папкой или ссылкой на Drive</span>
@@ -641,5 +759,35 @@
         </div>
       </article>
     </main>
+    <script>
+      const APPS_SCRIPT_URL = "";
+      const form = document.querySelector("#briefForm");
+      const submitPanel = document.querySelector("#submitPanel");
+      const submitStatus = document.querySelector("#submitStatus");
+      const submitButton = document.querySelector("#submitButton");
+
+      if (APPS_SCRIPT_URL) {
+        submitPanel.hidden = false;
+        form.action = APPS_SCRIPT_URL;
+        submitStatus.textContent = "Форма подключена. После отправки ответы уйдут владельцу проекта.";
+      }
+
+      form.addEventListener("submit", (event) => {
+        if (!APPS_SCRIPT_URL) {
+          event.preventDefault();
+          submitStatus.textContent =
+            "Сначала нужно подключить Google Apps Script Web App URL.";
+          return;
+        }
+
+        submitButton.disabled = true;
+        submitStatus.textContent = "Отправляю...";
+        window.setTimeout(() => {
+          submitStatus.textContent =
+            "Если passcode верный, заявка отправлена. Можно закрыть страницу.";
+          submitButton.disabled = false;
+        }, 1400);
+      });
+    </script>
   </body>
 </html>
