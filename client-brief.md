@@ -70,7 +70,21 @@
 **Ссылка на отзывы:**  
 Google Business Profile, Yelp, Facebook или другой источник.
 
-## 7. Дополнительно
+## 7. QR-коды и печать
+
+**Ссылка, куда должен вести QR на сайт / Website QR:**  
+Например: главная страница, страница заявки, Get Free Estimate.
+
+**Yelp / Google Reviews link для QR:**  
+Ссылки на Yelp, Google Reviews или Google Business Profile.
+
+**Где планируется использовать QR:**  
+Машина, визитки, yard signs, флаеры, дверь офиса, наклейки.
+
+**Текст рядом с QR, если есть идея:**  
+Например: Scan for free estimate, Leave us a review, Get a quote.
+
+## 8. Дополнительно
 
 **Что важно сказать клиентам на сайте?**  
 Например: free estimate, emergency service, licensed/insured, warranty, fast response, local company.
