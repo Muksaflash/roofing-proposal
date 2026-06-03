@@ -1,6 +1,6 @@
 # Roofing Proposal GitHub Pages
 
-Готовая статичная страница для коммерческого предложения.
+Готовая статичная страница для коммерческого предложения и клиентского брифа.
 
 ## Как опубликовать через GitHub Pages
 
@@ -8,6 +8,8 @@
 2. Загрузи в него эти файлы:
    - `index.html`
    - `commercial-proposal-roofing-ai.md`
+   - `client-brief.html`
+   - `client-brief.md`
    - `.nojekyll`
    - `README.md`
 3. Открой `Settings` -> `Pages`.
@@ -21,3 +23,8 @@
 
 Текст предложения меняется в `commercial-proposal-roofing-ai.md`.
 Страница `index.html` автоматически подгружает этот Markdown-файл.
+
+Короткий клиентский бриф для сбора материалов находится в:
+
+- `client-brief.html` - отдельная страница для ссылки или печати в PDF;
+- `client-brief.md` - версия для копирования в письмо или мессенджер.
