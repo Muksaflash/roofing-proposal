@@ -1,25 +1,33 @@
 <!doctype html>
-<html lang="ru" data-content-version="2026-06-02-timeline">
+<html lang="en" data-page-version="2026-06-03-roofing-landing-draft">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Коммерческое предложение: сайт и AI-автоматизации для roofing-бизнеса."
+      content="Octopus Roofing Co. landing page with roofing services, trust signals, gallery, reviews, and free estimate CTA."
     />
-    <title>Коммерческое предложение | Roofing Website & AI</title>
+    <link rel="icon" href="favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png" />
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+    <meta name="theme-color" content="#14212a" />
+    <title>Octopus Roofing Co. | Get Free Estimate</title>
     <style>
       :root {
-        --bg: #f6f7f2;
+        --bg: #f5f7f4;
         --paper: #ffffff;
-        --ink: #1d2328;
-        --muted: #657078;
-        --line: #dce2dc;
-        --accent: #246b4f;
-        --accent-strong: #174735;
-        --warm: #c2822e;
-        --warm-soft: #fff4df;
-        --shadow: 0 18px 50px rgba(29, 35, 40, 0.12);
+        --ink: #161b1f;
+        --muted: #5f6b73;
+        --line: #d9e0df;
+        --soft: #eef3f3;
+        --dark: #14212a;
+        --dark-2: #20333f;
+        --brick: #b84232;
+        --brick-dark: #8f2d22;
+        --green: #2d7a62;
+        --gold: #c78a38;
+        --shadow: 0 20px 55px rgba(20, 33, 42, 0.12);
+        --radius: 8px;
       }
 
       * {
@@ -37,467 +45,1718 @@
         font-family:
           Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
           "Segoe UI", sans-serif;
-        line-height: 1.65;
+        line-height: 1.55;
+      }
+
+      body.menu-open {
+        overflow: hidden;
       }
 
       a {
-        color: var(--accent);
-        text-decoration-thickness: 0.08em;
-        text-underline-offset: 0.16em;
+        color: inherit;
       }
 
-      .topbar {
+      img {
+        display: block;
+        max-width: 100%;
+      }
+
+      button,
+      input,
+      select,
+      textarea {
+        font: inherit;
+      }
+
+      .wrap {
+        width: calc(100% - 32px);
+        max-width: 1160px;
+        margin: 0 auto;
+      }
+
+      .site-header {
         position: sticky;
         top: 0;
-        z-index: 20;
-        border-bottom: 1px solid rgba(220, 226, 220, 0.9);
-        background: rgba(246, 247, 242, 0.92);
+        z-index: 40;
+        border-bottom: 1px solid rgba(217, 224, 223, 0.82);
+        background: rgba(255, 255, 255, 0.92);
         backdrop-filter: blur(14px);
       }
 
-      .topbar-inner {
+      .header-inner {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 16px;
-        width: min(1180px, calc(100% - 32px));
-        margin: 0 auto;
-        padding: 14px 0;
+        gap: 18px;
+        min-height: 72px;
       }
 
       .brand {
-        display: flex;
+        display: inline-flex;
         align-items: center;
-        gap: 10px;
+        gap: 12px;
         min-width: 0;
         color: var(--ink);
-        font-weight: 760;
-        letter-spacing: 0;
+        text-decoration: none;
       }
 
-      .brand-mark {
+      .logo-slot {
         display: grid;
         place-items: center;
-        width: 34px;
-        height: 34px;
-        border-radius: 7px;
-        background: var(--accent);
-        color: #fff;
-        font-size: 18px;
-        font-weight: 800;
+        flex: 0 0 auto;
+        width: 48px;
+        height: 48px;
+        border: 1px dashed rgba(20, 33, 42, 0.32);
+        border-radius: 8px;
+        background: #fff;
+        color: var(--brick-dark);
+        font-size: 11px;
+        font-weight: 850;
+        letter-spacing: 0;
+        text-transform: uppercase;
+        overflow: hidden;
       }
 
-      .brand span:last-child {
+      .logo-slot img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .logo-slot.has-image {
+        border-style: solid;
+        border-color: rgba(20, 33, 42, 0.18);
+        padding: 2px;
+      }
+
+      .brand-text {
+        min-width: 0;
+      }
+
+      .brand-name {
+        display: block;
         overflow: hidden;
+        color: var(--ink);
+        font-size: 17px;
+        font-weight: 850;
+        line-height: 1.1;
         text-overflow: ellipsis;
         white-space: nowrap;
       }
 
-      .actions {
+      .brand-area {
+        display: block;
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 1.2;
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .nav a {
+        border-radius: 7px;
+        padding: 9px 10px;
+        color: var(--muted);
+        font-size: 14px;
+        font-weight: 750;
+        line-height: 1;
+        text-decoration: none;
+      }
+
+      .nav a:hover,
+      .nav a:focus-visible {
+        background: var(--soft);
+        color: var(--ink);
+        outline: 0;
+      }
+
+      .header-actions {
         display: flex;
         align-items: center;
         gap: 10px;
-        flex-wrap: wrap;
-        justify-content: flex-end;
       }
 
       .button {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        min-height: 38px;
+        gap: 8px;
+        min-height: 44px;
         border: 1px solid var(--line);
         border-radius: 7px;
-        padding: 8px 13px;
+        padding: 10px 15px;
         background: var(--paper);
         color: var(--ink);
-        font: inherit;
-        font-size: 14px;
-        font-weight: 700;
+        font-size: 15px;
+        font-weight: 850;
         line-height: 1.1;
+        text-align: center;
         text-decoration: none;
         cursor: pointer;
       }
 
+      .button:hover,
+      .button:focus-visible {
+        border-color: rgba(184, 66, 50, 0.48);
+        box-shadow: 0 0 0 4px rgba(184, 66, 50, 0.12);
+        outline: 0;
+      }
+
       .button.primary {
-        border-color: var(--accent);
-        background: var(--accent);
+        border-color: var(--brick);
+        background: var(--brick);
         color: #fff;
       }
 
+      .button.primary:hover,
+      .button.primary:focus-visible {
+        border-color: var(--brick-dark);
+        background: var(--brick-dark);
+      }
+
+      .button.dark {
+        border-color: rgba(255, 255, 255, 0.22);
+        background: rgba(255, 255, 255, 0.12);
+        color: #fff;
+      }
+
+      .button.dark:hover,
+      .button.dark:focus-visible {
+        border-color: rgba(255, 255, 255, 0.5);
+        box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.14);
+      }
+
+      .menu-button {
+        display: none;
+        width: 44px;
+        padding: 0;
+      }
+
+      .menu-button span,
+      .menu-button::before,
+      .menu-button::after {
+        display: block;
+        width: 18px;
+        height: 2px;
+        border-radius: 999px;
+        background: currentColor;
+        content: "";
+      }
+
+      .menu-button span {
+        margin: 4px 0;
+      }
+
       .hero {
-        width: min(1180px, calc(100% - 32px));
-        margin: 0 auto;
-        padding: 46px 0 28px;
+        position: relative;
+        min-height: clamp(560px, 72svh, 720px);
+        display: grid;
+        align-items: flex-end;
+        overflow: hidden;
+        background:
+          linear-gradient(
+            90deg,
+            rgba(14, 22, 28, 0.92) 0%,
+            rgba(14, 22, 28, 0.82) 38%,
+            rgba(14, 22, 28, 0.34) 70%,
+            rgba(14, 22, 28, 0.24) 100%
+          ),
+          url("assets/roofing-hero-placeholder.png");
+        background-position: center;
+        background-size: cover;
+        color: #fff;
+      }
+
+      .hero::after {
+        position: absolute;
+        inset: auto 0 0;
+        height: 100px;
+        background: linear-gradient(0deg, rgba(20, 33, 42, 0.46), transparent);
+        content: "";
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 1;
+        max-width: 720px;
+        padding: clamp(68px, 10vw, 108px) 0 44px;
       }
 
       .eyebrow {
-        margin: 0 0 12px;
-        color: var(--accent-strong);
-        font-size: 14px;
-        font-weight: 800;
+        margin: 0 0 14px;
+        color: var(--brick-dark);
+        font-size: 13px;
+        font-weight: 900;
+        letter-spacing: 0;
         text-transform: uppercase;
       }
 
-      .hero h1 {
-        max-width: 920px;
+      .hero .eyebrow {
+        color: #ffdcae;
+      }
+
+      .hero h1,
+      .section-head h2,
+      .about-copy h2,
+      .estimate-copy h2,
+      .final-cta h2 {
         margin: 0;
-        font-size: clamp(38px, 6vw, 78px);
-        line-height: 0.98;
         letter-spacing: 0;
       }
 
-      .hero p {
+      .hero h1 {
         max-width: 760px;
+        font-size: clamp(40px, 6.2vw, 78px);
+        line-height: 0.98;
+      }
+
+      .hero-lede {
+        max-width: 650px;
         margin: 20px 0 0;
-        color: var(--muted);
-        font-size: 19px;
+        color: rgba(255, 255, 255, 0.86);
+        font-size: clamp(17px, 2vw, 21px);
       }
 
-      .shell {
-        display: grid;
-        grid-template-columns: minmax(0, 1fr) 320px;
-        gap: 24px;
-        align-items: start;
-        width: min(1180px, calc(100% - 32px));
-        margin: 0 auto 64px;
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 28px;
       }
 
-      .document {
-        overflow: hidden;
-        border: 1px solid var(--line);
+      .hero-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 28px;
+      }
+
+      .meta-pill {
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        border-radius: 999px;
+        padding: 8px 11px;
+        background: rgba(255, 255, 255, 0.1);
+        color: rgba(255, 255, 255, 0.88);
+        font-size: 13px;
+        font-weight: 800;
+      }
+
+      .photo-note {
+        position: absolute;
+        right: 22px;
+        bottom: 18px;
+        z-index: 2;
+        max-width: 260px;
+        border: 1px solid rgba(255, 255, 255, 0.22);
         border-radius: 8px;
+        padding: 10px 12px;
+        background: rgba(20, 33, 42, 0.72);
+        color: rgba(255, 255, 255, 0.82);
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 1.35;
+      }
+
+      .section {
+        padding: clamp(58px, 8vw, 86px) 0;
+      }
+
+      .section.white {
         background: var(--paper);
-        box-shadow: var(--shadow);
       }
 
-      .document-inner {
-        padding: clamp(24px, 5vw, 54px);
+      .section.soft {
+        background: var(--soft);
       }
 
-      .aside {
-        position: sticky;
-        top: 86px;
+      .section.dark-band {
+        background: var(--dark);
+        color: #fff;
+      }
+
+      .section-head {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 28px;
+        margin-bottom: 30px;
+      }
+
+      .section-head h2,
+      .about-copy h2,
+      .estimate-copy h2,
+      .final-cta h2 {
+        max-width: 720px;
+        font-size: clamp(30px, 4.5vw, 48px);
+        line-height: 1.05;
+      }
+
+      .section-head p,
+      .about-copy p,
+      .estimate-copy p {
+        max-width: 540px;
+        margin: 0;
+        color: var(--muted);
+        font-size: 17px;
+      }
+
+      .dark-band .section-head p {
+        color: rgba(255, 255, 255, 0.74);
+      }
+
+      .services-grid {
         display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 14px;
       }
 
-      .summary {
+      .service-card,
+      .review-card,
+      .photo-card {
         border: 1px solid var(--line);
-        border-radius: 8px;
+        border-radius: var(--radius);
         background: var(--paper);
-        padding: 20px;
-        box-shadow: 0 10px 34px rgba(29, 35, 40, 0.08);
+        box-shadow: 0 10px 28px rgba(20, 33, 42, 0.07);
       }
 
-      .summary h2 {
-        margin: 0 0 12px;
+      .service-card {
+        min-height: 196px;
+        padding: 22px;
+      }
+
+      .card-kicker {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 42px;
+        height: 30px;
+        border-radius: 7px;
+        background: rgba(184, 66, 50, 0.1);
+        color: var(--brick-dark);
+        font-size: 12px;
+        font-weight: 900;
+      }
+
+      .service-card h3,
+      .review-card h3,
+      .photo-card h3 {
+        margin: 16px 0 8px;
+        font-size: 20px;
+        line-height: 1.2;
+      }
+
+      .service-card p,
+      .review-card p,
+      .photo-card p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 15px;
+      }
+
+      .trust-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.25fr);
+        gap: 36px;
+        align-items: start;
+      }
+
+      .trust-score {
+        border-top: 1px solid rgba(255, 255, 255, 0.18);
+        padding-top: 22px;
+      }
+
+      .trust-score strong {
+        display: block;
+        color: #ffdcae;
+        font-size: clamp(48px, 8vw, 84px);
+        font-weight: 900;
+        line-height: 0.9;
+      }
+
+      .trust-score span {
+        display: block;
+        max-width: 350px;
+        margin-top: 14px;
+        color: rgba(255, 255, 255, 0.74);
+        font-size: 17px;
+      }
+
+      .trust-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: var(--radius);
+        background: rgba(255, 255, 255, 0.14);
+      }
+
+      .trust-item {
+        min-height: 150px;
+        padding: 22px;
+        background: var(--dark-2);
+      }
+
+      .trust-item strong {
+        display: block;
+        margin-bottom: 8px;
+        color: #fff;
         font-size: 18px;
         line-height: 1.2;
       }
 
-      .price {
-        margin: 0;
-        color: var(--accent-strong);
-        font-size: 34px;
-        font-weight: 850;
-        line-height: 1;
-      }
-
-      .summary p {
-        margin: 10px 0 0;
-        color: var(--muted);
+      .trust-item span {
+        color: rgba(255, 255, 255, 0.7);
         font-size: 14px;
       }
 
-      .summary-list {
+      .gallery-grid {
         display: grid;
-        gap: 8px;
-        margin: 16px 0 0;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .photo-card {
+        overflow: hidden;
+      }
+
+      .photo {
+        position: relative;
+        display: grid;
+        place-items: center;
+        aspect-ratio: 4 / 3;
+        overflow: hidden;
+        background:
+          linear-gradient(135deg, rgba(20, 33, 42, 0.08), rgba(45, 122, 98, 0.2)),
+          repeating-linear-gradient(
+            45deg,
+            #d7ddde 0,
+            #d7ddde 10px,
+            #c7d0d2 10px,
+            #c7d0d2 20px
+          );
+        color: rgba(20, 33, 42, 0.72);
+        font-weight: 900;
+        text-align: center;
+      }
+
+      .photo.featured {
+        background-image:
+          linear-gradient(0deg, rgba(20, 33, 42, 0.16), rgba(20, 33, 42, 0.16)),
+          url("assets/roofing-hero-placeholder.png");
+        background-position: center;
+        background-size: cover;
+      }
+
+      .photo span {
+        border: 1px solid rgba(255, 255, 255, 0.48);
+        border-radius: 999px;
+        padding: 8px 12px;
+        background: rgba(255, 255, 255, 0.86);
+        color: var(--dark);
+        font-size: 12px;
+      }
+
+      .photo.featured span {
+        background: rgba(20, 33, 42, 0.74);
+        color: #fff;
+      }
+
+      .photo-card-body {
+        padding: 18px;
+      }
+
+      .photo-card h3 {
+        margin-top: 0;
+      }
+
+      .about-layout {
+        display: grid;
+        grid-template-columns: minmax(280px, 0.82fr) minmax(0, 1.18fr);
+        gap: 36px;
+        align-items: center;
+      }
+
+      .owner-photo {
+        min-height: 430px;
+        border: 1px solid rgba(20, 33, 42, 0.12);
+        border-radius: var(--radius);
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+        padding: clamp(22px, 4vw, 42px);
+        background:
+          linear-gradient(145deg, rgba(255, 255, 255, 0.94), rgba(238, 243, 243, 0.92)),
+          radial-gradient(circle at 20% 20%, rgba(184, 66, 50, 0.12), transparent 38%),
+          radial-gradient(circle at 80% 80%, rgba(45, 122, 98, 0.14), transparent 36%);
+        box-shadow: 0 16px 42px rgba(20, 33, 42, 0.08);
+      }
+
+      .owner-photo img {
+        width: min(100%, 430px);
+        border-radius: 7px;
+      }
+
+      .about-copy {
+        display: grid;
+        gap: 20px;
+      }
+
+      .about-copy p {
+        margin: 0;
+      }
+
+      .feature-list {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+        margin: 4px 0 0;
         padding: 0;
         list-style: none;
       }
 
-      .summary-list li {
-        display: flex;
-        justify-content: space-between;
-        gap: 12px;
-        border-top: 1px solid var(--line);
-        padding-top: 8px;
-        color: var(--muted);
-        font-size: 14px;
+      .feature-list li {
+        border-left: 3px solid var(--green);
+        padding: 6px 0 6px 12px;
+        color: var(--dark-2);
+        font-weight: 800;
       }
 
-      .summary-list strong {
-        color: var(--ink);
-        white-space: nowrap;
+      .reviews-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
       }
 
-      .note {
-        border-color: #f0d7a9;
-        background: var(--warm-soft);
+      .review-card {
+        padding: 22px;
       }
 
-      #proposal h1 {
-        margin-top: 0;
-        font-size: clamp(32px, 5vw, 54px);
-        line-height: 1.04;
+      .stars {
+        color: var(--gold);
+        font-size: 18px;
+        font-weight: 900;
         letter-spacing: 0;
       }
 
-      #proposal h2 {
-        margin: 42px 0 12px;
-        padding-top: 18px;
-        border-top: 1px solid var(--line);
-        color: var(--accent-strong);
-        font-size: 28px;
-        line-height: 1.15;
-        letter-spacing: 0;
-      }
-
-      #proposal h3 {
-        margin: 28px 0 8px;
+      .review-card blockquote {
+        margin: 14px 0 16px;
         color: var(--ink);
-        font-size: 20px;
-        line-height: 1.25;
-      }
-
-      #proposal p {
-        margin: 0 0 14px;
-      }
-
-      #proposal ul {
-        margin: 0 0 18px;
-        padding-left: 24px;
-      }
-
-      #proposal li {
-        margin: 6px 0;
-      }
-
-      #proposal blockquote {
-        margin: 22px 0;
-        border-left: 4px solid var(--warm);
-        padding: 8px 0 8px 16px;
-        color: var(--muted);
-        background: var(--warm-soft);
-      }
-
-      #proposal pre {
-        overflow-x: auto;
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        margin: 16px 0 22px;
-        padding: 16px;
-        background: #1d2328;
-        color: #f8faf7;
+        font-size: 17px;
         line-height: 1.45;
       }
 
-      #proposal code {
-        font-family:
-          "SFMono-Regular", Consolas, "Liberation Mono", monospace;
-        font-size: 0.94em;
-      }
-
-      #proposal :not(pre) > code {
-        border: 1px solid var(--line);
-        border-radius: 5px;
-        padding: 2px 5px;
-        background: #f1f4ef;
-        color: var(--accent-strong);
-      }
-
-      .loading,
-      .error {
+      .review-card h3 {
         margin: 0;
-        color: var(--muted);
+        font-size: 16px;
       }
 
-      .footer {
-        width: min(1180px, calc(100% - 32px));
-        margin: -34px auto 38px;
+      .estimate-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1.1fr);
+        gap: 34px;
+        align-items: start;
+      }
+
+      .estimate-copy {
+        position: sticky;
+        top: 96px;
+        display: grid;
+        gap: 18px;
+      }
+
+      .estimate-copy p {
+        margin: 0;
+      }
+
+      .contact-strip {
+        display: grid;
+        gap: 10px;
+        margin-top: 8px;
+      }
+
+      .contact-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: 12px 14px;
+        background: #fff;
+      }
+
+      .contact-row span {
+        color: var(--muted);
+        font-size: 13px;
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+
+      .contact-row strong {
+        text-align: right;
+      }
+
+      .estimate-form {
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: clamp(20px, 4vw, 30px);
+        background: var(--paper);
+        box-shadow: var(--shadow);
+      }
+
+      .form-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .field {
+        display: grid;
+        gap: 7px;
+      }
+
+      .field.full {
+        grid-column: 1 / -1;
+      }
+
+      .field label {
+        color: var(--dark-2);
+        font-size: 13px;
+        font-weight: 850;
+      }
+
+      .field input,
+      .field select,
+      .field textarea {
+        width: 100%;
+        min-height: 46px;
+        border: 1px solid #ccd5d6;
+        border-radius: 7px;
+        padding: 11px 12px;
+        background: #fff;
+        color: var(--ink);
+      }
+
+      .field textarea {
+        min-height: 118px;
+        resize: vertical;
+      }
+
+      .field input:focus,
+      .field select:focus,
+      .field textarea:focus {
+        border-color: var(--brick);
+        box-shadow: 0 0 0 4px rgba(184, 66, 50, 0.12);
+        outline: 0;
+      }
+
+      .form-actions {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 12px;
+        margin-top: 18px;
+      }
+
+      .form-note,
+      .form-status {
+        margin: 12px 0 0;
         color: var(--muted);
         font-size: 13px;
       }
 
-      @media (max-width: 900px) {
-        .shell {
-          grid-template-columns: 1fr;
-        }
-
-        .aside {
-          position: static;
-          order: -1;
-        }
+      .form-status {
+        min-height: 20px;
+        color: var(--green);
+        font-weight: 850;
       }
 
-      @media (max-width: 640px) {
-        .topbar-inner {
-          align-items: stretch;
+      .automation-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+        gap: 34px;
+        align-items: start;
+      }
+
+      .automation-copy {
+        display: grid;
+        gap: 18px;
+      }
+
+      .automation-copy h2 {
+        max-width: 720px;
+        margin: 0;
+        font-size: clamp(30px, 4.5vw, 48px);
+        line-height: 1.05;
+        letter-spacing: 0;
+      }
+
+      .automation-copy p {
+        max-width: 540px;
+        margin: 0;
+        color: var(--muted);
+        font-size: 17px;
+      }
+
+      .automation-note {
+        border-left: 3px solid var(--gold);
+        padding: 10px 0 10px 14px;
+        color: var(--dark-2);
+        font-weight: 800;
+      }
+
+      .roadmap {
+        display: grid;
+        gap: 12px;
+      }
+
+      .roadmap-card {
+        display: grid;
+        grid-template-columns: 72px minmax(0, 1fr);
+        gap: 16px;
+        align-items: start;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: 18px;
+        background: var(--paper);
+        box-shadow: 0 10px 28px rgba(20, 33, 42, 0.07);
+      }
+
+      .roadmap-step {
+        display: grid;
+        place-items: center;
+        min-height: 54px;
+        border-radius: 7px;
+        background: rgba(45, 122, 98, 0.1);
+        color: var(--green);
+        font-size: 13px;
+        font-weight: 900;
+        text-align: center;
+      }
+
+      .roadmap-card h3 {
+        margin: 0 0 7px;
+        font-size: 20px;
+        line-height: 1.2;
+      }
+
+      .roadmap-card p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 15px;
+      }
+
+      .automation-features {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+        margin-top: 14px;
+      }
+
+      .automation-feature {
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: 14px;
+        background: rgba(255, 255, 255, 0.72);
+      }
+
+      .automation-feature strong {
+        display: block;
+        margin-bottom: 5px;
+        color: var(--dark);
+        font-size: 14px;
+        line-height: 1.25;
+      }
+
+      .automation-feature span {
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .final-cta {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 26px;
+        align-items: center;
+        border-radius: var(--radius);
+        padding: clamp(26px, 5vw, 42px);
+        background: var(--dark);
+        color: #fff;
+      }
+
+      .final-cta p {
+        max-width: 650px;
+        margin: 14px 0 0;
+        color: rgba(255, 255, 255, 0.76);
+        font-size: 17px;
+      }
+
+      .footer {
+        border-top: 1px solid var(--line);
+        padding: 28px 0 92px;
+        background: #fff;
+      }
+
+      .footer-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .footer-links a {
+        color: var(--muted);
+        font-weight: 750;
+        text-decoration: none;
+      }
+
+      .footer-links a:hover,
+      .footer-links a:focus-visible {
+        color: var(--brick-dark);
+        outline: 0;
+      }
+
+      .mobile-cta {
+        position: fixed;
+        right: 12px;
+        bottom: 12px;
+        left: 12px;
+        z-index: 50;
+        display: none;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        border: 1px solid rgba(20, 33, 42, 0.12);
+        border-radius: 8px;
+        padding: 10px;
+        background: rgba(255, 255, 255, 0.94);
+        box-shadow: 0 18px 42px rgba(20, 33, 42, 0.18);
+        backdrop-filter: blur(14px);
+      }
+
+      @media (max-width: 980px) {
+        .nav {
+          position: fixed;
+          inset: 72px 12px auto;
+          display: none;
           flex-direction: column;
-        }
-
-        .actions {
-          justify-content: stretch;
-        }
-
-        .button {
-          flex: 1;
-        }
-
-        .hero {
-          padding-top: 34px;
-        }
-
-        .hero p {
-          font-size: 17px;
-        }
-
-        .document-inner {
-          padding: 22px;
-        }
-      }
-
-      @media print {
-        body {
+          align-items: stretch;
+          border: 1px solid var(--line);
+          border-radius: var(--radius);
+          padding: 8px;
           background: #fff;
+          box-shadow: var(--shadow);
         }
 
-        .topbar,
-        .hero,
-        .aside,
-        .footer {
+        .nav.is-open {
+          display: flex;
+        }
+
+        .nav a {
+          padding: 14px;
+        }
+
+        .menu-button {
+          display: inline-grid;
+          place-items: center;
+        }
+
+        .header-actions .button.primary {
           display: none;
         }
 
-        .shell {
-          display: block;
-          width: auto;
+        .services-grid,
+        .gallery-grid,
+        .reviews-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .trust-layout,
+        .about-layout,
+        .estimate-layout,
+        .automation-layout {
+          grid-template-columns: 1fr;
+        }
+
+        .estimate-copy {
+          position: static;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .wrap {
+          width: calc(100% - 24px);
+        }
+
+        .header-inner {
+          min-height: 66px;
+        }
+
+        .brand-name {
+          max-width: 170px;
+        }
+
+        .brand-area {
+          display: none;
+        }
+
+        .nav {
+          top: 66px;
+        }
+
+        .hero {
+          min-height: auto;
+          background-position: center right;
+        }
+
+        .hero-content {
+          padding: 76px 0 34px;
+        }
+
+        .hero h1 {
+          font-size: clamp(36px, 12vw, 52px);
+        }
+
+        .photo-note {
+          position: static;
+          max-width: none;
+          margin: 0 12px 14px;
+        }
+
+        .section-head {
+          display: grid;
+          gap: 14px;
+        }
+
+        .services-grid,
+        .reviews-grid,
+        .automation-features,
+        .trust-grid,
+        .feature-list,
+        .form-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .gallery-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 10px;
+        }
+
+        .gallery-grid .photo-card-body {
+          padding: 11px;
+        }
+
+        .gallery-grid .photo-card h3 {
           margin: 0;
+          font-size: 15px;
+          line-height: 1.2;
         }
 
-        .document {
-          border: 0;
-          box-shadow: none;
+        .gallery-grid .photo-card p {
+          display: none;
         }
 
-        .document-inner {
-          padding: 0;
+        .gallery-grid .photo span {
+          max-width: calc(100% - 16px);
+          border-radius: 7px;
+          padding: 6px 8px;
+          font-size: 11px;
+          line-height: 1.2;
+          white-space: normal;
         }
 
-        #proposal h2 {
-          break-after: avoid;
+        .roadmap-card {
+          grid-template-columns: 1fr;
+        }
+
+        .service-card {
+          min-height: auto;
+        }
+
+        .owner-photo {
+          min-height: 300px;
+        }
+
+        .contact-row {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .contact-row strong {
+          text-align: left;
+        }
+
+        .form-actions .button {
+          width: 100%;
+        }
+
+        .final-cta {
+          grid-template-columns: 1fr;
+        }
+
+        .final-cta .button {
+          width: 100%;
+        }
+
+        .footer-inner {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .mobile-cta {
+          display: grid;
+        }
+      }
+
+      @media (max-width: 430px) {
+        .logo-slot {
+          width: 42px;
+          height: 42px;
+        }
+
+        .header-actions {
+          gap: 8px;
+        }
+
+        .header-actions .button:not(.menu-button) {
+          min-height: 40px;
+          padding: 9px 11px;
+          font-size: 13px;
+        }
+
+        .button {
+          min-height: 42px;
+          padding-right: 12px;
+          padding-left: 12px;
+          font-size: 14px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
         }
       }
     </style>
   </head>
   <body>
-    <header class="topbar">
-      <div class="topbar-inner">
-        <a class="brand" href="#top" aria-label="К началу страницы">
-          <span class="brand-mark">R</span>
-          <span>Roofing Website & AI</span>
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a class="brand" href="#top" aria-label="Go to top">
+          <span class="logo-slot has-image">
+            <img src="assets/octopus-roofing-logo.webp" alt="Octopus Roofing Co. logo" />
+          </span>
+          <span class="brand-text">
+            <span class="brand-name">Octopus Roofing Co.</span>
+            <span class="brand-area">Repair • Maintenance • Installation</span>
+          </span>
         </a>
-        <div class="actions">
-          <a class="button" href="client-brief.html">Бриф</a>
-          <a class="button" href="commercial-proposal-roofing-ai.md" download>
-            Скачать Markdown
-          </a>
-          <button class="button primary" type="button" onclick="window.print()">
-            Печать / PDF
+
+        <nav class="nav" id="site-nav" aria-label="Main navigation">
+          <a href="#services">Services</a>
+          <a href="#trust">Why Us</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#about">About</a>
+          <a href="#reviews">Reviews</a>
+          <a href="#lead-system">Система лидов</a>
+        </nav>
+
+        <div class="header-actions">
+          <a class="button" href="tel:+12066366773" data-testid="header-call">Call Now</a>
+          <a class="button primary" href="#estimate" data-testid="header-estimate">Get Free Estimate</a>
+          <button
+            class="button menu-button"
+            id="menu-button"
+            type="button"
+            aria-label="Open navigation"
+            aria-controls="site-nav"
+            aria-expanded="false"
+            data-testid="menu-button"
+          >
+            <span></span>
           </button>
         </div>
       </div>
     </header>
 
     <main id="top">
-      <section class="hero" aria-label="Вводная часть">
-        <p class="eyebrow">Коммерческое предложение</p>
-        <h1>Сайт и AI-автоматизации для roofing-бизнеса</h1>
-        <p>
-          Стартовый сайт для заявок, подготовка под рекламу и понятная дорожная
-          карта AI-автоматизаций без лишних затрат на первом этапе.
-        </p>
+      <section class="hero" aria-label="Roofing landing hero">
+        <div class="wrap hero-content">
+          <p class="eyebrow">Local roofing contractor</p>
+          <h1>Reliable Roofing Services in Your Area</h1>
+          <p class="hero-lede">
+            Roof repair, replacement, inspections, storm damage help, and clean
+            residential work from a local crew you can call directly.
+          </p>
+          <div class="hero-actions" aria-label="Primary calls to action">
+            <a class="button primary" href="#estimate" data-testid="hero-estimate">Get Free Estimate</a>
+            <a class="button dark" href="tel:+12066366773" data-testid="hero-call">Call Now</a>
+          </div>
+          <div class="hero-meta" aria-label="Quick trust highlights">
+            <span class="meta-pill">Free estimates</span>
+            <span class="meta-pill">24/7 emergency service</span>
+            <span class="meta-pill">Residential and commercial</span>
+          </div>
+        </div>
+        <div class="photo-note">
+          Черновой визуал. Потом заменим на реальное фото крыши, проекта,
+          владельца или команды.
+        </div>
       </section>
 
-      <div class="shell">
-        <article class="document" aria-label="Текст предложения">
-          <div class="document-inner">
-            <div id="proposal">
-              <p class="loading">Загружаю предложение...</p>
+      <section class="section white" id="services">
+        <div class="wrap">
+          <div class="section-head">
+            <h2>Roofing help for urgent repairs and planned upgrades.</h2>
+            <p>
+              Список лучше держать коротким и практичным. В финальной версии
+              подставим реальные приоритетные услуги и города/районы работы.
+            </p>
+          </div>
+
+          <div class="services-grid">
+            <article class="service-card">
+              <span class="card-kicker">01</span>
+              <h3>Roof Repair</h3>
+              <p>
+                Leak checks, missing shingles, flashing issues, and localized
+                fixes before small problems turn into bigger damage.
+              </p>
+            </article>
+
+            <article class="service-card">
+              <span class="card-kicker">02</span>
+              <h3>Roof Replacement</h3>
+              <p>
+                Full tear-offs and new roofing systems with clear scheduling,
+                clean job sites, and material options that fit the home.
+              </p>
+            </article>
+
+            <article class="service-card">
+              <span class="card-kicker">03</span>
+              <h3>New Roof Installation</h3>
+              <p>
+                Roofing for additions, remodels, and new builds with a focus on
+                durability, ventilation, and finished curb appeal.
+              </p>
+            </article>
+
+            <article class="service-card">
+              <span class="card-kicker">04</span>
+              <h3>Storm Damage</h3>
+              <p>
+                Damage inspections after wind, hail, heavy rain, or fallen
+                branches, with photos and next-step recommendations.
+              </p>
+            </article>
+
+            <article class="service-card">
+              <span class="card-kicker">05</span>
+              <h3>Gutters</h3>
+              <p>
+                Gutter repair and replacement to move water away from the roof,
+                siding, foundation, and landscape.
+              </p>
+            </article>
+
+            <article class="service-card">
+              <span class="card-kicker">06</span>
+              <h3>Roof Inspection</h3>
+              <p>
+                Straightforward roof condition checks for buyers, sellers,
+                homeowners, property managers, and insurance needs.
+              </p>
+            </article>
+
+            <article class="service-card">
+              <span class="card-kicker">07</span>
+              <h3>Roof & Gutter Cleaning</h3>
+              <p>
+                Cleaning for roof surfaces and gutters to help prevent clogs,
+                water backup, staining, and avoidable exterior damage.
+              </p>
+            </article>
+
+            <article class="service-card">
+              <span class="card-kicker">08</span>
+              <h3>Moss Removal & Treatment</h3>
+              <p>
+                Careful moss removal and treatment to protect shingles, improve
+                curb appeal, and slow future moss growth.
+              </p>
+            </article>
+
+            <article class="service-card">
+              <span class="card-kicker">09</span>
+              <h3>24/7 Emergency Service</h3>
+              <p>
+                Emergency help for active leaks, storm damage, urgent roof
+                issues, and situations that cannot wait for normal scheduling.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section dark-band" id="trust">
+        <div class="wrap">
+          <div class="section-head">
+            <h2>Built around trust, speed, and visible work.</h2>
+            <p>
+              Roofing customers want proof before they call. This block gives
+              the page the credibility signals needed for ads, Google, and
+              referrals.
+            </p>
+          </div>
+
+          <div class="trust-layout">
+            <div class="trust-score">
+              <strong>24/7</strong>
+              <span>
+                Emergency service for active leaks, storm damage, and urgent
+                roofing problems that need attention right away.
+              </span>
+            </div>
+
+            <div class="trust-grid">
+              <div class="trust-item">
+                <strong>Local company</strong>
+                <span>Clear service area, direct contact, and local references.</span>
+              </div>
+              <div class="trust-item">
+                <strong>Free estimates</strong>
+                <span>Easy estimate requests for roof repair and replacement.</span>
+              </div>
+              <div class="trust-item">
+                <strong>Clean work</strong>
+                <span>Respect for the home, driveway, landscaping, and neighbors.</span>
+              </div>
+              <div class="trust-item">
+                <strong>Licensed and insured</strong>
+                <span>Оставляем только если это правда; позже заменим на точную реальную формулировку.</span>
+              </div>
             </div>
           </div>
-        </article>
+        </div>
+      </section>
 
-        <aside class="aside" aria-label="Кратко">
-          <section class="summary">
-            <h2>Кратко по стоимости</h2>
-            <p class="price">$420-$990</p>
-            <p>Дружеский диапазон: от простого сайта до варианта с AI Intake.</p>
-            <ul class="summary-list">
-              <li><span>Start</span><strong>$420</strong></li>
-              <li><span>Start + Leads</span><strong>$700</strong></li>
-              <li><span>Start + AI Intake</span><strong>$990</strong></li>
-            </ul>
-          </section>
-
-          <section class="summary">
-            <h2>Сроки</h2>
-            <ul class="summary-list">
-              <li><span>Первая версия сайта</span><strong>4-7 недель</strong></li>
-              <li><span>AI-система</span><strong>около 2 месяцев</strong></li>
-            </ul>
-            <p>Готовое отдается этапами, а AI-сценарии отдельно тестируются.</p>
-          </section>
-
-          <section class="summary note">
-            <h2>Главная идея</h2>
+      <section class="section soft" id="gallery">
+        <div class="wrap">
+          <div class="section-head">
+            <h2>Project Gallery</h2>
             <p>
-              Сначала запускаем сайт и заявки. AI, CRM, соцсети и голосового
-              ассистента добавляем по мере появления реального потока клиентов.
+              Здесь нужны реальные фото: before/after, готовые крыши, детали
+              работ и команда. С настоящими объектами этот блок станет намного
+              сильнее.
             </p>
-          </section>
-        </aside>
-      </div>
+          </div>
+
+          <div class="gallery-grid">
+            <article class="photo-card">
+              <div class="photo featured">
+                <span>Заменить hero-фото</span>
+              </div>
+              <div class="photo-card-body">
+                <h3>Roof replacement</h3>
+                <p>Для первого слота лучше поставить сильное фото готового объекта.</p>
+              </div>
+            </article>
+
+            <article class="photo-card">
+              <div class="photo">
+                <span>Фото проекта</span>
+              </div>
+              <div class="photo-card-body">
+                <h3>Repair detail</h3>
+                <p>Сюда подойдет крупный план shingles, flashing, vents или leak repair.</p>
+              </div>
+            </article>
+
+            <article class="photo-card">
+              <div class="photo">
+                <span>Фото до</span>
+              </div>
+              <div class="photo-card-body">
+                <h3>Before and after</h3>
+                <p>Хорошо показать проблему и готовый результат рядом.</p>
+              </div>
+            </article>
+
+            <article class="photo-card">
+              <div class="photo">
+                <span>Фото команды</span>
+              </div>
+              <div class="photo-card-body">
+                <h3>Team at work</h3>
+                <p>Реальное фото команды делает бизнес живым и локальным.</p>
+              </div>
+            </article>
+
+            <article class="photo-card">
+              <div class="photo">
+                <span>Materials</span>
+              </div>
+              <div class="photo-card-body">
+                <h3>Quality materials</h3>
+                <p>Можно показать shingles, underlayment, gutters или подготовку объекта.</p>
+              </div>
+            </article>
+
+            <article class="photo-card">
+              <div class="photo">
+                <span>Finished roof</span>
+              </div>
+              <div class="photo-card-body">
+                <h3>Final result</h3>
+                <p>Лучше всего работает чистое exterior-фото с хорошим светом и полной крышей.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section white" id="about">
+        <div class="wrap about-layout">
+          <div class="owner-photo">
+            <img src="assets/octopus-roofing-logo.webp" alt="Octopus Roofing Co. logo artwork" />
+          </div>
+
+          <div class="about-copy">
+            <p class="eyebrow">About the company</p>
+            <h2>A local roofing team that keeps the process clear.</h2>
+            <p>
+              Этот текст заменим на реальную историю владельца: опыт, районы
+              работы, специализацию и почему клиентам можно доверять команде.
+            </p>
+            <p>
+              Тон должен остаться простым и человеческим: прямая коммуникация,
+              честные рекомендации, чистые объекты и крыши под местный климат.
+            </p>
+            <ul class="feature-list" aria-label="Company highlights">
+              <li>Residential roofing</li>
+              <li>Commercial roofing</li>
+              <li>24/7 emergency service</li>
+              <li>Moss treatment</li>
+              <li>Roof and gutter cleaning</li>
+              <li>Photo-based estimates</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section soft" id="reviews">
+        <div class="wrap">
+          <div class="section-head">
+            <h2>Short reviews that make the next call easier.</h2>
+            <p>
+              Когда появятся реальные отзывы из Google, Yelp или Facebook,
+              заменим ими эти черновые цитаты. Сейчас здесь показан нужный
+              формат и длина.
+            </p>
+          </div>
+
+          <div class="reviews-grid">
+            <article class="review-card">
+              <div class="stars" aria-label="Five star rating">*****</div>
+              <blockquote>
+                "They showed up when they said they would, found the leak, and
+                explained the repair clearly."
+              </blockquote>
+              <h3>Sarah M.</h3>
+              <p>Homeowner, local area</p>
+            </article>
+
+            <article class="review-card">
+              <div class="stars" aria-label="Five star rating">*****</div>
+              <blockquote>
+                "The crew kept the job site clean and finished our roof faster
+                than expected."
+              </blockquote>
+              <h3>Michael T.</h3>
+              <p>Roof replacement customer</p>
+            </article>
+
+            <article class="review-card">
+              <div class="stars" aria-label="Five star rating">*****</div>
+              <blockquote>
+                "After the storm, they inspected everything, took photos, and
+                gave us a clear plan."
+              </blockquote>
+              <h3>Jessica R.</h3>
+              <p>Storm damage inspection</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section white" id="estimate">
+        <div class="wrap estimate-layout">
+          <div class="estimate-copy">
+            <p class="eyebrow">Get a free estimate</p>
+            <h2>Tell us what is happening with your roof.</h2>
+            <p>
+              Сейчас форма работает как статичный черновик. Позже подключим
+              отправку заявок на email, в Google Sheets, CRM или AI intake flow.
+            </p>
+
+            <div class="contact-strip" aria-label="Contact details">
+            <div class="contact-row">
+              <span>Phone</span>
+                <strong><a href="tel:+12066366773">(206) 636-6773</a></strong>
+            </div>
+            <div class="contact-row">
+              <span>Email</span>
+                <strong>Добавим email позже</strong>
+            </div>
+              <div class="contact-row">
+                <span>Area</span>
+                <strong>Your city and surrounding communities</strong>
+              </div>
+            </div>
+          </div>
+
+          <form class="estimate-form" id="estimate-form">
+            <div class="form-grid">
+              <div class="field">
+                <label for="name">Name</label>
+                <input id="name" name="name" autocomplete="name" required />
+              </div>
+
+              <div class="field">
+                <label for="phone">Phone</label>
+                <input
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  autocomplete="tel"
+                  placeholder="(206) 636-6773"
+                  required
+                />
+              </div>
+
+              <div class="field">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" autocomplete="email" />
+              </div>
+
+              <div class="field">
+                <label for="service">Service</label>
+                <select id="service" name="service" required>
+                  <option value="">Choose one</option>
+                  <option>Roof repair</option>
+                  <option>Roof replacement</option>
+                  <option>Storm damage</option>
+                  <option>Gutters</option>
+                  <option>Roof and gutter cleaning</option>
+                  <option>Moss removal and treatment</option>
+                  <option>24/7 emergency service</option>
+                  <option>Inspection</option>
+                  <option>Not sure yet</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="urgency">Urgency</label>
+                <select id="urgency" name="urgency">
+                  <option>Normal scheduling</option>
+                  <option>Leak or active damage</option>
+                  <option>Storm damage</option>
+                  <option>Emergency</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="location">City or address</label>
+                <input id="location" name="location" autocomplete="street-address" />
+              </div>
+
+              <div class="field full">
+                <label for="photos">Roof photos</label>
+                <input id="photos" name="photos" type="file" accept="image/*" multiple />
+              </div>
+
+              <div class="field full">
+                <label for="message">What do you need help with?</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  placeholder="Example: Leak near the chimney after heavy rain."
+                ></textarea>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button class="button primary" type="submit" data-testid="form-submit">Get Free Estimate</button>
+              <a class="button" href="tel:+12066366773" data-testid="form-call">Call Now</a>
+            </div>
+
+            <p class="form-note">
+              Перед запуском нужно заменить телефон, email, service area, логотип и фото.
+            </p>
+            <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+
+      <section class="section soft" id="lead-system">
+        <div class="wrap automation-layout">
+          <div class="automation-copy">
+            <p class="eyebrow">Будущая автоматизация лидов</p>
+            <h2>Система заявок, которую можно развивать после запуска сайта.</h2>
+            <p>
+              Первый запуск можно оставить простым: сильный сайт, понятная форма
+              и быстрые уведомления владельцу. Когда пойдут реальные заявки,
+              эту же форму можно превратить в более умную intake-систему.
+            </p>
+            <p class="automation-note">
+              Цель простая: меньше пропущенных обращений, чище данные по лидам
+              и быстрее follow-up без дорогого старта в первый день.
+            </p>
+          </div>
+
+          <div>
+            <div class="roadmap" aria-label="Roadmap автоматизации лидов">
+              <article class="roadmap-card">
+                <span class="roadmap-step">Старт</span>
+                <div>
+                  <h3>Сайт + базовый поток заявок</h3>
+                  <p>
+                    Клиенты звонят, отправляют форму estimate, прикрепляют фото
+                    и сразу видят подтверждение, что заявка принята.
+                  </p>
+                </div>
+              </article>
+
+              <article class="roadmap-card">
+                <span class="roadmap-step">Лиды</span>
+                <div>
+                  <h3>Google Sheets или CRM pipeline</h3>
+                  <p>
+                    Каждую заявку можно сохранять, помечать по типу услуги,
+                    отправлять владельцу по email/SMS и вести по статусам.
+                  </p>
+                </div>
+              </article>
+
+              <article class="roadmap-card">
+                <span class="roadmap-step">AI</span>
+                <div>
+                  <h3>Smart intake, scoring и follow-up</h3>
+                  <p>
+                    AI может задавать правильные вопросы, выделять срочные
+                    протечки или storm damage, делать summary и готовить
+                    следующий шаг.
+                  </p>
+                </div>
+              </article>
+            </div>
+
+            <div class="automation-features" aria-label="Будущие опции автоматизации">
+              <div class="automation-feature">
+                <strong>AI FAQ-ассистент</strong>
+                <span>Отвечает на частые вопросы про услуги и районы работы.</span>
+              </div>
+              <div class="automation-feature">
+                <strong>Заметки по фото</strong>
+                <span>Помогает описывать загруженные фото крыши без обещаний по цене.</span>
+              </div>
+              <div class="automation-feature">
+                <strong>Горячие лиды</strong>
+                <span>Поднимает в приоритет leaks, storm damage и emergency-заявки.</span>
+              </div>
+              <div class="automation-feature">
+                <strong>Автоответ</strong>
+                <span>Подтверждает заявку и задает понятное ожидание ответа.</span>
+              </div>
+              <div class="automation-feature">
+                <strong>Автоматизация отзывов</strong>
+                <span>Просит оставить Google или Yelp review после завершенной работы.</span>
+              </div>
+              <div class="automation-feature">
+                <strong>Voice AI позже</strong>
+                <span>Подключаем только если реальный поток звонков покажет необходимость.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section soft">
+        <div class="wrap">
+          <div class="final-cta">
+            <div>
+              <h2>Готовы превратить черновик в рабочую lead-страницу?</h2>
+              <p>
+                Добавим название компании, телефон, service area, логотип,
+                реальные фото и отзывы. Потом подключим estimate form.
+              </p>
+            </div>
+            <a class="button primary" href="#estimate">Get Free Estimate</a>
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer class="footer">
-      Markdown-файл остается основным источником текста. Эта страница только
-      красиво показывает его в браузере.
+      <div class="wrap footer-inner">
+        <span>Черновик landing page для Octopus Roofing Co.</span>
+        <div class="footer-links">
+          <a href="#services">Services</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#lead-system">Система лидов</a>
+          <a href="#estimate">Get Free Estimate</a>
+          <a href="tel:+12066366773">Call Now</a>
+        </div>
+      </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
-    <script>
-      const proposal = document.querySelector("#proposal");
+    <div class="mobile-cta" aria-label="Mobile contact actions">
+      <a class="button primary" href="#estimate">Estimate</a>
+      <a class="button" href="tel:+12066366773">Call Now</a>
+    </div>
 
-      marked.use({
-        mangle: false,
-        headerIds: true,
+    <script>
+      const menuButton = document.querySelector("#menu-button");
+      const nav = document.querySelector("#site-nav");
+      const form = document.querySelector("#estimate-form");
+      const formStatus = document.querySelector("#form-status");
+
+      menuButton.addEventListener("click", () => {
+        const isOpen = nav.classList.toggle("is-open");
+        document.body.classList.toggle("menu-open", isOpen);
+        menuButton.setAttribute("aria-expanded", String(isOpen));
+        menuButton.setAttribute("aria-label", isOpen ? "Close navigation" : "Open navigation");
       });
 
-      const contentVersion = document.documentElement.dataset.contentVersion;
+      nav.addEventListener("click", (event) => {
+        if (event.target.matches("a")) {
+          nav.classList.remove("is-open");
+          document.body.classList.remove("menu-open");
+          menuButton.setAttribute("aria-expanded", "false");
+          menuButton.setAttribute("aria-label", "Open navigation");
+        }
+      });
 
-      fetch(`commercial-proposal-roofing-ai.md?v=${contentVersion}`, {
-        cache: "no-store",
-      })
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error("Markdown file was not found.");
-          }
-          return response.text();
-        })
-        .then((markdown) => {
-          proposal.innerHTML = marked.parse(markdown);
-        })
-        .catch(() => {
-          proposal.innerHTML = `
-            <p class="error">
-              Не получилось загрузить Markdown-файл. Проверь, что рядом с
-              index.html лежит файл commercial-proposal-roofing-ai.md.
-            </p>
-          `;
-        });
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        formStatus.textContent =
+          "Спасибо. Это черновая форма: позже подключим email, Google Sheets, CRM или AI intake.";
+        form.reset();
+      });
     </script>
   </body>
 </html>
