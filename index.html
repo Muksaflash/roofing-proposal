@@ -2,7 +2,7 @@
 <html lang="en" data-page-version="2026-06-03-roofing-landing-draft">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta
       name="description"
       content="Octopus Roofing Co. landing page with roofing services, trust signals, gallery, reviews, and free estimate CTA."
@@ -10,6 +10,12 @@
     <link rel="icon" href="favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png" />
     <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+    <link
+      rel="preload"
+      as="image"
+      href="assets/projects/hero/hero-roof-finish.webp"
+      fetchpriority="high"
+    />
     <meta name="theme-color" content="#14212a" />
     <title>Octopus Roofing Co. | Get Free Estimate</title>
     <style>
@@ -258,26 +264,63 @@
         display: grid;
         align-items: flex-end;
         overflow: hidden;
-        background:
-          linear-gradient(
-            90deg,
-            rgba(14, 22, 28, 0.92) 0%,
-            rgba(14, 22, 28, 0.82) 38%,
-            rgba(14, 22, 28, 0.34) 70%,
-            rgba(14, 22, 28, 0.24) 100%
-          ),
-          url("assets/roofing-hero-placeholder.png");
-        background-position: center;
-        background-size: cover;
+        isolation: isolate;
+        background: var(--dark);
         color: #fff;
+        cursor: zoom-in;
+      }
+
+      .hero-slides,
+      .hero-slide {
+        position: absolute;
+        inset: 0;
+      }
+
+      .hero-slides {
+        z-index: -3;
+        overflow: hidden;
+        pointer-events: none;
+      }
+
+      .hero-slide {
+        background-image: var(--hero-image);
+        background-position: var(--hero-position, center);
+        background-size: cover;
+        opacity: 0;
+        transform: scale(1.045);
+        transition:
+          opacity 1.35s ease,
+          transform 7s ease;
+      }
+
+      .hero-slide.is-active {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      .hero::before {
+        position: absolute;
+        z-index: -2;
+        inset: 0;
+        background: linear-gradient(
+          90deg,
+          rgba(14, 22, 28, 0.93) 0%,
+          rgba(14, 22, 28, 0.82) 40%,
+          rgba(14, 22, 28, 0.42) 70%,
+          rgba(14, 22, 28, 0.28) 100%
+        );
+        content: "";
+        pointer-events: none;
       }
 
       .hero::after {
         position: absolute;
+        z-index: -1;
         inset: auto 0 0;
         height: 100px;
         background: linear-gradient(0deg, rgba(20, 33, 42, 0.46), transparent);
         content: "";
+        pointer-events: none;
       }
 
       .hero-content {
@@ -285,6 +328,7 @@
         z-index: 1;
         max-width: 720px;
         padding: clamp(68px, 10vw, 108px) 0 44px;
+        cursor: default;
       }
 
       .eyebrow {
@@ -346,20 +390,38 @@
         font-weight: 800;
       }
 
-      .photo-note {
+      .hero-gallery-trigger {
         position: absolute;
         right: 22px;
         bottom: 18px;
         z-index: 2;
-        max-width: 260px;
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
         border: 1px solid rgba(255, 255, 255, 0.22);
         border-radius: 8px;
         padding: 10px 12px;
         background: rgba(20, 33, 42, 0.72);
-        color: rgba(255, 255, 255, 0.82);
+        color: #fff;
+        font: inherit;
         font-size: 12px;
-        font-weight: 700;
+        font-weight: 850;
         line-height: 1.35;
+        cursor: pointer;
+        backdrop-filter: blur(10px);
+      }
+
+      .hero-gallery-trigger:hover,
+      .hero-gallery-trigger:focus-visible {
+        border-color: rgba(255, 255, 255, 0.54);
+        background: rgba(20, 33, 42, 0.88);
+        outline: 0;
+      }
+
+      .hero-gallery-trigger strong {
+        min-width: 38px;
+        color: #ffdcae;
+        text-align: right;
       }
 
       .section {
@@ -515,6 +577,114 @@
         font-size: 14px;
       }
 
+      .before-after-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .result-card {
+        display: grid;
+        grid-template-rows: auto 1fr;
+        align-content: start;
+        width: 100%;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        appearance: none;
+        overflow: hidden;
+        padding: 0;
+        background: var(--paper);
+        box-shadow: 0 10px 28px rgba(20, 33, 42, 0.07);
+        color: inherit;
+        font: inherit;
+        text-align: left;
+        cursor: zoom-in;
+        -webkit-appearance: none;
+      }
+
+      .result-card:hover .result-shot img,
+      .result-card:focus-visible .result-shot img {
+        transform: scale(1.025);
+      }
+
+      .result-card:focus-visible {
+        outline: 3px solid rgba(45, 122, 98, 0.38);
+        outline-offset: 3px;
+      }
+
+      .result-media {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-rows: 1fr;
+        gap: 1px;
+        aspect-ratio: 8 / 3;
+        overflow: hidden;
+        background: var(--line);
+      }
+
+      .result-shot {
+        position: relative;
+        min-width: 0;
+        height: 100%;
+        margin: 0;
+        overflow: hidden;
+        background: #dde6e4;
+      }
+
+      .result-shot img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 320ms ease;
+      }
+
+      .result-shot span {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.52);
+        border-radius: 7px;
+        padding: 7px 10px;
+        background: rgba(255, 255, 255, 0.9);
+        color: var(--dark);
+        font-size: 12px;
+        font-weight: 900;
+        line-height: 1;
+        backdrop-filter: blur(8px);
+      }
+
+      .result-shot .after {
+        background: rgba(45, 122, 98, 0.92);
+        color: #fff;
+      }
+
+      .result-body {
+        display: grid;
+        gap: 8px;
+        padding: 17px 18px 18px;
+      }
+
+      .result-kicker {
+        color: var(--green);
+        font-size: 12px;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .result-card h3 {
+        margin: 0;
+        font-size: 19px;
+        line-height: 1.18;
+      }
+
+      .result-card p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
       .gallery-grid {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -523,6 +693,11 @@
 
       .photo-card {
         overflow: hidden;
+        padding: 0;
+        color: inherit;
+        font: inherit;
+        text-align: left;
+        cursor: zoom-in;
       }
 
       .photo {
@@ -545,25 +720,34 @@
         text-align: center;
       }
 
-      .photo.featured {
-        background-image:
-          linear-gradient(0deg, rgba(20, 33, 42, 0.16), rgba(20, 33, 42, 0.16)),
-          url("assets/roofing-hero-placeholder.png");
-        background-position: center;
-        background-size: cover;
+      .photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 320ms ease;
+      }
+
+      .photo-card:hover .photo img,
+      .photo-card:focus-visible .photo img {
+        transform: scale(1.035);
       }
 
       .photo span {
+        position: absolute;
+        top: 10px;
+        left: 10px;
         border: 1px solid rgba(255, 255, 255, 0.48);
-        border-radius: 999px;
+        border-radius: 7px;
         padding: 8px 12px;
         background: rgba(255, 255, 255, 0.86);
         color: var(--dark);
         font-size: 12px;
+        backdrop-filter: blur(8px);
       }
 
-      .photo.featured span {
-        background: rgba(20, 33, 42, 0.74);
+      .photo span.after,
+      .photo span.complete {
+        background: rgba(45, 122, 98, 0.9);
         color: #fff;
       }
 
@@ -573,6 +757,253 @@
 
       .photo-card h3 {
         margin-top: 0;
+      }
+
+      .project-lightbox {
+        width: 100vw;
+        max-width: none;
+        height: 100dvh;
+        max-height: none;
+        border: 0;
+        padding: 0;
+        background: rgba(10, 15, 19, 0.97);
+        color: #fff;
+        overscroll-behavior: contain;
+      }
+
+      .project-lightbox::backdrop {
+        background: rgba(6, 10, 13, 0.9);
+      }
+
+      .lightbox-shell {
+        position: relative;
+        display: grid;
+        grid-template-rows: minmax(0, 1fr) auto;
+        width: 100%;
+        height: 100%;
+        padding: clamp(54px, 7vw, 76px) clamp(14px, 4vw, 42px) 18px;
+      }
+
+      .lightbox-close,
+      .lightbox-nav,
+      .lightbox-play {
+        display: inline-grid;
+        place-items: center;
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        border-radius: 7px;
+        background: rgba(255, 255, 255, 0.09);
+        color: #fff;
+        font: inherit;
+        cursor: pointer;
+        touch-action: manipulation;
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      .lightbox-close:hover,
+      .lightbox-close:focus-visible,
+      .lightbox-nav:hover,
+      .lightbox-nav:focus-visible,
+      .lightbox-play:hover,
+      .lightbox-play:focus-visible {
+        border-color: rgba(255, 255, 255, 0.55);
+        background: rgba(255, 255, 255, 0.16);
+        outline: 0;
+      }
+
+      .lightbox-close {
+        position: absolute;
+        top: 14px;
+        right: 14px;
+        z-index: 2;
+        width: 42px;
+        height: 42px;
+        font-size: 27px;
+        line-height: 1;
+      }
+
+      .lightbox-stage {
+        min-height: 0;
+        display: grid;
+        grid-template-columns: 48px minmax(0, 1fr) 48px;
+        gap: 14px;
+        align-items: center;
+      }
+
+      .lightbox-nav {
+        width: 48px;
+        height: 64px;
+        font-size: 34px;
+        line-height: 1;
+      }
+
+      .lightbox-figure {
+        min-width: 0;
+        min-height: 0;
+        display: grid;
+        grid-template-rows: minmax(0, 1fr) auto;
+        gap: 12px;
+        margin: 0;
+      }
+
+      .lightbox-image-wrap {
+        min-height: 0;
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+        touch-action: pan-y pinch-zoom;
+      }
+
+      .lightbox-image {
+        max-width: 100%;
+        max-height: calc(100dvh - 158px);
+        border-radius: 8px;
+        object-fit: contain;
+        box-shadow: 0 20px 56px rgba(0, 0, 0, 0.42);
+      }
+
+      .lightbox-caption {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        color: rgba(255, 255, 255, 0.78);
+        font-size: 14px;
+      }
+
+      .lightbox-copy {
+        display: grid;
+        gap: 7px;
+        min-width: 0;
+      }
+
+      .lightbox-meta-row {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        min-width: 0;
+      }
+
+      .lightbox-stage-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 28px;
+        border-radius: 7px;
+        padding: 6px 10px;
+        background: var(--brick);
+        color: #fff;
+        font-size: 12px;
+        font-weight: 950;
+        line-height: 1;
+        text-transform: uppercase;
+      }
+
+      .lightbox-stage-badge.is-after {
+        background: var(--green);
+      }
+
+      .lightbox-caption strong {
+        color: #fff;
+        font-size: clamp(24px, 4vw, 44px);
+        line-height: 0.98;
+      }
+
+      .lightbox-detail {
+        color: rgba(255, 255, 255, 0.72);
+        font-size: 14px;
+        font-weight: 750;
+      }
+
+      .lightbox-count {
+        flex: 0 0 auto;
+        color: rgba(255, 255, 255, 0.74);
+        font-weight: 850;
+      }
+
+      .lightbox-toolbar {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        padding-top: 12px;
+      }
+
+      .lightbox-play {
+        flex: 0 0 42px;
+        width: 42px;
+        height: 42px;
+        padding: 0;
+        font-size: 18px;
+        font-weight: 900;
+      }
+
+      .lightbox-icon-play {
+        display: none;
+        padding-left: 2px;
+      }
+
+      .lightbox-play[aria-pressed="true"] .lightbox-icon-pause {
+        display: none;
+      }
+
+      .lightbox-play[aria-pressed="true"] .lightbox-icon-play {
+        display: inline;
+      }
+
+      .lightbox-dots {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 8px;
+        width: min(100%, 680px);
+        min-width: 0;
+        overflow-x: auto;
+        padding: 3px;
+        scroll-snap-type: x proximity;
+        scrollbar-width: none;
+      }
+
+      .lightbox-dots::-webkit-scrollbar {
+        display: none;
+      }
+
+      .lightbox-thumb {
+        flex: 0 0 54px;
+        width: 54px;
+        height: 42px;
+        border: 2px solid transparent;
+        border-radius: 6px;
+        padding: 0;
+        overflow: hidden;
+        background: #26323a;
+        opacity: 0.55;
+        cursor: pointer;
+        scroll-snap-align: center;
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      .lightbox-thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .lightbox-thumb:hover,
+      .lightbox-thumb:focus-visible {
+        opacity: 0.9;
+        outline: 0;
+      }
+
+      .lightbox-thumb.is-active {
+        border-color: #ffdcae;
+        opacity: 1;
+        box-shadow: 0 0 0 2px rgba(255, 220, 174, 0.14);
+      }
+
+      body.lightbox-open {
+        overflow: hidden;
       }
 
       .about-layout {
@@ -980,6 +1411,7 @@
 
         .services-grid,
         .gallery-grid,
+        .before-after-grid,
         .reviews-grid {
           grid-template-columns: repeat(2, minmax(0, 1fr));
         }
@@ -1030,9 +1462,10 @@
           font-size: clamp(36px, 12vw, 52px);
         }
 
-        .photo-note {
+        .hero-gallery-trigger {
           position: static;
-          max-width: none;
+          width: calc(100% - 24px);
+          justify-content: space-between;
           margin: 0 12px 14px;
         }
 
@@ -1076,6 +1509,166 @@
           font-size: 11px;
           line-height: 1.2;
           white-space: normal;
+        }
+
+        .before-after-grid {
+          display: flex;
+          align-items: stretch;
+          gap: 12px;
+          overflow-x: auto;
+          margin: 0;
+          padding: 0 0 10px;
+          scroll-snap-type: x mandatory;
+          scrollbar-width: thin;
+        }
+
+        .result-card {
+          flex: 0 0 min(276px, 82vw);
+          scroll-snap-align: start;
+          overflow: hidden;
+          border-radius: var(--radius);
+        }
+
+        .result-media {
+          border-radius: calc(var(--radius) - 1px) calc(var(--radius) - 1px) 0 0;
+          overflow: hidden;
+        }
+
+        .result-body {
+          padding: 13px;
+        }
+
+        .result-card h3 {
+          font-size: 17px;
+        }
+
+        .result-card p {
+          font-size: 13px;
+        }
+
+        .result-shot span {
+          top: 8px;
+          left: 8px;
+          padding: 6px 8px;
+          font-size: 11px;
+        }
+
+        .lightbox-shell {
+          grid-template-rows: minmax(0, 1fr) auto;
+          padding: max(52px, env(safe-area-inset-top)) 0 max(8px, env(safe-area-inset-bottom));
+        }
+
+        .lightbox-stage {
+          position: relative;
+          display: grid;
+          grid-template-columns: minmax(0, 1fr);
+          align-items: stretch;
+          gap: 0;
+          min-height: 0;
+        }
+
+        .lightbox-close {
+          top: max(8px, env(safe-area-inset-top));
+          right: 8px;
+          width: 40px;
+          height: 40px;
+        }
+
+        .lightbox-figure {
+          width: 100%;
+          height: 100%;
+          grid-template-rows: minmax(0, 1fr) auto;
+          gap: 0;
+        }
+
+        .lightbox-nav {
+          position: absolute;
+          z-index: 2;
+          bottom: 98px;
+          width: 44px;
+          height: 44px;
+          border-radius: 50%;
+          background: rgba(10, 15, 19, 0.66);
+          font-size: 28px;
+        }
+
+        .lightbox-prev {
+          left: 10px;
+        }
+
+        .lightbox-next {
+          right: 10px;
+        }
+
+        .lightbox-image-wrap {
+          width: 100%;
+          height: 100%;
+        }
+
+        .lightbox-image {
+          width: 100%;
+          height: 100%;
+          max-height: none;
+          border-radius: 0;
+        }
+
+        .lightbox-caption {
+          min-height: 86px;
+          align-items: flex-end;
+          flex-direction: row;
+          gap: 10px;
+          padding: 9px 14px;
+          font-size: 13px;
+        }
+
+        .lightbox-copy {
+          gap: 5px;
+        }
+
+        .lightbox-stage-badge {
+          min-height: 24px;
+          padding: 5px 8px;
+          font-size: 10px;
+        }
+
+        .lightbox-caption strong {
+          min-width: 0;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          font-size: 22px;
+          line-height: 1;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 2;
+          white-space: normal;
+        }
+
+        .lightbox-detail {
+          font-size: 12px;
+        }
+
+        .lightbox-count {
+          padding-bottom: 2px;
+          font-size: 12px;
+        }
+
+        .lightbox-toolbar {
+          display: grid;
+          grid-template-columns: 42px minmax(0, 1fr);
+          align-items: center;
+          gap: 8px;
+          padding: 8px 10px 2px;
+          border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .lightbox-dots {
+          width: 100%;
+        }
+
+        .lightbox-thumb {
+          flex-basis: 58px;
+          width: 58px;
+          height: 44px;
         }
 
         .roadmap-card {
@@ -1149,6 +1742,11 @@
         html {
           scroll-behavior: auto;
         }
+
+        .hero-slide,
+        .photo img {
+          transition: none;
+        }
       }
     </style>
   </head>
@@ -1168,6 +1766,7 @@
         <nav class="nav" id="site-nav" aria-label="Main navigation">
           <a href="#services">Services</a>
           <a href="#trust">Why Us</a>
+          <a href="#before-after">Results</a>
           <a href="#gallery">Gallery</a>
           <a href="#about">About</a>
           <a href="#reviews">Reviews</a>
@@ -1193,7 +1792,29 @@
     </header>
 
     <main id="top">
-      <section class="hero" aria-label="Roofing landing hero">
+      <section class="hero" aria-label="Roofing landing hero" data-hero-slideshow>
+        <div class="hero-slides" aria-hidden="true">
+          <div
+            class="hero-slide is-active"
+            data-hero-project="2"
+            style="--hero-image: url('assets/projects/hero/hero-roof-finish.webp')"
+          ></div>
+          <div
+            class="hero-slide"
+            data-hero-project="1"
+            style="--hero-image: url('assets/projects/roofing-2026-06-22/web/roof-job-01-after.webp')"
+          ></div>
+          <div
+            class="hero-slide"
+            data-hero-project="3"
+            style="--hero-image: url('assets/projects/roofing-2026-06-22/web/roof-job-03-after.webp')"
+          ></div>
+          <div
+            class="hero-slide"
+            data-hero-project="4"
+            style="--hero-image: url('assets/projects/roofing-2026-06-22/web/roof-job-04-after.webp')"
+          ></div>
+        </div>
         <div class="wrap hero-content">
           <p class="eyebrow">Local roofing contractor</p>
           <h1>Reliable Roofing Services in Your Area</h1>
@@ -1211,10 +1832,15 @@
             <span class="meta-pill">Residential and commercial</span>
           </div>
         </div>
-        <div class="photo-note">
-          Черновой визуал. Потом заменим на реальное фото крыши, проекта,
-          владельца или команды.
-        </div>
+        <button
+          class="hero-gallery-trigger"
+          type="button"
+          data-open-project-gallery
+          aria-label="Open real project photo slideshow"
+        >
+          <span>View real project photos</span>
+          <strong><span data-hero-current>1</span>/4</strong>
+        </button>
       </section>
 
       <section class="section white" id="services">
@@ -1239,19 +1865,19 @@
 
             <article class="service-card">
               <span class="card-kicker">02</span>
-              <h3>Roof Replacement</h3>
+              <h3>Shingle Removal & Installation</h3>
               <p>
-                Full tear-offs and new roofing systems with clear scheduling,
-                clean job sites, and material options that fit the home.
+                Removal of old shingles and installation of new shingles, with
+                clear scheduling, clean job sites, and photo updates.
               </p>
             </article>
 
             <article class="service-card">
               <span class="card-kicker">03</span>
-              <h3>New Roof Installation</h3>
+              <h3>PVC Membrane Flat Roofs</h3>
               <p>
-                Roofing for additions, remodels, and new builds with a focus on
-                durability, ventilation, and finished curb appeal.
+                PVC membrane roofing installation for flat roofs, low-slope
+                roof areas, sealed penetrations, and clean finished surfaces.
               </p>
             </article>
 
@@ -1293,15 +1919,33 @@
 
             <article class="service-card">
               <span class="card-kicker">08</span>
-              <h3>Moss Removal & Treatment</h3>
+              <h3>Roof Moss Removal & Preventative Treatment</h3>
               <p>
-                Careful moss removal and treatment to protect shingles, improve
-                curb appeal, and slow future moss growth.
+                Roof moss removal and preventative treatment to protect shingles,
+                improve curb appeal, and slow future moss growth.
               </p>
             </article>
 
             <article class="service-card">
               <span class="card-kicker">09</span>
+              <h3>Waterproof Membrane Installation</h3>
+              <p>
+                Installation of a waterproof membrane under decks, patios, or
+                balconies where the surface needs dependable protection.
+              </p>
+            </article>
+
+            <article class="service-card">
+              <span class="card-kicker">10</span>
+              <h3>Roof Painting</h3>
+              <p>
+                Painting and coating for eligible roof surfaces, including metal
+                roofs that need a cleaner, refreshed finish.
+              </p>
+            </article>
+
+            <article class="service-card">
+              <span class="card-kicker">11</span>
               <h3>24/7 Emergency Service</h3>
               <p>
                 Emergency help for active leaks, storm damage, urgent roof
@@ -1354,77 +1998,371 @@
         </div>
       </section>
 
+      <section class="section white" id="before-after">
+        <div class="wrap">
+          <div class="section-head">
+            <h2>Real before/after work</h2>
+            <p>
+              Actual project photos from roof cleaning, moss treatment,
+              shingle removal and installation, PVC flat roofs, waterproof
+              membranes, roof painting, and repair details.
+            </p>
+          </div>
+
+          <div class="before-after-grid">
+            <button class="card result-card" type="button" data-before-after-project="1">
+              <div class="result-media">
+                <figure class="result-shot">
+                  <img
+                    src="assets/projects/roofing-2026-06-22/web/roof-job-01-before.webp"
+                    loading="lazy"
+                    alt="Shingle roof with debris and exposed repair lines before service"
+                  />
+                  <span>Before</span>
+                </figure>
+                <figure class="result-shot">
+                  <img
+                    src="assets/projects/roofing-2026-06-22/web/roof-job-01-after.webp"
+                    loading="lazy"
+                    alt="Finished gray shingle roof after roofing work"
+                  />
+                  <span class="after">After</span>
+                </figure>
+              </div>
+              <div class="result-body">
+                <span class="result-kicker">Roof cleaning</span>
+                <h3>Cleaner shingle roof surface</h3>
+                <p>Debris and staining cleared from a residential shingle roof.</p>
+              </div>
+            </button>
+
+            <button class="card result-card" type="button" data-before-after-project="2">
+              <div class="result-media">
+                <figure class="result-shot">
+                  <img
+                    src="assets/projects/roofing-2026-06-22/web/roof-job-02-before.webp"
+                    loading="lazy"
+                    alt="Exposed plywood roof deck before shingle installation"
+                  />
+                  <span>Before</span>
+                </figure>
+                <figure class="result-shot">
+                  <img
+                    src="assets/projects/roofing-2026-06-22/web/roof-job-02-after.webp"
+                    loading="lazy"
+                    alt="Completed gray shingle roof with vents after installation"
+                  />
+                  <span class="after">After</span>
+                </figure>
+              </div>
+              <div class="result-body">
+                <span class="result-kicker">Shingle installation</span>
+                <h3>Old shingles removed, new shingles installed</h3>
+                <p>Removal of old shingles followed by a finished new shingle surface.</p>
+              </div>
+            </button>
+
+            <button class="card result-card" type="button" data-before-after-project="3">
+              <div class="result-media">
+                <figure class="result-shot">
+                  <img
+                    src="assets/projects/roofing-2026-06-22/web/roof-job-03-before.webp"
+                    loading="lazy"
+                    alt="Stripped low-slope roof deck before membrane installation"
+                  />
+                  <span>Before</span>
+                </figure>
+                <figure class="result-shot">
+                  <img
+                    src="assets/projects/roofing-2026-06-22/web/roof-job-03-after.webp"
+                    loading="lazy"
+                    alt="Completed dark low-slope roof membrane with sealed penetrations"
+                  />
+                  <span class="after">After</span>
+                </figure>
+              </div>
+              <div class="result-body">
+                <span class="result-kicker">PVC membrane roofing</span>
+                <h3>Flat roof prepared and sealed</h3>
+                <p>PVC membrane roofing installation for a low-slope flat roof.</p>
+              </div>
+            </button>
+
+            <button class="card result-card" type="button" data-before-after-project="4">
+              <div class="result-media">
+                <figure class="result-shot">
+                  <img
+                    src="assets/projects/roofing-2026-06-22/web/roof-job-04-before.webp"
+                    loading="lazy"
+                    alt="New plywood roof deck during low-slope roof preparation"
+                  />
+                  <span>Before</span>
+                </figure>
+                <figure class="result-shot">
+                  <img
+                    src="assets/projects/roofing-2026-06-22/web/roof-job-04-after.webp"
+                    loading="lazy"
+                    alt="Completed white low-slope roof membrane after installation"
+                  />
+                  <span class="after">After</span>
+                </figure>
+              </div>
+              <div class="result-body">
+                <span class="result-kicker">PVC flat roof</span>
+                <h3>Plywood deck to PVC membrane</h3>
+                <p>Flat roof deck preparation finished with a bright PVC membrane.</p>
+              </div>
+            </button>
+
+            <button class="card result-card" type="button" data-before-after-project="5">
+              <div class="result-media">
+                <figure class="result-shot">
+                  <img
+                    src="assets/projects/roofing-2026-06-22/web/roof-job-05-before.webp"
+                    loading="lazy"
+                    alt="Plywood deck surface before waterproof membrane installation"
+                  />
+                  <span>Before</span>
+                </figure>
+                <figure class="result-shot">
+                  <img
+                    src="assets/projects/roofing-2026-06-22/web/roof-job-05-after.webp"
+                    loading="lazy"
+                    alt="Finished white waterproof deck membrane beside exterior doors"
+                  />
+                  <span class="after">After</span>
+                </figure>
+              </div>
+              <div class="result-body">
+                <span class="result-kicker">Waterproof membrane</span>
+                <h3>Deck surface protected</h3>
+                <p>Waterproof membrane installation for an exterior deck surface.</p>
+              </div>
+            </button>
+
+            <button class="card result-card" type="button" data-before-after-project="6">
+              <div class="result-media">
+                <figure class="result-shot">
+                  <img
+                    src="assets/projects/roofing-2026-06-22/web/roof-job-06-before.webp"
+                    loading="lazy"
+                    alt="Low-slope roof area during preparation before final membrane work"
+                  />
+                  <span>Before</span>
+                </figure>
+                <figure class="result-shot">
+                  <img
+                    src="assets/projects/roofing-2026-06-22/web/roof-job-06-after.webp"
+                    loading="lazy"
+                    alt="Completed white low-slope roof membrane and sealed curb details"
+                  />
+                  <span class="after">After</span>
+                </figure>
+              </div>
+              <div class="result-body">
+                <span class="result-kicker">Detail work</span>
+                <h3>Membrane and curb details</h3>
+                <p>Prepared roof area finished with sealed edges and curb details.</p>
+              </div>
+            </button>
+
+            <button class="card result-card" type="button" data-before-after-project="7">
+              <div class="result-media">
+                <figure class="result-shot">
+                  <img
+                    src="assets/projects/roofing-2026-06-22/web/roof-job-07-before.webp"
+                    loading="lazy"
+                    alt="Small flat roof surface with patched seams before waterproofing"
+                  />
+                  <span>Before</span>
+                </figure>
+                <figure class="result-shot">
+                  <img
+                    src="assets/projects/roofing-2026-06-22/web/roof-job-07-after.webp"
+                    loading="lazy"
+                    alt="Finished light-colored waterproof surface on a small flat roof"
+                  />
+                  <span class="after">After</span>
+                </figure>
+              </div>
+              <div class="result-body">
+                <span class="result-kicker">Small flat roof</span>
+                <h3>Patched surface to clean finish</h3>
+                <p>Small roof area cleaned up into a finished light-colored surface.</p>
+              </div>
+            </button>
+
+            <button class="card result-card" type="button" data-before-after-project="8">
+              <div class="result-media">
+                <figure class="result-shot">
+                  <img
+                    src="assets/projects/roofing-2026-06-22/web/roof-job-08-before.webp"
+                    loading="lazy"
+                    alt="Weathered shingle roof with leaves and debris before service"
+                  />
+                  <span>Before</span>
+                </figure>
+                <figure class="result-shot">
+                  <img
+                    src="assets/projects/roofing-2026-06-22/web/roof-job-08-after.webp"
+                    loading="lazy"
+                    alt="Clean shingle roof surface after roofing service"
+                  />
+                  <span class="after">After</span>
+                </figure>
+              </div>
+              <div class="result-body">
+                <span class="result-kicker">Moss treatment</span>
+                <h3>Roof moss removal and treatment</h3>
+                <p>Roof moss and debris cleanup with preventative treatment positioning.</p>
+              </div>
+            </button>
+
+            <button class="card result-card" type="button" data-before-after-project="9">
+              <div class="result-media">
+                <figure class="result-shot">
+                  <img
+                    src="assets/projects/roofing-2026-06-22/web/roof-job-09-before.webp"
+                    loading="lazy"
+                    alt="Green metal roof before roof painting"
+                  />
+                  <span>Before</span>
+                </figure>
+                <figure class="result-shot">
+                  <img
+                    src="assets/projects/roofing-2026-06-22/web/roof-job-09-after.webp"
+                    loading="lazy"
+                    alt="Gray metal roof after roof painting"
+                  />
+                  <span class="after">After</span>
+                </figure>
+              </div>
+              <div class="result-body">
+                <span class="result-kicker">Roof painting</span>
+                <h3>Metal roof color refresh</h3>
+                <p>Green metal roof surface repainted for a cleaner gray finish.</p>
+              </div>
+            </button>
+          </div>
+        </div>
+      </section>
+
       <section class="section soft" id="gallery">
         <div class="wrap">
           <div class="section-head">
-            <h2>Project Gallery</h2>
+            <h2>Types of work in pictures</h2>
             <p>
-              Здесь нужны реальные фото: before/after, готовые крыши, детали
-              работ и команда. С настоящими объектами этот блок станет намного
-              сильнее.
+              Browse the main services visually. The before/after block above
+              shows full project results; this gallery helps visitors quickly
+              understand what kind of roofing help they can request.
             </p>
           </div>
 
           <div class="gallery-grid">
-            <article class="photo-card">
-              <div class="photo featured">
-                <span>Заменить hero-фото</span>
-              </div>
-              <div class="photo-card-body">
-                <h3>Roof replacement</h3>
-                <p>Для первого слота лучше поставить сильное фото готового объекта.</p>
-              </div>
-            </article>
-
-            <article class="photo-card">
+            <button class="photo-card" type="button" data-work-gallery="roof-cleaning">
               <div class="photo">
-                <span>Фото проекта</span>
+                <img
+                  src="assets/projects/web/project-01.webp"
+                  loading="lazy"
+                  alt="Clean roof edge and gutter after roof cleaning"
+                />
+                <span class="after">Cleaning</span>
               </div>
               <div class="photo-card-body">
-                <h3>Repair detail</h3>
-                <p>Сюда подойдет крупный план shingles, flashing, vents или leak repair.</p>
+                <h3>Roof &amp; Gutter Cleaning</h3>
+                <p>Roof edges, gutters, debris buildup, and general roof surface cleanup.</p>
               </div>
-            </article>
+            </button>
 
-            <article class="photo-card">
+            <button class="photo-card" type="button" data-work-gallery="moss-treatment">
               <div class="photo">
-                <span>Фото до</span>
+                <img
+                  src="assets/projects/roofing-2026-06-22/web/roof-job-08-before.webp"
+                  loading="lazy"
+                  alt="Weathered shingle roof before moss and debris cleanup"
+                />
+                <span>Moss care</span>
               </div>
               <div class="photo-card-body">
-                <h3>Before and after</h3>
-                <p>Хорошо показать проблему и готовый результат рядом.</p>
+                <h3>Roof Moss Removal &amp; Preventative Treatment</h3>
+                <p>Moss removal, staining cleanup, and preventative treatment for roof surfaces.</p>
               </div>
-            </article>
+            </button>
 
-            <article class="photo-card">
+            <button class="photo-card" type="button" data-work-gallery="shingle-roofing">
               <div class="photo">
-                <span>Фото команды</span>
+                <img
+                  src="assets/projects/roofing-2026-06-22/web/roof-job-02-after.webp"
+                  loading="lazy"
+                  alt="Completed gray shingle roof with vents after installation"
+                />
+                <span class="after">Shingles</span>
               </div>
               <div class="photo-card-body">
-                <h3>Team at work</h3>
-                <p>Реальное фото команды делает бизнес живым и локальным.</p>
+                <h3>Old Shingle Removal &amp; New Installation</h3>
+                <p>Removal of old shingles and installation of new shingles.</p>
               </div>
-            </article>
+            </button>
 
-            <article class="photo-card">
+            <button class="photo-card" type="button" data-work-gallery="roof-painting">
               <div class="photo">
-                <span>Materials</span>
+                <img
+                  src="assets/projects/roofing-2026-06-22/web/roof-job-09-after.webp"
+                  loading="lazy"
+                  alt="Gray metal roof after roof painting"
+                />
+                <span class="after">Painting</span>
               </div>
               <div class="photo-card-body">
-                <h3>Quality materials</h3>
-                <p>Можно показать shingles, underlayment, gutters или подготовку объекта.</p>
+                <h3>Roof Painting</h3>
+                <p>Metal roof repainting, coating, and refreshed roof color finishes.</p>
               </div>
-            </article>
+            </button>
 
-            <article class="photo-card">
+            <button class="photo-card" type="button" data-work-gallery="flat-roofing">
               <div class="photo">
-                <span>Finished roof</span>
+                <img
+                  src="assets/projects/roofing-2026-06-22/web/roof-job-03-after.webp"
+                  loading="lazy"
+                  alt="Completed dark low-slope roof membrane with sealed penetrations"
+                />
+                <span class="after">Flat roof</span>
               </div>
               <div class="photo-card-body">
-                <h3>Final result</h3>
-                <p>Лучше всего работает чистое exterior-фото с хорошим светом и полной крышей.</p>
+                <h3>PVC Membrane Roofing for Flat Roofs</h3>
+                <p>PVC membrane installation for flat roofs, low-slope areas, and roof penetrations.</p>
               </div>
-            </article>
+            </button>
+
+            <button class="photo-card" type="button" data-work-gallery="waterproofing">
+              <div class="photo">
+                <img
+                  src="assets/projects/roofing-2026-06-22/web/roof-job-07-after.webp"
+                  loading="lazy"
+                  alt="Finished light-colored waterproof surface on a small flat roof"
+                />
+                <span class="after">Waterproofing</span>
+              </div>
+              <div class="photo-card-body">
+                <h3>Waterproof Membrane Under Decks</h3>
+                <p>Waterproof membrane installation under decks, patios, or balconies.</p>
+              </div>
+            </button>
+
+            <button class="photo-card" type="button" data-work-gallery="repair-details">
+              <div class="photo">
+                <img
+                  src="assets/projects/web/project-09.webp"
+                  loading="lazy"
+                  alt="Protective material being installed along a roof ridge"
+                />
+                <span>Repair details</span>
+              </div>
+              <div class="photo-card-body">
+                <h3>Repair Details</h3>
+                <p>Ridge work, flashing details, exterior repairs, and in-progress roof work.</p>
+              </div>
+            </button>
           </div>
         </div>
       </section>
@@ -1450,7 +2388,10 @@
               <li>Residential roofing</li>
               <li>Commercial roofing</li>
               <li>24/7 emergency service</li>
-              <li>Moss treatment</li>
+              <li>Roof moss treatment</li>
+              <li>PVC flat roofs</li>
+              <li>Waterproof membranes</li>
+              <li>Roof painting</li>
               <li>Roof and gutter cleaning</li>
               <li>Photo-based estimates</li>
             </ul>
@@ -1558,11 +2499,14 @@
                 <select id="service" name="service" required>
                   <option value="">Choose one</option>
                   <option>Roof repair</option>
-                  <option>Roof replacement</option>
+                  <option>Old shingle removal and new shingle installation</option>
                   <option>Storm damage</option>
                   <option>Gutters</option>
                   <option>Roof and gutter cleaning</option>
-                  <option>Moss removal and treatment</option>
+                  <option>Roof moss removal and preventative treatment</option>
+                  <option>PVC membrane roofing for flat roofs</option>
+                  <option>Waterproof membrane under decks, patios, or balconies</option>
+                  <option>Roof painting</option>
                   <option>24/7 emergency service</option>
                   <option>Inspection</option>
                   <option>Not sure yet</option>
@@ -1724,6 +2668,75 @@
       </div>
     </footer>
 
+    <dialog class="project-lightbox" id="project-lightbox" aria-labelledby="lightbox-title">
+      <div class="lightbox-shell">
+        <button
+          class="lightbox-close"
+          type="button"
+          data-lightbox-close
+          aria-label="Close project gallery"
+          title="Close"
+        >
+          &times;
+        </button>
+
+        <div class="lightbox-stage">
+          <button
+            class="lightbox-nav lightbox-prev"
+            type="button"
+            data-lightbox-prev
+            aria-label="Previous project photo"
+            title="Previous photo"
+          >
+            &#8249;
+          </button>
+
+          <figure class="lightbox-figure">
+            <div class="lightbox-image-wrap" data-lightbox-swipe-area>
+              <img class="lightbox-image" id="lightbox-image" src="" alt="" />
+            </div>
+            <figcaption class="lightbox-caption">
+              <div class="lightbox-copy">
+                <div class="lightbox-meta-row">
+                  <span class="lightbox-stage-badge" data-lightbox-stage hidden>Before</span>
+                  <span class="lightbox-detail" data-lightbox-detail></span>
+                </div>
+                <strong id="lightbox-title">Project photo</strong>
+              </div>
+              <span class="lightbox-count">
+                <span data-lightbox-current>1</span> / <span data-lightbox-total>10</span>
+              </span>
+            </figcaption>
+          </figure>
+
+          <button
+            class="lightbox-nav lightbox-next"
+            type="button"
+            data-lightbox-next
+            aria-label="Next project photo"
+            title="Next photo"
+          >
+            &#8250;
+          </button>
+        </div>
+
+        <div class="lightbox-toolbar">
+          <button
+            class="lightbox-play"
+            type="button"
+            data-lightbox-play
+            aria-label="Pause slideshow"
+            aria-pressed="false"
+            title="Pause slideshow"
+          >
+            <span class="lightbox-icon-pause" aria-hidden="true">&#10074;&#10074;</span>
+            <span class="lightbox-icon-play" aria-hidden="true">&#9654;</span>
+          </button>
+          <div class="lightbox-dots" data-lightbox-dots aria-label="Choose project photo"></div>
+        </div>
+      </div>
+    </dialog>
+
     <div class="mobile-cta" aria-label="Mobile contact actions">
       <a class="button primary" href="#estimate">Estimate</a>
       <a class="button" href="tel:+12066366773">Call Now</a>
@@ -1757,6 +2770,483 @@
           "Спасибо. Это черновая форма: позже подключим email, Google Sheets, CRM или AI intake.";
         form.reset();
       });
+
+      const projectPhotos = [
+        {
+          src: "assets/projects/web/project-02.webp",
+          title: "Roof & gutter cleaning - before",
+          alt: "Roof edge and gutter filled with debris before cleaning",
+        },
+        {
+          src: "assets/projects/web/project-01.webp",
+          title: "Roof & gutter cleaning - after",
+          alt: "Clean roof edge and gutter after debris removal",
+        },
+        {
+          src: "assets/projects/web/project-03.webp",
+          title: "Exterior repair — in progress",
+          alt: "Roofing contractor working from a ladder on exterior siding",
+        },
+        {
+          src: "assets/projects/web/project-04.webp",
+          title: "Exterior repair — finished",
+          alt: "Finished residential exterior beneath a clear blue sky",
+        },
+        {
+          src: "assets/projects/web/project-05.webp",
+          title: "Ridge repair — preparation",
+          alt: "Roof ridge opened during repair preparation",
+        },
+        {
+          src: "assets/projects/web/project-06.webp",
+          title: "Ridge repair — inspection",
+          alt: "Open roof ridge section during an inspection and repair",
+        },
+        {
+          src: "assets/projects/web/project-07.webp",
+          title: "Exterior repair — before",
+          alt: "Damaged siding and fascia before exterior repair",
+        },
+        {
+          src: "assets/projects/web/project-08.webp",
+          title: "Exterior repair — after",
+          alt: "Clean siding and eaves after exterior repair",
+        },
+        {
+          src: "assets/projects/web/project-09.webp",
+          title: "Ridge installation detail",
+          alt: "Protective material being installed along a roof ridge",
+        },
+        {
+          src: "assets/projects/web/project-10.webp",
+          title: "Finished roof",
+          alt: "Clean finished shingle roof viewed from above",
+        },
+      ];
+
+      const stageLabel = (stage) => (stage === "before" ? "Before" : "After");
+
+      const beforeAfterProjectGroups = [
+        {
+          number: 1,
+          name: "Shingle roof cleaning",
+          before: 2,
+          after: 4,
+          beforeAlt: "Shingle roof before cleaning and debris removal",
+          afterAlt: "Shingle roof after cleaning and debris removal",
+        },
+        {
+          number: 2,
+          name: "Old shingle removal and new shingle installation",
+          before: 1,
+          after: 2,
+          beforeAlt: "Open roof deck before shingle installation",
+          afterAlt: "Completed shingle roof after installation",
+        },
+        {
+          number: 3,
+          name: "PVC membrane roofing installation for flat roofs",
+          before: 1,
+          after: 1,
+          beforeAlt: "Low-slope roof before membrane installation",
+          afterAlt: "Low-slope roof after membrane installation",
+        },
+        {
+          number: 4,
+          name: "White PVC membrane flat roof installation",
+          before: 1,
+          after: 1,
+          beforeAlt: "Flat roof deck before white membrane installation",
+          afterAlt: "Flat roof after white membrane installation",
+        },
+        {
+          number: 5,
+          name: "Waterproof membrane under decks, patios, or balconies",
+          before: 4,
+          after: 5,
+          beforeAlt: "Deck surface before waterproof membrane work",
+          afterAlt: "Deck surface after waterproof membrane work",
+        },
+        {
+          number: 6,
+          name: "PVC membrane detail work",
+          before: 2,
+          after: 2,
+          beforeAlt: "Roof membrane detail area before completion",
+          afterAlt: "Roof membrane detail area after completion",
+        },
+        {
+          number: 7,
+          name: "Waterproof membrane small flat roof repair",
+          before: 2,
+          after: 1,
+          beforeAlt: "Small flat roof before repair and waterproofing",
+          afterAlt: "Small flat roof after repair and waterproofing",
+        },
+        {
+          number: 8,
+          name: "Roof moss removal and preventative treatment",
+          before: 2,
+          after: 3,
+          beforeAlt: "Weathered shingle roof before moss and debris cleanup",
+          afterAlt: "Clean shingle roof after moss and debris cleanup",
+        },
+        {
+          number: 9,
+          name: "Metal roof painting",
+          before: 3,
+          after: 3,
+          beforeAlt: "Green metal roof before roof painting",
+          afterAlt: "Gray metal roof after roof painting",
+        },
+      ];
+
+      const beforeAfterPhotos = beforeAfterProjectGroups.flatMap((project) =>
+        ["before", "after"].flatMap((stage) =>
+          Array.from({ length: project[stage] }, (_, photoIndex) => {
+            const projectNumber = String(project.number).padStart(2, "0");
+            const photoNumber = String(photoIndex + 1).padStart(2, "0");
+            const label = stageLabel(stage);
+
+            return {
+              src: `assets/projects/roofing-2026-06-22/slideshow/project-${projectNumber}-${stage}-${photoNumber}.webp`,
+              title: `Project ${projectNumber} - ${project.name}`,
+              stage: label,
+              detail: `${label} photo ${photoIndex + 1} of ${project[stage]}`,
+              projectNumber: project.number,
+              alt: project[`${stage}Alt`],
+            };
+          }),
+        ),
+      );
+
+      const photosByProject = (...numbers) =>
+        beforeAfterPhotos.filter((photo) => numbers.includes(photo.projectNumber));
+
+      const workTypeGalleries = {
+        "roof-cleaning": [
+          {
+            src: "assets/projects/web/project-02.webp",
+            title: "Roof & gutter cleaning",
+            stage: "Before",
+            detail: "Roof edge before gutter and debris cleanup",
+            alt: "Roof edge and gutter filled with debris before cleaning",
+          },
+          {
+            src: "assets/projects/web/project-01.webp",
+            title: "Roof & gutter cleaning",
+            stage: "After",
+            detail: "Clean roof edge after gutter and debris cleanup",
+            alt: "Clean roof edge and gutter after debris removal",
+          },
+          ...photosByProject(1),
+        ],
+        "moss-treatment": photosByProject(8),
+        "shingle-roofing": [
+          ...photosByProject(2),
+          {
+            src: "assets/projects/web/project-10.webp",
+            title: "Old shingle removal and new shingle installation",
+            stage: "After",
+            detail: "Finished shingle roof reference",
+            alt: "Clean finished shingle roof viewed from above",
+          },
+        ],
+        "flat-roofing": photosByProject(3, 4, 6),
+        "roof-painting": photosByProject(9),
+        waterproofing: photosByProject(5, 7),
+        "repair-details": [
+          {
+            src: "assets/projects/web/project-05.webp",
+            title: "Repair details",
+            detail: "Roof ridge opened for repair preparation",
+            alt: "Roof ridge opened during repair preparation",
+          },
+          {
+            src: "assets/projects/web/project-06.webp",
+            title: "Repair details",
+            detail: "Open roof ridge section during inspection and repair",
+            alt: "Open roof ridge section during an inspection and repair",
+          },
+          {
+            src: "assets/projects/web/project-09.webp",
+            title: "Repair details",
+            detail: "Protective material and flashing detail in progress",
+            alt: "Protective material being installed along a roof ridge",
+          },
+          {
+            src: "assets/projects/web/project-03.webp",
+            title: "Exterior repair details",
+            detail: "Exterior repair work from a ladder",
+            alt: "Roofing contractor working from a ladder on exterior siding",
+          },
+          {
+            src: "assets/projects/web/project-04.webp",
+            title: "Exterior repair details",
+            stage: "After",
+            detail: "Finished residential exterior after repair",
+            alt: "Finished residential exterior beneath a clear blue sky",
+          },
+          {
+            src: "assets/projects/web/project-07.webp",
+            title: "Exterior repair details",
+            stage: "Before",
+            detail: "Damaged siding and fascia before repair",
+            alt: "Damaged siding and fascia before exterior repair",
+          },
+          {
+            src: "assets/projects/web/project-08.webp",
+            title: "Exterior repair details",
+            stage: "After",
+            detail: "Clean siding and eaves after repair",
+            alt: "Clean siding and eaves after exterior repair",
+          },
+        ],
+      };
+
+      const hero = document.querySelector("[data-hero-slideshow]");
+      const heroSlides = [...document.querySelectorAll(".hero-slide")];
+      const heroCurrent = document.querySelector("[data-hero-current]");
+      const lightbox = document.querySelector("#project-lightbox");
+      const lightboxImage = document.querySelector("#lightbox-image");
+      const lightboxTitle = document.querySelector("#lightbox-title");
+      const lightboxStage = document.querySelector("[data-lightbox-stage]");
+      const lightboxDetail = document.querySelector("[data-lightbox-detail]");
+      const lightboxCurrent = document.querySelector("[data-lightbox-current]");
+      const lightboxTotal = document.querySelector("[data-lightbox-total]");
+      const lightboxDots = document.querySelector("[data-lightbox-dots]");
+      const lightboxPlay = document.querySelector("[data-lightbox-play]");
+      const lightboxSwipeArea = document.querySelector("[data-lightbox-swipe-area]");
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+      const mobileLightbox = window.matchMedia("(max-width: 720px)");
+
+      let activeHeroSlide = 0;
+      let activeProjectPhoto = 0;
+      let lightboxPhotos = projectPhotos;
+      let heroTimer;
+      let lightboxTimer;
+      let lightboxPaused = false;
+      let swipeStartX = null;
+      let swipeStartY = null;
+      let swipeStartTime = 0;
+
+      const preloadPhoto = (photos, index) => {
+        if (!photos.length) return;
+        const preload = new Image();
+        preload.src = photos[(index + photos.length) % photos.length].src;
+      };
+
+      const preloadProjectPhoto = (index) => preloadPhoto(projectPhotos, index);
+
+      const beforeAfterProjectIndex = (projectNumber) => {
+        const projectIndex = beforeAfterPhotos.findIndex((photo) => photo.projectNumber === projectNumber);
+        return Math.max(projectIndex, 0);
+      };
+
+      const activeHeroProjectNumber = () => {
+        const activeSlide = hero.querySelector(".hero-slide.is-active") || heroSlides[activeHeroSlide];
+        return Number(activeSlide.dataset.heroProject || beforeAfterPhotos[0].projectNumber);
+      };
+
+      const showHeroSlide = (index) => {
+        activeHeroSlide = (index + heroSlides.length) % heroSlides.length;
+        heroSlides.forEach((slide, slideIndex) => {
+          slide.classList.toggle("is-active", slideIndex === activeHeroSlide);
+        });
+        heroCurrent.textContent = String(activeHeroSlide + 1);
+        const nextProjectNumber = Number(
+          heroSlides[(activeHeroSlide + 1) % heroSlides.length].dataset.heroProject,
+        );
+        preloadPhoto(beforeAfterPhotos, beforeAfterProjectIndex(nextProjectNumber));
+      };
+
+      const stopHeroSlideshow = () => window.clearInterval(heroTimer);
+      const startHeroSlideshow = () => {
+        stopHeroSlideshow();
+        if (reduceMotion.matches || document.hidden || lightbox.open) return;
+        heroTimer = window.setInterval(() => showHeroSlide(activeHeroSlide + 1), 6500);
+      };
+
+      const setLightboxGallery = (photos) => {
+        lightboxPhotos = photos;
+        lightboxTotal.textContent = String(lightboxPhotos.length);
+        lightboxDots.replaceChildren();
+        lightboxPhotos.forEach((photo, index) => {
+          const dot = document.createElement("button");
+          dot.type = "button";
+          dot.className = "lightbox-thumb";
+          dot.setAttribute("aria-label", `Show photo ${index + 1}: ${photo.title}`);
+          const thumbnail = document.createElement("img");
+          thumbnail.src = photo.src;
+          thumbnail.alt = "";
+          thumbnail.loading = "lazy";
+          dot.append(thumbnail);
+          dot.addEventListener("click", () => {
+            renderLightbox(index);
+            setLightboxPaused(true);
+          });
+          lightboxDots.append(dot);
+        });
+      };
+
+      const renderLightbox = (index) => {
+        activeProjectPhoto = (index + lightboxPhotos.length) % lightboxPhotos.length;
+        const photo = lightboxPhotos[activeProjectPhoto];
+        lightboxImage.src = photo.src;
+        lightboxImage.alt = photo.alt;
+        lightboxTitle.textContent = photo.title;
+        lightboxStage.textContent = photo.stage || "";
+        lightboxStage.hidden = !photo.stage;
+        lightboxStage.classList.toggle("is-after", photo.stage === "After");
+        lightboxDetail.textContent = photo.detail || "";
+        lightboxDetail.hidden = !photo.detail;
+        lightboxCurrent.textContent = String(activeProjectPhoto + 1);
+        [...lightboxDots.children].forEach((dot, dotIndex) => {
+          dot.classList.toggle("is-active", dotIndex === activeProjectPhoto);
+          dot.setAttribute("aria-current", dotIndex === activeProjectPhoto ? "true" : "false");
+        });
+        const activeThumbnail = lightboxDots.children[activeProjectPhoto];
+        if (lightbox.open && activeThumbnail) {
+          activeThumbnail.scrollIntoView({
+            behavior: reduceMotion.matches ? "auto" : "smooth",
+            block: "nearest",
+            inline: "center",
+          });
+        }
+        preloadPhoto(lightboxPhotos, activeProjectPhoto + 1);
+      };
+
+      const stopLightboxSlideshow = () => window.clearInterval(lightboxTimer);
+      const startLightboxSlideshow = () => {
+        stopLightboxSlideshow();
+        if (lightboxPaused || reduceMotion.matches || !lightbox.open || document.hidden) return;
+        lightboxTimer = window.setInterval(() => renderLightbox(activeProjectPhoto + 1), 5200);
+      };
+
+      const setLightboxPaused = (paused) => {
+        lightboxPaused = paused;
+        const label = paused ? "Play slideshow" : "Pause slideshow";
+        lightboxPlay.setAttribute("aria-label", label);
+        lightboxPlay.setAttribute("title", label);
+        lightboxPlay.setAttribute("aria-pressed", String(paused));
+        startLightboxSlideshow();
+      };
+
+      const navigateLightbox = (offset) => {
+        renderLightbox(activeProjectPhoto + offset);
+        setLightboxPaused(true);
+      };
+
+      const openLightboxGallery = (photos, index) => {
+        setLightboxGallery(photos);
+        lightbox.showModal();
+        document.body.classList.add("lightbox-open");
+        stopHeroSlideshow();
+        renderLightbox(index);
+        setLightboxPaused(mobileLightbox.matches || reduceMotion.matches);
+      };
+
+      const openProjectGallery = (index) => openLightboxGallery(projectPhotos, index);
+
+      const openWorkGallery = (galleryKey) => {
+        openLightboxGallery(workTypeGalleries[galleryKey] || projectPhotos, 0);
+      };
+
+      const openBeforeAfterGallery = (projectNumber) => {
+        openLightboxGallery(beforeAfterPhotos, beforeAfterProjectIndex(projectNumber));
+      };
+
+      document.querySelectorAll("[data-gallery-index]").forEach((card) => {
+        card.addEventListener("click", () => openProjectGallery(Number(card.dataset.galleryIndex)));
+      });
+
+      document.querySelectorAll("[data-work-gallery]").forEach((card) => {
+        card.addEventListener("click", () => openWorkGallery(card.dataset.workGallery));
+      });
+
+      document.querySelectorAll("[data-before-after-project]").forEach((card) => {
+        card.addEventListener("click", () =>
+          openBeforeAfterGallery(Number(card.dataset.beforeAfterProject)),
+        );
+      });
+
+      document.querySelector("[data-open-project-gallery]").addEventListener("click", () => {
+        openBeforeAfterGallery(activeHeroProjectNumber());
+      });
+
+      hero.addEventListener("click", (event) => {
+        if (event.target === hero) {
+          openBeforeAfterGallery(activeHeroProjectNumber());
+        }
+      });
+
+      document.querySelector("[data-lightbox-close]").addEventListener("click", () => lightbox.close());
+      document.querySelector("[data-lightbox-prev]").addEventListener("click", () => {
+        navigateLightbox(-1);
+      });
+      document.querySelector("[data-lightbox-next]").addEventListener("click", () => {
+        navigateLightbox(1);
+      });
+      lightboxPlay.addEventListener("click", () => setLightboxPaused(!lightboxPaused));
+
+      lightboxSwipeArea.addEventListener("pointerdown", (event) => {
+        if (!event.isPrimary || event.pointerType === "mouse") return;
+        swipeStartX = event.clientX;
+        swipeStartY = event.clientY;
+        swipeStartTime = Date.now();
+      });
+
+      lightboxSwipeArea.addEventListener("pointerup", (event) => {
+        if (swipeStartX === null || swipeStartY === null) return;
+        const distanceX = event.clientX - swipeStartX;
+        const distanceY = event.clientY - swipeStartY;
+        const elapsed = Date.now() - swipeStartTime;
+        swipeStartX = null;
+        swipeStartY = null;
+        if (
+          elapsed < 700 &&
+          Math.abs(distanceX) > 48 &&
+          Math.abs(distanceX) > Math.abs(distanceY) * 1.2
+        ) {
+          navigateLightbox(distanceX > 0 ? -1 : 1);
+        }
+      });
+
+      lightboxSwipeArea.addEventListener("pointercancel", () => {
+        swipeStartX = null;
+        swipeStartY = null;
+      });
+
+      lightbox.addEventListener("click", (event) => {
+        if (event.target === lightbox) lightbox.close();
+      });
+
+      lightbox.addEventListener("keydown", (event) => {
+        if (event.key === "ArrowLeft") {
+          navigateLightbox(-1);
+        }
+        if (event.key === "ArrowRight") {
+          navigateLightbox(1);
+        }
+      });
+
+      lightbox.addEventListener("close", () => {
+        stopLightboxSlideshow();
+        document.body.classList.remove("lightbox-open");
+        startHeroSlideshow();
+      });
+
+      document.addEventListener("visibilitychange", () => {
+        startHeroSlideshow();
+        startLightboxSlideshow();
+      });
+      reduceMotion.addEventListener("change", () => {
+        startHeroSlideshow();
+        startLightboxSlideshow();
+      });
+
+      showHeroSlide(0);
+      startHeroSlideshow();
     </script>
   </body>
 </html>

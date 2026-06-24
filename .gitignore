@@ -2,3 +2,7 @@ pages-server.*.log
 preview-github-pages.png
 .firebase/
 public/
+Cloudinary_creds.txt
+assets/projects/original/
+assets/projects/**/contact-sheet*
+assets/projects/hero-contact-sheet.jpg

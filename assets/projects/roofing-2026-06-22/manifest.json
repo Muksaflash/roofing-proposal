@@ -1,0 +1,152 @@
+{
+  "set": "roofing-2026-06-22",
+  "format": "webp",
+  "quality": 84,
+  "metadata_stripped": true,
+  "items": [
+    {
+      "project": 1,
+      "stage": "before",
+      "source": "Project 1/Before/photo_2026-06-22_16-54-09.jpg",
+      "output": "web/roof-job-01-before.webp",
+      "alt": "Shingle roof with debris and exposed repair lines before service",
+      "operations": []
+    },
+    {
+      "project": 1,
+      "stage": "after",
+      "source": "Project 1/After/photo_2026-06-22_16-54-48.jpg",
+      "output": "web/roof-job-01-after.webp",
+      "alt": "Finished gray shingle roof after roofing work",
+      "operations": []
+    },
+    {
+      "project": 2,
+      "stage": "before",
+      "source": "Project 2/Before/photo_2026-06-22_16-56-37.jpg",
+      "output": "web/roof-job-02-before.webp",
+      "alt": "Exposed plywood roof deck before shingle installation",
+      "operations": []
+    },
+    {
+      "project": 2,
+      "stage": "after",
+      "source": "Project 2/After/photo_2026-06-22_16-55-48.jpg",
+      "output": "web/roof-job-02-after.webp",
+      "alt": "Completed gray shingle roof with vents after installation",
+      "operations": ["crop_phone_ui"]
+    },
+    {
+      "project": 3,
+      "stage": "before",
+      "source": "Project 3/Before/photo_2026-06-22_16-56-50.jpg",
+      "output": "web/roof-job-03-before.webp",
+      "alt": "Stripped low-slope roof deck before membrane installation",
+      "operations": []
+    },
+    {
+      "project": 3,
+      "stage": "after",
+      "source": "Project 3/After/photo_2026-06-22_16-57-30.jpg",
+      "output": "web/roof-job-03-after.webp",
+      "alt": "Completed dark low-slope roof membrane with sealed penetrations",
+      "operations": []
+    },
+    {
+      "project": 4,
+      "stage": "before",
+      "source": "Project 4/Before/photo_2026-06-22_16-57-53.jpg",
+      "output": "web/roof-job-04-before.webp",
+      "alt": "New plywood roof deck during low-slope roof preparation",
+      "operations": ["blur_face", "blur_company_name_on_shirt"]
+    },
+    {
+      "project": 4,
+      "stage": "after",
+      "source": "Project 4/After/photo_2026-06-22_16-58-38.jpg",
+      "output": "web/roof-job-04-after.webp",
+      "alt": "Completed white low-slope roof membrane after installation",
+      "operations": []
+    },
+    {
+      "project": 5,
+      "stage": "before",
+      "source": "Project 5/Before/photo_2026-06-22_16-59-35.jpg",
+      "output": "web/roof-job-05-before.webp",
+      "alt": "Plywood deck surface before waterproof membrane installation",
+      "operations": []
+    },
+    {
+      "project": 5,
+      "stage": "after",
+      "source": "Project 5/After/photo_2026-06-22_16-59-49.jpg",
+      "output": "web/roof-job-05-after.webp",
+      "alt": "Finished white waterproof deck membrane beside exterior doors",
+      "operations": ["crop_phone_ui"]
+    },
+    {
+      "project": 6,
+      "stage": "before",
+      "source": "Project 6/Before/photo_2026-06-22_17-01-00.jpg",
+      "output": "web/roof-job-06-before.webp",
+      "alt": "Low-slope roof area during preparation before final membrane work",
+      "operations": ["crop_phone_ui"]
+    },
+    {
+      "project": 6,
+      "stage": "after",
+      "source": "Project 6/After/photo_2026-06-22_17-01-18.jpg",
+      "output": "web/roof-job-06-after.webp",
+      "alt": "Completed white low-slope roof membrane and sealed curb details",
+      "operations": ["crop_phone_ui"]
+    },
+    {
+      "project": 7,
+      "stage": "before",
+      "source": "Project 7/Before/photo_2026-06-22_17-01-33.jpg",
+      "output": "web/roof-job-07-before.webp",
+      "alt": "Small flat roof surface with patched seams before waterproofing",
+      "operations": []
+    },
+    {
+      "project": 7,
+      "stage": "after",
+      "source": "Project 7/After/photo_2026-06-22_17-01-52.jpg",
+      "output": "web/roof-job-07-after.webp",
+      "alt": "Finished light-colored waterproof surface on a small flat roof",
+      "operations": []
+    },
+    {
+      "project": 8,
+      "stage": "before",
+      "source": "Project 8/Before/photo_2026-06-22_17-03-20.jpg",
+      "output": "web/roof-job-08-before.webp",
+      "alt": "Weathered shingle roof with leaves and debris before service",
+      "operations": []
+    },
+    {
+      "project": 8,
+      "stage": "after",
+      "source": "Project 8/After/photo_2026-06-22_17-03-59.jpg",
+      "output": "web/roof-job-08-after.webp",
+      "alt": "Clean shingle roof surface after roofing service",
+      "operations": []
+    },
+    {
+      "project": 9,
+      "stage": "before",
+      "source": "Project 9 roof painting/Before/photo_2026-06-24_12-08-13.jpg",
+      "output": "web/roof-job-09-before.webp",
+      "alt": "Green metal roof before roof painting",
+      "operations": []
+    },
+    {
+      "project": 9,
+      "stage": "after",
+      "source": "Project 9 roof painting/After/photo_2026-06-24_12-08-54.jpg",
+      "output": "web/roof-job-09-after.webp",
+      "alt": "Gray metal roof after roof painting",
+      "operations": []
+    }
+  ]
+}
