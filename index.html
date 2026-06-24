@@ -181,6 +181,41 @@
         outline: 0;
       }
 
+      .language-switch {
+        display: inline-flex;
+        align-items: center;
+        gap: 2px;
+        border: 1px solid var(--line);
+        border-radius: 7px;
+        padding: 3px;
+        background: var(--paper);
+      }
+
+      .language-option {
+        min-height: 30px;
+        border: 0;
+        border-radius: 5px;
+        padding: 6px 9px;
+        background: transparent;
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 900;
+        line-height: 1;
+        cursor: pointer;
+      }
+
+      .language-option.is-active {
+        background: var(--dark);
+        color: #fff;
+      }
+
+      .language-option:disabled {
+        background: rgba(45, 122, 98, 0.1);
+        color: var(--green);
+        cursor: not-allowed;
+        opacity: 1;
+      }
+
       .header-actions {
         display: flex;
         align-items: center;
@@ -1400,6 +1435,14 @@
           padding: 14px;
         }
 
+        .nav .language-switch {
+          width: 100%;
+        }
+
+        .nav .language-option {
+          flex: 1;
+        }
+
         .menu-button {
           display: inline-grid;
           place-items: center;
@@ -1770,7 +1813,18 @@
           <a href="#gallery">Gallery</a>
           <a href="#about">About</a>
           <a href="#reviews">Reviews</a>
-          <a href="#lead-system">Система лидов</a>
+          <div class="language-switch" role="group" aria-label="Language selector draft">
+            <button class="language-option is-active" type="button" aria-pressed="true">EN</button>
+            <button
+              class="language-option"
+              type="button"
+              aria-pressed="false"
+              disabled
+              title="Испанский перевод добавим финальным проходом"
+            >
+              ES
+            </button>
+          </div>
         </nav>
 
         <div class="header-actions">
@@ -2569,6 +2623,11 @@
             <p class="automation-note">
               Цель простая: меньше пропущенных обращений, чище данные по лидам
               и быстрее follow-up без дорогого старта в первый день.
+            </p>
+            <p class="automation-note">
+              Демо-пометка: в шапке уже есть переключатель EN / ES, чтобы не
+              забыть про двухъязычную версию. Сейчас активен английский; испанский
+              перевод добавим финальным проходом после утверждения текстов.
             </p>
           </div>
 
