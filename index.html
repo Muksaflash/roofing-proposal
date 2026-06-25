@@ -16,23 +16,31 @@
       href="assets/projects/hero/hero-roof-finish.webp"
       fetchpriority="high"
     />
-    <meta name="theme-color" content="#14212a" />
+    <meta name="theme-color" content="#002244" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;850;900&display=swap" rel="stylesheet">
     <title>Octopus Roofing Co. | Get Free Estimate</title>
     <style>
       :root {
-        --bg: #f5f7f4;
+        --navy: #002244;
+        --action-green: #69be28;
+        --northwest-green: #005c5c;
+        --wolf-gray: #a5acaf;
+        --silver: #c4ced4;
+        --bg: #f4f7f8;
         --paper: #ffffff;
-        --ink: #161b1f;
-        --muted: #5f6b73;
-        --line: #d9e0df;
-        --soft: #eef3f3;
-        --dark: #14212a;
-        --dark-2: #20333f;
-        --brick: #b84232;
-        --brick-dark: #8f2d22;
-        --green: #2d7a62;
-        --gold: #c78a38;
-        --shadow: 0 20px 55px rgba(20, 33, 42, 0.12);
+        --ink: #061827;
+        --muted: #53616b;
+        --line: #d8dddf;
+        --soft: #eef2f3;
+        --dark: var(--navy);
+        --dark-2: #12395a;
+        --brick: var(--action-green);
+        --brick-dark: #58a61f;
+        --green: var(--northwest-green);
+        --gold: var(--action-green);
+        --shadow: 0 20px 55px rgba(0, 34, 68, 0.12);
         --radius: 8px;
       }
 
@@ -112,7 +120,7 @@
         flex: 0 0 auto;
         width: 48px;
         height: 48px;
-        border: 1px dashed rgba(20, 33, 42, 0.32);
+        border: 1px dashed rgba(0, 34, 68, 0.32);
         border-radius: 8px;
         background: #fff;
         color: var(--brick-dark);
@@ -131,7 +139,7 @@
 
       .logo-slot.has-image {
         border-style: solid;
-        border-color: rgba(20, 33, 42, 0.18);
+        border-color: rgba(0, 34, 68, 0.18);
         padding: 2px;
       }
 
@@ -210,7 +218,7 @@
       }
 
       .language-option:disabled {
-        background: rgba(45, 122, 98, 0.1);
+        background: rgba(105, 190, 40, 0.16);
         color: var(--green);
         cursor: not-allowed;
         opacity: 1;
@@ -243,21 +251,22 @@
 
       .button:hover,
       .button:focus-visible {
-        border-color: rgba(184, 66, 50, 0.48);
-        box-shadow: 0 0 0 4px rgba(184, 66, 50, 0.12);
+        border-color: rgba(105, 190, 40, 0.62);
+        box-shadow: 0 0 0 4px rgba(105, 190, 40, 0.16);
         outline: 0;
       }
 
       .button.primary {
         border-color: var(--brick);
         background: var(--brick);
-        color: #fff;
+        color: var(--dark);
       }
 
       .button.primary:hover,
       .button.primary:focus-visible {
         border-color: var(--brick-dark);
         background: var(--brick-dark);
+        color: var(--dark);
       }
 
       .button.dark {
@@ -339,10 +348,10 @@
         inset: 0;
         background: linear-gradient(
           90deg,
-          rgba(14, 22, 28, 0.93) 0%,
-          rgba(14, 22, 28, 0.82) 40%,
-          rgba(14, 22, 28, 0.42) 70%,
-          rgba(14, 22, 28, 0.28) 100%
+          rgba(0, 34, 68, 0.94) 0%,
+          rgba(0, 34, 68, 0.84) 40%,
+          rgba(0, 34, 68, 0.48) 70%,
+          rgba(0, 34, 68, 0.3) 100%
         );
         content: "";
         pointer-events: none;
@@ -353,7 +362,7 @@
         z-index: -1;
         inset: auto 0 0;
         height: 100px;
-        background: linear-gradient(0deg, rgba(20, 33, 42, 0.46), transparent);
+        background: linear-gradient(0deg, rgba(0, 34, 68, 0.5), transparent);
         content: "";
         pointer-events: none;
       }
@@ -376,7 +385,7 @@
       }
 
       .hero .eyebrow {
-        color: #ffdcae;
+        color: #d7f4c7;
       }
 
       .hero h1,
@@ -436,7 +445,7 @@
         border: 1px solid rgba(255, 255, 255, 0.22);
         border-radius: 8px;
         padding: 10px 12px;
-        background: rgba(20, 33, 42, 0.72);
+        background: rgba(0, 34, 68, 0.74);
         color: #fff;
         font: inherit;
         font-size: 12px;
@@ -449,13 +458,13 @@
       .hero-gallery-trigger:hover,
       .hero-gallery-trigger:focus-visible {
         border-color: rgba(255, 255, 255, 0.54);
-        background: rgba(20, 33, 42, 0.88);
+        background: rgba(0, 34, 68, 0.9);
         outline: 0;
       }
 
       .hero-gallery-trigger strong {
         min-width: 38px;
-        color: #ffdcae;
+        color: #d7f4c7;
         text-align: right;
       }
 
@@ -518,12 +527,47 @@
         border: 1px solid var(--line);
         border-radius: var(--radius);
         background: var(--paper);
-        box-shadow: 0 10px 28px rgba(20, 33, 42, 0.07);
+        box-shadow: 0 10px 28px rgba(0, 34, 68, 0.07);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .service-card:hover,
+      .review-card:hover,
+      .photo-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(0, 34, 68, 0.12);
+        z-index: 2;
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      }
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
       }
 
       .service-card {
         min-height: 196px;
         padding: 22px;
+      }
+
+      .card-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 8px;
+        background: rgba(105, 190, 40, 0.16);
+        color: var(--dark);
+        margin-bottom: 8px;
+      }
+      .card-icon svg {
+        width: 20px;
+        height: 20px;
       }
 
       .card-kicker {
@@ -533,8 +577,8 @@
         min-width: 42px;
         height: 30px;
         border-radius: 7px;
-        background: rgba(184, 66, 50, 0.1);
-        color: var(--brick-dark);
+        background: rgba(105, 190, 40, 0.16);
+        color: var(--dark);
         font-size: 12px;
         font-weight: 900;
       }
@@ -569,7 +613,7 @@
 
       .trust-score strong {
         display: block;
-        color: #ffdcae;
+        color: #d7f4c7;
         font-size: clamp(48px, 8vw, 84px);
         font-weight: 900;
         line-height: 0.9;
@@ -629,7 +673,7 @@
         overflow: hidden;
         padding: 0;
         background: var(--paper);
-        box-shadow: 0 10px 28px rgba(20, 33, 42, 0.07);
+        box-shadow: 0 10px 28px rgba(0, 34, 68, 0.07);
         color: inherit;
         font: inherit;
         text-align: left;
@@ -643,7 +687,7 @@
       }
 
       .result-card:focus-visible {
-        outline: 3px solid rgba(45, 122, 98, 0.38);
+        outline: 3px solid rgba(105, 190, 40, 0.4);
         outline-offset: 3px;
       }
 
@@ -663,7 +707,7 @@
         height: 100%;
         margin: 0;
         overflow: hidden;
-        background: #dde6e4;
+        background: #dfe6e8;
       }
 
       .result-shot img {
@@ -690,7 +734,7 @@
       }
 
       .result-shot .after {
-        background: rgba(45, 122, 98, 0.92);
+        background: rgba(0, 92, 92, 0.94);
         color: #fff;
       }
 
@@ -742,15 +786,15 @@
         aspect-ratio: 4 / 3;
         overflow: hidden;
         background:
-          linear-gradient(135deg, rgba(20, 33, 42, 0.08), rgba(45, 122, 98, 0.2)),
+          linear-gradient(135deg, rgba(0, 34, 68, 0.08), rgba(105, 190, 40, 0.2)),
           repeating-linear-gradient(
             45deg,
-            #d7ddde 0,
-            #d7ddde 10px,
-            #c7d0d2 10px,
-            #c7d0d2 20px
+            #e2e7e8 0,
+            #e2e7e8 10px,
+            #c4ced4 10px,
+            #c4ced4 20px
           );
-        color: rgba(20, 33, 42, 0.72);
+        color: rgba(0, 34, 68, 0.76);
         font-weight: 900;
         text-align: center;
       }
@@ -782,7 +826,7 @@
 
       .photo span.after,
       .photo span.complete {
-        background: rgba(45, 122, 98, 0.9);
+        background: rgba(0, 92, 92, 0.92);
         color: #fff;
       }
 
@@ -795,19 +839,20 @@
       }
 
       .project-lightbox {
-        width: 100vw;
+        width: 100%;
         max-width: none;
         height: 100dvh;
         max-height: none;
         border: 0;
+        margin: 0;
         padding: 0;
-        background: rgba(10, 15, 19, 0.97);
+        background: rgba(0, 17, 34, 0.98);
         color: #fff;
         overscroll-behavior: contain;
       }
 
       .project-lightbox::backdrop {
-        background: rgba(6, 10, 13, 0.9);
+        background: rgba(0, 10, 20, 0.92);
       }
 
       .lightbox-shell {
@@ -879,6 +924,7 @@
         grid-template-rows: minmax(0, 1fr) auto;
         gap: 12px;
         margin: 0;
+        align-self: stretch;
       }
 
       .lightbox-image-wrap {
@@ -891,7 +937,7 @@
 
       .lightbox-image {
         max-width: 100%;
-        max-height: calc(100dvh - 158px);
+        max-height: 100%;
         border-radius: 8px;
         object-fit: contain;
         box-shadow: 0 20px 56px rgba(0, 0, 0, 0.42);
@@ -926,7 +972,7 @@
         min-height: 28px;
         border-radius: 7px;
         padding: 6px 10px;
-        background: var(--brick);
+        background: var(--dark-2);
         color: #fff;
         font-size: 12px;
         font-weight: 950;
@@ -940,8 +986,8 @@
 
       .lightbox-caption strong {
         color: #fff;
-        font-size: clamp(24px, 4vw, 44px);
-        line-height: 0.98;
+        font-size: clamp(18px, 3vw, 28px);
+        line-height: 1.2;
       }
 
       .lightbox-detail {
@@ -991,7 +1037,8 @@
         align-items: center;
         justify-content: flex-start;
         gap: 8px;
-        width: min(100%, 680px);
+        flex: 1;
+        max-width: 680px;
         min-width: 0;
         overflow-x: auto;
         padding: 3px;
@@ -1011,7 +1058,7 @@
         border-radius: 6px;
         padding: 0;
         overflow: hidden;
-        background: #26323a;
+        background: #0a2a47;
         opacity: 0.55;
         cursor: pointer;
         scroll-snap-align: center;
@@ -1032,9 +1079,9 @@
       }
 
       .lightbox-thumb.is-active {
-        border-color: #ffdcae;
+        border-color: var(--brick);
         opacity: 1;
-        box-shadow: 0 0 0 2px rgba(255, 220, 174, 0.14);
+        box-shadow: 0 0 0 2px rgba(105, 190, 40, 0.18);
       }
 
       body.lightbox-open {
@@ -1050,7 +1097,7 @@
 
       .owner-photo {
         min-height: 430px;
-        border: 1px solid rgba(20, 33, 42, 0.12);
+        border: 1px solid rgba(0, 34, 68, 0.12);
         border-radius: var(--radius);
         display: grid;
         place-items: center;
@@ -1058,9 +1105,9 @@
         padding: clamp(22px, 4vw, 42px);
         background:
           linear-gradient(145deg, rgba(255, 255, 255, 0.94), rgba(238, 243, 243, 0.92)),
-          radial-gradient(circle at 20% 20%, rgba(184, 66, 50, 0.12), transparent 38%),
-          radial-gradient(circle at 80% 80%, rgba(45, 122, 98, 0.14), transparent 36%);
-        box-shadow: 0 16px 42px rgba(20, 33, 42, 0.08);
+          radial-gradient(circle at 20% 20%, rgba(105, 190, 40, 0.14), transparent 38%),
+          radial-gradient(circle at 80% 80%, rgba(0, 92, 92, 0.14), transparent 36%);
+        box-shadow: 0 16px 42px rgba(0, 34, 68, 0.08);
       }
 
       .owner-photo img {
@@ -1218,7 +1265,7 @@
       .field select:focus,
       .field textarea:focus {
         border-color: var(--brick);
-        box-shadow: 0 0 0 4px rgba(184, 66, 50, 0.12);
+        box-shadow: 0 0 0 4px rgba(105, 190, 40, 0.16);
         outline: 0;
       }
 
@@ -1291,7 +1338,7 @@
         border-radius: var(--radius);
         padding: 18px;
         background: var(--paper);
-        box-shadow: 0 10px 28px rgba(20, 33, 42, 0.07);
+        box-shadow: 0 10px 28px rgba(0, 34, 68, 0.07);
       }
 
       .roadmap-step {
@@ -1299,8 +1346,8 @@
         place-items: center;
         min-height: 54px;
         border-radius: 7px;
-        background: rgba(45, 122, 98, 0.1);
-        color: var(--green);
+        background: rgba(105, 190, 40, 0.16);
+        color: var(--dark);
         font-size: 13px;
         font-weight: 900;
         text-align: center;
@@ -1392,7 +1439,7 @@
 
       .footer-links a:hover,
       .footer-links a:focus-visible {
-        color: var(--brick-dark);
+        color: var(--green);
         outline: 0;
       }
 
@@ -1405,11 +1452,11 @@
         display: none;
         grid-template-columns: 1fr 1fr;
         gap: 10px;
-        border: 1px solid rgba(20, 33, 42, 0.12);
+        border: 1px solid rgba(0, 34, 68, 0.12);
         border-radius: 8px;
         padding: 10px;
         background: rgba(255, 255, 255, 0.94);
-        box-shadow: 0 18px 42px rgba(20, 33, 42, 0.18);
+        box-shadow: 0 18px 42px rgba(0, 34, 68, 0.18);
         backdrop-filter: blur(14px);
       }
 
@@ -1498,16 +1545,25 @@
         }
 
         .hero-content {
+          max-width: 366px;
           padding: 76px 0 34px;
         }
 
         .hero h1 {
-          font-size: clamp(36px, 12vw, 52px);
+          max-width: 100%;
+          font-size: clamp(34px, 10.2vw, 44px);
+        }
+
+        .section-head h2,
+        .about-copy h2,
+        .estimate-copy h2,
+        .final-cta h2 {
+          font-size: clamp(28px, 8.2vw, 36px);
         }
 
         .hero-gallery-trigger {
           position: static;
-          width: calc(100% - 24px);
+          width: min(calc(100% - 24px), 366px);
           justify-content: space-between;
           margin: 0 12px 14px;
         }
@@ -1881,9 +1937,12 @@
             <a class="button dark" href="tel:+12066366773" data-testid="hero-call">Call Now</a>
           </div>
           <div class="hero-meta" aria-label="Quick trust highlights">
-            <span class="meta-pill">Free estimates</span>
+            <span class="meta-pill">Free Estimate</span>
             <span class="meta-pill">24/7 emergency service</span>
-            <span class="meta-pill">Residential and commercial</span>
+            <span class="meta-pill">Bond</span>
+            <span class="meta-pill">Contractor License</span>
+            <span class="meta-pill">General Liability Insurance</span>
+            <span class="meta-pill">Commercial and residential</span>
           </div>
         </div>
         <button
@@ -1908,8 +1967,8 @@
           </div>
 
           <div class="services-grid">
-            <article class="service-card">
-              <span class="card-kicker">01</span>
+            <article class="service-card reveal">
+              <div class="card-icon"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
               <h3>Roof Repair</h3>
               <p>
                 Leak checks, missing shingles, flashing issues, and localized
@@ -1917,35 +1976,82 @@
               </p>
             </article>
 
-            <article class="service-card">
-              <span class="card-kicker">02</span>
-              <h3>Shingle Removal & Installation</h3>
+            <article class="service-card reveal">
+              <div class="card-icon"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M2 10.5L12 3l10 7.5"/><path d="M4 10v11h16V10"/></svg></div>
+              <h3>Asphalt Shingles</h3>
               <p>
-                Removal of old shingles and installation of new shingles, with
+                Removal of old shingles and installation of new asphalt shingles, with
                 clear scheduling, clean job sites, and photo updates.
               </p>
             </article>
 
-            <article class="service-card">
-              <span class="card-kicker">03</span>
-              <h3>PVC Membrane Flat Roofs</h3>
+            <article class="service-card reveal">
+              <div class="card-icon"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M2 10.5L12 3l10 7.5"/><path d="M4 10v11h16V10"/></svg></div>
+              <h3>TPO Roofing</h3>
+              <p>
+                Energy-efficient TPO roofing installation and repair for commercial and residential flat or low-slope roofs.
+              </p>
+            </article>
+
+            <article class="service-card reveal">
+              <div class="card-icon"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M2 10.5L12 3l10 7.5"/><path d="M4 10v11h16V10"/></svg></div>
+              <h3>PVC Roofing</h3>
               <p>
                 PVC membrane roofing installation for flat roofs, low-slope
                 roof areas, sealed penetrations, and clean finished surfaces.
               </p>
             </article>
 
-            <article class="service-card">
-              <span class="card-kicker">04</span>
-              <h3>Storm Damage</h3>
+            <article class="service-card reveal">
+              <div class="card-icon"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M2 10.5L12 3l10 7.5"/><path d="M4 10v11h16V10"/></svg></div>
+              <h3>EPDM Roofing</h3>
               <p>
-                Damage inspections after wind, hail, heavy rain, or fallen
-                branches, with photos and next-step recommendations.
+                Resilient EPDM rubber roofing solutions providing excellent weather resistance and longevity for flat roofs.
               </p>
             </article>
 
-            <article class="service-card">
-              <span class="card-kicker">05</span>
+            <article class="service-card reveal">
+              <div class="card-icon"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M2 10.5L12 3l10 7.5"/><path d="M4 10v11h16V10"/></svg></div>
+              <h3>Silicone Roof Coating</h3>
+              <p>
+                Seamless silicone roof coating application to extend roof life, stop leaks, and improve energy efficiency.
+              </p>
+            </article>
+
+            <article class="service-card reveal">
+              <div class="card-icon"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M2 10.5L12 3l10 7.5"/><path d="M4 10v11h16V10"/></svg></div>
+              <h3>Torch Down Roofing</h3>
+              <p>
+                Reliable torch down roofing installation for flat roofs, offering superior waterproofing and durability.
+              </p>
+            </article>
+
+            <article class="service-card reveal">
+              <div class="card-icon"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/></svg></div>
+              <h3>Roof Cleaning & Moss Removal</h3>
+              <p>
+                Professional roof cleaning and moss removal to protect your shingles, improve curb appeal, and prevent damage.
+              </p>
+            </article>
+
+            <article class="service-card reveal">
+              <div class="card-icon"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/></svg></div>
+              <h3>Roof Moss Treatment & Prevention</h3>
+              <p>
+                Effective roof moss treatment and preventative solutions to slow future moss growth and maintain roof health.
+              </p>
+            </article>
+
+            <article class="service-card reveal">
+              <div class="card-icon"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg></div>
+              <h3>Comprehensive Maintenance Package</h3>
+              <p>
+                Save time and money with our bundled service: Roof Cleaning & Moss Removal + Gutters + Full Inspection.
+              </p>
+            </article>
+
+            <article class="service-card reveal">
+              <div class="card-icon"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></svg></div>
               <h3>Gutters</h3>
               <p>
                 Gutter repair and replacement to move water away from the roof,
@@ -1953,8 +2059,17 @@
               </p>
             </article>
 
-            <article class="service-card">
-              <span class="card-kicker">06</span>
+            <article class="service-card reveal">
+              <div class="card-icon"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+              <h3>Storm Damage</h3>
+              <p>
+                Damage inspections after wind, hail, heavy rain, or fallen
+                branches, with photos and next-step recommendations.
+              </p>
+            </article>
+
+            <article class="service-card reveal">
+              <div class="card-icon"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></div>
               <h3>Roof Inspection</h3>
               <p>
                 Straightforward roof condition checks for buyers, sellers,
@@ -1962,44 +2077,8 @@
               </p>
             </article>
 
-            <article class="service-card">
-              <span class="card-kicker">07</span>
-              <h3>Roof & Gutter Cleaning</h3>
-              <p>
-                Cleaning for roof surfaces and gutters to help prevent clogs,
-                water backup, staining, and avoidable exterior damage.
-              </p>
-            </article>
-
-            <article class="service-card">
-              <span class="card-kicker">08</span>
-              <h3>Roof Moss Removal & Preventative Treatment</h3>
-              <p>
-                Roof moss removal and preventative treatment to protect shingles,
-                improve curb appeal, and slow future moss growth.
-              </p>
-            </article>
-
-            <article class="service-card">
-              <span class="card-kicker">09</span>
-              <h3>Waterproof Membrane Installation</h3>
-              <p>
-                Installation of a waterproof membrane under decks, patios, or
-                balconies where the surface needs dependable protection.
-              </p>
-            </article>
-
-            <article class="service-card">
-              <span class="card-kicker">10</span>
-              <h3>Roof Painting</h3>
-              <p>
-                Painting and coating for eligible roof surfaces, including metal
-                roofs that need a cleaner, refreshed finish.
-              </p>
-            </article>
-
-            <article class="service-card">
-              <span class="card-kicker">11</span>
+            <article class="service-card reveal">
+              <div class="card-icon"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
               <h3>24/7 Emergency Service</h3>
               <p>
                 Emergency help for active leaks, storm damage, urgent roof
@@ -2044,8 +2123,8 @@
                 <span>Respect for the home, driveway, landscaping, and neighbors.</span>
               </div>
               <div class="trust-item">
-                <strong>Licensed and insured</strong>
-                <span>Оставляем только если это правда; позже заменим на точную реальную формулировку.</span>
+                <strong>Bonded and insured</strong>
+                <span>Bond — Contractor License — General Liability Insurance.</span>
               </div>
             </div>
           </div>
@@ -2553,14 +2632,17 @@
                 <select id="service" name="service" required>
                   <option value="">Choose one</option>
                   <option>Roof repair</option>
-                  <option>Old shingle removal and new shingle installation</option>
+                  <option>Asphalt Shingles</option>
+                  <option>TPO Roofing</option>
+                  <option>PVC Roofing</option>
+                  <option>EPDM Roofing</option>
+                  <option>Silicone Roof Coating</option>
+                  <option>Torch Down Roofing</option>
+                  <option>Roof Cleaning & Moss Removal</option>
+                  <option>Roof Moss Treatment & Prevention</option>
+                  <option>Comprehensive Maintenance Package (Cleaning + Gutters + Inspection)</option>
                   <option>Storm damage</option>
                   <option>Gutters</option>
-                  <option>Roof and gutter cleaning</option>
-                  <option>Roof moss removal and preventative treatment</option>
-                  <option>PVC membrane roofing for flat roofs</option>
-                  <option>Waterproof membrane under decks, patios, or balconies</option>
-                  <option>Roof painting</option>
                   <option>24/7 emergency service</option>
                   <option>Inspection</option>
                   <option>Not sure yet</option>
@@ -2956,8 +3038,8 @@
         {
           number: 6,
           name: "PVC membrane detail work",
-          before: 2,
-          after: 2,
+          before: 1,
+          after: 1,
           beforeAlt: "Roof membrane detail area before completion",
           afterAlt: "Roof membrane detail area after completion",
         },
@@ -3333,6 +3415,27 @@
 
       showHeroSlide(0);
       startHeroSlideshow();
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const observerOptions = {
+          root: null,
+          rootMargin: "0px",
+          threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('active');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach((el) => {
+          observer.observe(el);
+        });
+      });
     </script>
   </body>
 </html>
