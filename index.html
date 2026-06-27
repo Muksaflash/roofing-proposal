@@ -517,13 +517,6 @@
         color: rgba(255, 255, 255, 0.74);
       }
 
-      .services-grid {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 14px;
-      }
-
-      .service-card,
       .review-card {
         border: 1px solid var(--line);
         border-radius: var(--radius);
@@ -532,7 +525,6 @@
         transition: transform 0.3s ease, box-shadow 0.3s ease;
       }
 
-      .service-card:hover,
       .review-card:hover {
         transform: translateY(-5px);
         box-shadow: 0 15px 35px rgba(0, 34, 68, 0.12);
@@ -549,52 +541,333 @@
         transform: translateY(0);
       }
 
-      .service-card {
-        min-height: 196px;
-        padding: 22px;
-      }
-
-      .card-icon {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 40px;
-        height: 40px;
-        border-radius: 8px;
-        background: rgba(105, 190, 40, 0.16);
-        color: var(--dark);
-        margin-bottom: 8px;
-      }
-      .card-icon svg {
-        width: 20px;
-        height: 20px;
-      }
-
-      .card-kicker {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        min-width: 42px;
-        height: 30px;
-        border-radius: 7px;
-        background: rgba(105, 190, 40, 0.16);
-        color: var(--dark);
-        font-size: 12px;
-        font-weight: 900;
-      }
-
-      .service-card h3,
       .review-card h3 {
         margin: 16px 0 8px;
         font-size: 20px;
         line-height: 1.2;
       }
 
-      .service-card p,
       .review-card p {
         margin: 0;
         color: var(--muted);
         font-size: 15px;
+      }
+
+      .services-list {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+        align-items: start;
+      }
+
+      .services-column {
+        display: grid;
+        gap: 14px;
+        align-content: start;
+      }
+
+      .service-item {
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        background: var(--paper);
+        box-shadow: 0 10px 26px rgba(0, 34, 68, 0.06);
+      }
+
+      .service-item[open] {
+        background: linear-gradient(180deg, #fff 0%, #f7fafb 100%);
+      }
+
+      .service-item summary {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 34px;
+        gap: 18px;
+        align-items: center;
+        padding: 20px 22px;
+        cursor: pointer;
+        list-style: none;
+      }
+
+      .service-item summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .service-summary-copy {
+        display: grid;
+        gap: 6px;
+        min-width: 0;
+      }
+
+      .service-eyebrow {
+        color: var(--green);
+        font-size: 12px;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+        line-height: 1;
+        text-transform: uppercase;
+      }
+
+      .service-item summary strong {
+        color: var(--ink);
+        font-size: clamp(20px, 2vw, 26px);
+        line-height: 1.15;
+      }
+
+      .service-item summary span:last-child:not(.service-toggle) {
+        color: var(--muted);
+        font-size: 15px;
+        line-height: 1.45;
+      }
+
+      .service-toggle {
+        display: grid;
+        place-items: center;
+        width: 34px;
+        height: 34px;
+        border: 1px solid var(--line);
+        border-radius: 50%;
+        background: var(--soft);
+        color: var(--dark);
+        font-size: 22px;
+        font-weight: 850;
+        line-height: 1;
+      }
+
+      .service-toggle::before {
+        content: "+";
+      }
+
+      .service-item[open] .service-toggle {
+        border-color: rgba(105, 190, 40, 0.5);
+        background: rgba(105, 190, 40, 0.16);
+      }
+
+      .service-item[open] .service-toggle::before {
+        content: "-";
+      }
+
+      .service-detail {
+        display: grid;
+        gap: 16px;
+        padding: 0 22px 22px;
+      }
+
+      .service-detail p {
+        max-width: 760px;
+        margin: 0;
+        color: var(--muted);
+        font-size: 16px;
+        line-height: 1.6;
+      }
+
+      .service-facts {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        margin: 0;
+      }
+
+      .service-facts div {
+        border-left: 3px solid var(--brick);
+        padding: 2px 0 2px 12px;
+      }
+
+      .service-facts dt {
+        margin-bottom: 4px;
+        color: var(--dark);
+        font-size: 12px;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .service-facts dd {
+        margin: 0;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.45;
+      }
+
+      .service-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        padding-top: 2px;
+      }
+
+      .service-area-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+        gap: 28px;
+        align-items: start;
+      }
+
+      .area-copy {
+        display: grid;
+        gap: 18px;
+      }
+
+      .area-copy h2 {
+        max-width: 660px;
+        margin: 0;
+        font-size: clamp(34px, 5vw, 58px);
+        line-height: 1.02;
+        letter-spacing: 0;
+      }
+
+      .area-copy p {
+        max-width: 560px;
+        margin: 0;
+        color: var(--muted);
+        font-size: 17px;
+      }
+
+      .area-note {
+        border-left: 3px solid var(--green);
+        padding: 10px 0 10px 14px;
+        color: var(--dark-2);
+        font-weight: 800;
+      }
+
+      .area-panel {
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: clamp(20px, 4vw, 30px);
+        background: var(--paper);
+        box-shadow: 0 12px 32px rgba(0, 34, 68, 0.08);
+      }
+
+      .area-panel h3 {
+        margin: 0 0 14px;
+        font-size: 24px;
+        line-height: 1.15;
+      }
+
+      .area-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .area-list li {
+        border: 1px solid rgba(0, 34, 68, 0.12);
+        border-radius: 999px;
+        padding: 10px 12px;
+        background: var(--soft);
+        color: var(--dark);
+        font-size: 14px;
+        font-weight: 850;
+        line-height: 1;
+      }
+
+      .area-panel p {
+        margin: 18px 0 0;
+        color: var(--muted);
+        font-size: 15px;
+      }
+
+      .process-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .process-step {
+        display: grid;
+        gap: 12px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: 20px;
+        background: var(--paper);
+        box-shadow: 0 10px 28px rgba(0, 34, 68, 0.07);
+      }
+
+      .step-number {
+        display: grid;
+        place-items: center;
+        width: 42px;
+        height: 42px;
+        border-radius: 7px;
+        background: var(--dark);
+        color: #fff;
+        font-weight: 900;
+      }
+
+      .process-step h3 {
+        margin: 0;
+        font-size: 20px;
+        line-height: 1.18;
+      }
+
+      .process-step p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 15px;
+      }
+
+      .faq-list {
+        display: grid;
+        gap: 10px;
+        max-width: 980px;
+        margin: 0 auto;
+      }
+
+      .faq-item {
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        background: var(--paper);
+        box-shadow: 0 10px 26px rgba(0, 34, 68, 0.06);
+      }
+
+      .faq-item summary {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 34px;
+        gap: 18px;
+        align-items: center;
+        padding: 20px 22px;
+        color: var(--ink);
+        font-size: 18px;
+        font-weight: 850;
+        line-height: 1.25;
+        cursor: pointer;
+        list-style: none;
+      }
+
+      .faq-item summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .faq-item summary::after {
+        display: grid;
+        place-items: center;
+        width: 34px;
+        height: 34px;
+        border: 1px solid var(--line);
+        border-radius: 50%;
+        background: var(--soft);
+        color: var(--dark);
+        content: "+";
+        font-size: 22px;
+        font-weight: 850;
+        line-height: 1;
+      }
+
+      .faq-item[open] summary::after {
+        border-color: rgba(105, 190, 40, 0.5);
+        background: rgba(105, 190, 40, 0.16);
+        content: "-";
+      }
+
+      .faq-item p {
+        margin: 0;
+        padding: 0 22px 22px;
+        color: var(--muted);
+        font-size: 16px;
+        line-height: 1.6;
       }
 
       .trust-layout {
@@ -1367,23 +1640,6 @@
         outline: 0;
       }
 
-      .mobile-cta {
-        position: fixed;
-        right: 12px;
-        bottom: 12px;
-        left: 12px;
-        z-index: 50;
-        display: none;
-        grid-template-columns: 1fr 1fr;
-        gap: 10px;
-        border: 1px solid rgba(0, 34, 68, 0.12);
-        border-radius: 8px;
-        padding: 10px;
-        background: rgba(255, 255, 255, 0.94);
-        box-shadow: 0 18px 42px rgba(0, 34, 68, 0.18);
-        backdrop-filter: blur(14px);
-      }
-
       @media (max-width: 980px) {
         .nav {
           position: fixed;
@@ -1423,17 +1679,21 @@
           display: none;
         }
 
-        .services-grid,
         .before-after-grid,
         .reviews-grid {
           grid-template-columns: repeat(2, minmax(0, 1fr));
         }
 
         .trust-layout,
+        .service-area-layout,
         .about-layout,
         .estimate-layout,
         .automation-layout {
           grid-template-columns: 1fr;
+        }
+
+        .process-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
         }
 
         .estimate-copy {
@@ -1478,6 +1738,7 @@
         }
 
         .section-head h2,
+        .area-copy h2,
         .about-copy h2,
         .estimate-copy h2,
         .final-cta h2 {
@@ -1496,13 +1757,45 @@
           gap: 14px;
         }
 
-        .services-grid,
         .reviews-grid,
+        .process-grid,
         .automation-features,
         .trust-grid,
         .feature-list,
         .form-grid {
           grid-template-columns: 1fr;
+        }
+
+        .service-item summary {
+          padding: 18px 16px;
+        }
+
+        .services-list {
+          grid-template-columns: 1fr;
+        }
+
+        .service-detail {
+          padding: 0 16px 18px;
+        }
+
+        .service-facts {
+          grid-template-columns: 1fr;
+        }
+
+        .service-actions .button {
+          flex: 1 1 150px;
+        }
+
+        .area-panel {
+          padding: 18px;
+        }
+
+        .faq-item summary {
+          padding: 18px 16px;
+        }
+
+        .faq-item p {
+          padding: 0 16px 18px;
         }
 
         .before-after-grid {
@@ -1669,10 +1962,6 @@
           grid-template-columns: 1fr;
         }
 
-        .service-card {
-          min-height: auto;
-        }
-
         .owner-photo {
           min-height: 300px;
         }
@@ -1703,9 +1992,6 @@
           flex-direction: column;
         }
 
-        .mobile-cta {
-          display: grid;
-        }
       }
 
       @media (max-width: 430px) {
@@ -1758,10 +2044,12 @@
 
         <nav class="nav" id="site-nav" aria-label="Main navigation">
           <a href="#services">Services</a>
+          <a href="#service-area">Areas</a>
           <a href="#trust">Why Us</a>
           <a href="#before-after">Results</a>
           <a href="#about">About</a>
           <a href="#reviews">Reviews</a>
+          <a href="#faq">FAQ</a>
           <div class="language-switch" role="group" aria-label="Language selector draft">
             <button class="language-option is-active" type="button" aria-pressed="true">EN</button>
             <button
@@ -1859,124 +2147,521 @@
             </p>
           </div>
 
-          <div class="services-grid">
-            <article class="service-card reveal">
-              <div class="card-icon"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
-              <h3>Roof Repair</h3>
-              <p>
-                Leak checks, missing shingles, flashing issues, and localized
-                fixes before small problems turn into bigger damage.
-              </p>
+          <div class="services-list" aria-label="Roofing services">
+            <div class="services-column">
+              <details class="service-item">
+              <summary>
+                <span class="service-summary-copy">
+                  <span class="service-eyebrow">Repair</span>
+                  <strong>Roof Repair</strong>
+                  <span>Leaks, missing shingles, flashing issues, and localized roof damage.</span>
+                </span>
+                <span class="service-toggle" aria-hidden="true"></span>
+              </summary>
+              <div class="service-detail">
+                <p>
+                  Practical repairs for targeted roof problems before they spread into
+                  decking, attic, drywall, or insulation damage.
+                </p>
+                <dl class="service-facts">
+                  <div>
+                    <dt>Pricing</dt>
+                    <dd>Free estimate. Final quote depends on access, leak source, and repair scope.</dd>
+                  </div>
+                  <div>
+                    <dt>Best for</dt>
+                    <dd>Active leaks, damaged shingles, flashing issues, and small roof sections.</dd>
+                  </div>
+                </dl>
+                <div class="service-actions">
+                  <a class="button primary" href="#estimate">Get Free Estimate</a>
+                  <a class="button" href="tel:+12066366773">Call Now</a>
+                </div>
+              </div>
+            </details>
+
+              <details class="service-item">
+              <summary>
+                <span class="service-summary-copy">
+                  <span class="service-eyebrow">Shingles</span>
+                  <strong>Asphalt Shingles</strong>
+                  <span>Removal of old shingles and installation of new asphalt shingles.</span>
+                </span>
+                <span class="service-toggle" aria-hidden="true"></span>
+              </summary>
+              <div class="service-detail">
+                <p>
+                  Tear-off and replacement work with clean job sites, practical
+                  scheduling, and photo updates during the project.
+                </p>
+                <dl class="service-facts">
+                  <div>
+                    <dt>Pricing</dt>
+                    <dd>Custom quote after roof size, layers, material choice, and ventilation are checked.</dd>
+                  </div>
+                  <div>
+                    <dt>Best for</dt>
+                    <dd>Old shingles, widespread wear, missing tabs, or planned roof replacement.</dd>
+                  </div>
+                </dl>
+                <div class="service-actions">
+                  <a class="button primary" href="#estimate">Get Free Estimate</a>
+                  <a class="button" href="tel:+12066366773">Call Now</a>
+                </div>
+              </div>
+            </details>
+
+              <details class="service-item">
+              <summary>
+                <span class="service-summary-copy">
+                  <span class="service-eyebrow">Flat roofs</span>
+                  <strong>TPO Roofing</strong>
+                  <span>Energy-efficient TPO installation and repair for flat or low-slope roofs.</span>
+                </span>
+                <span class="service-toggle" aria-hidden="true"></span>
+              </summary>
+              <div class="service-detail">
+                <p>
+                  TPO roof work for low-slope areas where membrane layout,
+                  seams, drainage, and penetrations need clean detailing.
+                </p>
+                <dl class="service-facts">
+                  <div>
+                    <dt>Pricing</dt>
+                    <dd>Measured quote after roof area, substrate, drains, and edge details are reviewed.</dd>
+                  </div>
+                  <div>
+                    <dt>Best for</dt>
+                    <dd>Flat roofs, low-slope additions, garages, and commercial roof sections.</dd>
+                  </div>
+                </dl>
+                <div class="service-actions">
+                  <a class="button primary" href="#estimate">Get Free Estimate</a>
+                  <a class="button" href="tel:+12066366773">Call Now</a>
+                </div>
+              </div>
+            </details>
+
+              <details class="service-item">
+              <summary>
+                <span class="service-summary-copy">
+                  <span class="service-eyebrow">Flat roofs</span>
+                  <strong>PVC Roofing</strong>
+                  <span>PVC membrane installation for flat roofs, sealed penetrations, and clean edges.</span>
+                </span>
+                <span class="service-toggle" aria-hidden="true"></span>
+              </summary>
+              <div class="service-detail">
+                <p>
+                  PVC membrane work for low-slope roof areas that need reliable
+                  waterproofing, careful seam work, and finished curb details.
+                </p>
+                <dl class="service-facts">
+                  <div>
+                    <dt>Pricing</dt>
+                    <dd>Photo-based or on-site quote after measurements and detail conditions are confirmed.</dd>
+                  </div>
+                  <div>
+                    <dt>Best for</dt>
+                    <dd>Flat roofs, roof decks, additions, penetrations, and waterproof membrane details.</dd>
+                  </div>
+                </dl>
+                <div class="service-actions">
+                  <a class="button primary" href="#estimate">Get Free Estimate</a>
+                  <a class="button" href="tel:+12066366773">Call Now</a>
+                </div>
+              </div>
+            </details>
+
+              <details class="service-item">
+              <summary>
+                <span class="service-summary-copy">
+                  <span class="service-eyebrow">Flat roofs</span>
+                  <strong>EPDM Roofing</strong>
+                  <span>Rubber roofing solutions for durable flat roof weather resistance.</span>
+                </span>
+                <span class="service-toggle" aria-hidden="true"></span>
+              </summary>
+              <div class="service-detail">
+                <p>
+                  EPDM installation and repair for flat roof areas where flexible
+                  membrane performance and long-term weather resistance matter.
+                </p>
+                <dl class="service-facts">
+                  <div>
+                    <dt>Pricing</dt>
+                    <dd>Custom quote after roof area, current membrane, and drainage are reviewed.</dd>
+                  </div>
+                  <div>
+                    <dt>Best for</dt>
+                    <dd>Residential flat roofs, commercial flat roofs, garages, and utility roof areas.</dd>
+                  </div>
+                </dl>
+                <div class="service-actions">
+                  <a class="button primary" href="#estimate">Get Free Estimate</a>
+                  <a class="button" href="tel:+12066366773">Call Now</a>
+                </div>
+              </div>
+            </details>
+
+              <details class="service-item">
+              <summary>
+                <span class="service-summary-copy">
+                  <span class="service-eyebrow">Coating</span>
+                  <strong>Silicone Roof Coating</strong>
+                  <span>Seamless coating to extend roof life, improve protection, and reduce leaks.</span>
+                </span>
+                <span class="service-toggle" aria-hidden="true"></span>
+              </summary>
+              <div class="service-detail">
+                <p>
+                  Silicone roof coating can help protect compatible roof surfaces
+                  when the roof is still a good candidate for restoration.
+                </p>
+                <dl class="service-facts">
+                  <div>
+                    <dt>Pricing</dt>
+                    <dd>Quote after cleaning needs, coating area, and existing roof condition are checked.</dd>
+                  </div>
+                  <div>
+                    <dt>Best for</dt>
+                    <dd>Flat or low-slope roofs that need coating rather than full replacement.</dd>
+                  </div>
+                </dl>
+                <div class="service-actions">
+                  <a class="button primary" href="#estimate">Get Free Estimate</a>
+                  <a class="button" href="tel:+12066366773">Call Now</a>
+                </div>
+              </div>
+            </details>
+
+              <details class="service-item">
+              <summary>
+                <span class="service-summary-copy">
+                  <span class="service-eyebrow">Flat roofs</span>
+                  <strong>Torch Down Roofing</strong>
+                  <span>Waterproofing option for flat roofs that need durable membrane coverage.</span>
+                </span>
+                <span class="service-toggle" aria-hidden="true"></span>
+              </summary>
+              <div class="service-detail">
+                <p>
+                  Torch down roofing for suitable flat roof areas where material
+                  choice, preparation, and water control are the priority.
+                </p>
+                <dl class="service-facts">
+                  <div>
+                    <dt>Pricing</dt>
+                    <dd>Custom quote after roof access, slope, deck condition, and edges are reviewed.</dd>
+                  </div>
+                  <div>
+                    <dt>Best for</dt>
+                    <dd>Flat roof sections, low-slope surfaces, and waterproofing-focused projects.</dd>
+                  </div>
+                </dl>
+                <div class="service-actions">
+                  <a class="button primary" href="#estimate">Get Free Estimate</a>
+                  <a class="button" href="tel:+12066366773">Call Now</a>
+                </div>
+              </div>
+              </details>
+            </div>
+
+            <div class="services-column">
+              <details class="service-item">
+              <summary>
+                <span class="service-summary-copy">
+                  <span class="service-eyebrow">Cleaning</span>
+                  <strong>Roof Cleaning &amp; Moss Removal</strong>
+                  <span>Cleaning for roof surfaces, debris buildup, and visible moss growth.</span>
+                </span>
+                <span class="service-toggle" aria-hidden="true"></span>
+              </summary>
+              <div class="service-detail">
+                <p>
+                  Roof cleaning and moss removal to improve curb appeal, reduce
+                  moisture problems, and help protect roof materials.
+                </p>
+                <dl class="service-facts">
+                  <div>
+                    <dt>Pricing</dt>
+                    <dd>Quote based on roof size, slope, access, debris level, and treatment needs.</dd>
+                  </div>
+                  <div>
+                    <dt>Best for</dt>
+                    <dd>Moss, leaves, roof-edge debris, staining, and routine roof surface cleanup.</dd>
+                  </div>
+                </dl>
+                <div class="service-actions">
+                  <a class="button primary" href="#estimate">Get Free Estimate</a>
+                  <a class="button" href="tel:+12066366773">Call Now</a>
+                </div>
+              </div>
+            </details>
+
+              <details class="service-item">
+              <summary>
+                <span class="service-summary-copy">
+                  <span class="service-eyebrow">Treatment</span>
+                  <strong>Roof Moss Treatment &amp; Prevention</strong>
+                  <span>Preventative treatment to slow future moss growth and maintain roof health.</span>
+                </span>
+                <span class="service-toggle" aria-hidden="true"></span>
+              </summary>
+              <div class="service-detail">
+                <p>
+                  Treatment planning after moss removal or as a maintenance step
+                  for roofs exposed to shade, trees, and Pacific Northwest moisture.
+                </p>
+                <dl class="service-facts">
+                  <div>
+                    <dt>Pricing</dt>
+                    <dd>Estimate after roof size, current moss level, access, and treatment scope are known.</dd>
+                  </div>
+                  <div>
+                    <dt>Best for</dt>
+                    <dd>Recurring moss, shaded roofs, tree-covered areas, and maintenance plans.</dd>
+                  </div>
+                </dl>
+                <div class="service-actions">
+                  <a class="button primary" href="#estimate">Get Free Estimate</a>
+                  <a class="button" href="tel:+12066366773">Call Now</a>
+                </div>
+              </div>
+            </details>
+
+              <details class="service-item">
+              <summary>
+                <span class="service-summary-copy">
+                  <span class="service-eyebrow">Maintenance</span>
+                  <strong>Comprehensive Maintenance Package</strong>
+                  <span>Roof cleaning, moss removal, gutters, and full roof inspection in one visit.</span>
+                </span>
+                <span class="service-toggle" aria-hidden="true"></span>
+              </summary>
+              <div class="service-detail">
+                <p>
+                  A bundled maintenance option for homeowners who want cleanup,
+                  gutters, and a roof condition check handled together.
+                </p>
+                <dl class="service-facts">
+                  <div>
+                    <dt>Pricing</dt>
+                    <dd>Bundled estimate based on roof size, gutter length, access, and cleanup level.</dd>
+                  </div>
+                  <div>
+                    <dt>Best for</dt>
+                    <dd>Seasonal maintenance, home sale prep, annual checkups, and roof care after storms.</dd>
+                  </div>
+                </dl>
+                <div class="service-actions">
+                  <a class="button primary" href="#estimate">Get Free Estimate</a>
+                  <a class="button" href="tel:+12066366773">Call Now</a>
+                </div>
+              </div>
+            </details>
+
+              <details class="service-item">
+              <summary>
+                <span class="service-summary-copy">
+                  <span class="service-eyebrow">Gutters</span>
+                  <strong>Gutters</strong>
+                  <span>Gutter repair and replacement to move water away from the home.</span>
+                </span>
+                <span class="service-toggle" aria-hidden="true"></span>
+              </summary>
+              <div class="service-detail">
+                <p>
+                  Gutter work to help protect the roof edge, siding, foundation,
+                  landscape, and drainage path around the house.
+                </p>
+                <dl class="service-facts">
+                  <div>
+                    <dt>Pricing</dt>
+                    <dd>Quote after gutter length, height, damage, drainage, and material needs are reviewed.</dd>
+                  </div>
+                  <div>
+                    <dt>Best for</dt>
+                    <dd>Leaking gutters, damaged runs, poor drainage, and roof-edge water problems.</dd>
+                  </div>
+                </dl>
+                <div class="service-actions">
+                  <a class="button primary" href="#estimate">Get Free Estimate</a>
+                  <a class="button" href="tel:+12066366773">Call Now</a>
+                </div>
+              </div>
+            </details>
+
+              <details class="service-item">
+              <summary>
+                <span class="service-summary-copy">
+                  <span class="service-eyebrow">Storm damage</span>
+                  <strong>Storm Damage</strong>
+                  <span>Damage inspections after wind, hail, heavy rain, or fallen branches.</span>
+                </span>
+                <span class="service-toggle" aria-hidden="true"></span>
+              </summary>
+              <div class="service-detail">
+                <p>
+                  Roof checks after weather events with photos, practical next
+                  steps, and repair recommendations when damage is found.
+                </p>
+                <dl class="service-facts">
+                  <div>
+                    <dt>Pricing</dt>
+                    <dd>Inspection and repair estimate depends on urgency, roof access, and damage level.</dd>
+                  </div>
+                  <div>
+                    <dt>Best for</dt>
+                    <dd>Wind damage, hail concerns, fallen branches, heavy rain leaks, and insurance needs.</dd>
+                  </div>
+                </dl>
+                <div class="service-actions">
+                  <a class="button primary" href="#estimate">Get Free Estimate</a>
+                  <a class="button" href="tel:+12066366773">Call Now</a>
+                </div>
+              </div>
+            </details>
+
+              <details class="service-item">
+              <summary>
+                <span class="service-summary-copy">
+                  <span class="service-eyebrow">Inspection</span>
+                  <strong>Roof Inspection</strong>
+                  <span>Straightforward roof condition checks for owners, buyers, and property managers.</span>
+                </span>
+                <span class="service-toggle" aria-hidden="true"></span>
+              </summary>
+              <div class="service-detail">
+                <p>
+                  Roof inspections focused on practical findings: current roof
+                  condition, visible issues, maintenance needs, and next steps.
+                </p>
+                <dl class="service-facts">
+                  <div>
+                    <dt>Pricing</dt>
+                    <dd>Inspection pricing or free estimate option can be confirmed by phone.</dd>
+                  </div>
+                  <div>
+                    <dt>Best for</dt>
+                    <dd>Homeowners, buyers, sellers, landlords, property managers, and insurance questions.</dd>
+                  </div>
+                </dl>
+                <div class="service-actions">
+                  <a class="button primary" href="#estimate">Get Free Estimate</a>
+                  <a class="button" href="tel:+12066366773">Call Now</a>
+                </div>
+              </div>
+            </details>
+
+              <details class="service-item">
+              <summary>
+                <span class="service-summary-copy">
+                  <span class="service-eyebrow">Urgent help</span>
+                  <strong>24/7 Emergency Service</strong>
+                  <span>Emergency help for active leaks and roof issues that cannot wait.</span>
+                </span>
+                <span class="service-toggle" aria-hidden="true"></span>
+              </summary>
+              <div class="service-detail">
+                <p>
+                  Urgent roof help for active leaks, storm damage, and situations
+                  where quick triage matters more than waiting for normal scheduling.
+                </p>
+                <dl class="service-facts">
+                  <div>
+                    <dt>Pricing</dt>
+                    <dd>Emergency pricing is confirmed by phone after location, access, and urgency are clear.</dd>
+                  </div>
+                  <div>
+                    <dt>Best for</dt>
+                    <dd>Active leaks, storm openings, urgent temporary protection, and fast roof triage.</dd>
+                  </div>
+                </dl>
+                <div class="service-actions">
+                  <a class="button primary" href="#estimate">Get Free Estimate</a>
+                  <a class="button" href="tel:+12066366773">Call Now</a>
+                </div>
+              </div>
+              </details>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section soft" id="service-area">
+        <div class="wrap service-area-layout">
+          <div class="area-copy">
+            <p class="eyebrow">Service area</p>
+            <h2>Serving Seattle and nearby communities.</h2>
+            <p>
+              Local roofing customers want to know the crew can actually reach
+              them. This section gives the page a clear local signal for trust,
+              ads, and future SEO work.
+            </p>
+            <p class="area-note">
+              Final cities and travel radius should be confirmed with Artem
+              before launch.
+            </p>
+          </div>
+
+          <div class="area-panel">
+            <h3>Draft coverage area</h3>
+            <ul class="area-list" aria-label="Draft roofing service cities">
+              <li>Seattle</li>
+              <li>Bellevue</li>
+              <li>Renton</li>
+              <li>Tacoma</li>
+              <li>Kent</li>
+              <li>Federal Way</li>
+              <li>Kirkland</li>
+              <li>Redmond</li>
+              <li>Bothell</li>
+              <li>Shoreline</li>
+              <li>Lynnwood</li>
+              <li>Everett</li>
+            </ul>
+            <p>
+              Not sure if your home is inside the service area? Send the address
+              with your estimate request and the team can confirm availability.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section white" id="process">
+        <div class="wrap">
+          <div class="section-head">
+            <h2>How the estimate process works.</h2>
+            <p>
+              A simple process helps customers understand what happens after
+              they click the button, especially when the roof issue feels urgent.
+            </p>
+          </div>
+
+          <div class="process-grid" aria-label="Estimate process steps">
+            <article class="process-step">
+              <span class="step-number">1</span>
+              <h3>Request estimate</h3>
+              <p>Call or send the form with a short description of the roof issue.</p>
             </article>
 
-            <article class="service-card reveal">
-              <div class="card-icon"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M2 10.5L12 3l10 7.5"/><path d="M4 10v11h16V10"/></svg></div>
-              <h3>Asphalt Shingles</h3>
-              <p>
-                Removal of old shingles and installation of new asphalt shingles, with
-                clear scheduling, clean job sites, and photo updates.
-              </p>
+            <article class="process-step">
+              <span class="step-number">2</span>
+              <h3>Send photos and address</h3>
+              <p>Photos, location, and access details help the team understand the scope faster.</p>
             </article>
 
-            <article class="service-card reveal">
-              <div class="card-icon"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M2 10.5L12 3l10 7.5"/><path d="M4 10v11h16V10"/></svg></div>
-              <h3>TPO Roofing</h3>
-              <p>
-                Energy-efficient TPO roofing installation and repair for commercial and residential flat or low-slope roofs.
-              </p>
+            <article class="process-step">
+              <span class="step-number">3</span>
+              <h3>Get quote or inspection</h3>
+              <p>The team can recommend next steps, request more details, or schedule an inspection.</p>
             </article>
 
-            <article class="service-card reveal">
-              <div class="card-icon"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M2 10.5L12 3l10 7.5"/><path d="M4 10v11h16V10"/></svg></div>
-              <h3>PVC Roofing</h3>
-              <p>
-                PVC membrane roofing installation for flat roofs, low-slope
-                roof areas, sealed penetrations, and clean finished surfaces.
-              </p>
-            </article>
-
-            <article class="service-card reveal">
-              <div class="card-icon"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M2 10.5L12 3l10 7.5"/><path d="M4 10v11h16V10"/></svg></div>
-              <h3>EPDM Roofing</h3>
-              <p>
-                Resilient EPDM rubber roofing solutions providing excellent weather resistance and longevity for flat roofs.
-              </p>
-            </article>
-
-            <article class="service-card reveal">
-              <div class="card-icon"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M2 10.5L12 3l10 7.5"/><path d="M4 10v11h16V10"/></svg></div>
-              <h3>Silicone Roof Coating</h3>
-              <p>
-                Seamless silicone roof coating application to extend roof life, stop leaks, and improve energy efficiency.
-              </p>
-            </article>
-
-            <article class="service-card reveal">
-              <div class="card-icon"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M2 10.5L12 3l10 7.5"/><path d="M4 10v11h16V10"/></svg></div>
-              <h3>Torch Down Roofing</h3>
-              <p>
-                Reliable torch down roofing installation for flat roofs, offering superior waterproofing and durability.
-              </p>
-            </article>
-
-            <article class="service-card reveal">
-              <div class="card-icon"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/></svg></div>
-              <h3>Roof Cleaning & Moss Removal</h3>
-              <p>
-                Professional roof cleaning and moss removal to protect your shingles, improve curb appeal, and prevent damage.
-              </p>
-            </article>
-
-            <article class="service-card reveal">
-              <div class="card-icon"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/></svg></div>
-              <h3>Roof Moss Treatment & Prevention</h3>
-              <p>
-                Effective roof moss treatment and preventative solutions to slow future moss growth and maintain roof health.
-              </p>
-            </article>
-
-            <article class="service-card reveal">
-              <div class="card-icon"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg></div>
-              <h3>Comprehensive Maintenance Package</h3>
-              <p>
-                Save time and money with our bundled service: Roof Cleaning & Moss Removal + Gutters + Full Inspection.
-              </p>
-            </article>
-
-            <article class="service-card reveal">
-              <div class="card-icon"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></svg></div>
-              <h3>Gutters</h3>
-              <p>
-                Gutter repair and replacement to move water away from the roof,
-                siding, foundation, and landscape.
-              </p>
-            </article>
-
-            <article class="service-card reveal">
-              <div class="card-icon"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
-              <h3>Storm Damage</h3>
-              <p>
-                Damage inspections after wind, hail, heavy rain, or fallen
-                branches, with photos and next-step recommendations.
-              </p>
-            </article>
-
-            <article class="service-card reveal">
-              <div class="card-icon"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></div>
-              <h3>Roof Inspection</h3>
-              <p>
-                Straightforward roof condition checks for buyers, sellers,
-                homeowners, property managers, and insurance needs.
-              </p>
-            </article>
-
-            <article class="service-card reveal">
-              <div class="card-icon"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
-              <h3>24/7 Emergency Service</h3>
-              <p>
-                Emergency help for active leaks, storm damage, urgent roof
-                issues, and situations that cannot wait for normal scheduling.
-              </p>
+            <article class="process-step">
+              <span class="step-number">4</span>
+              <h3>Schedule the work</h3>
+              <p>Once the scope is clear, the job can be scheduled with direct communication.</p>
             </article>
           </div>
         </div>
@@ -2350,6 +3035,66 @@
         </div>
       </section>
 
+      <section class="section white" id="faq">
+        <div class="wrap">
+          <div class="section-head">
+            <h2>Common roofing questions.</h2>
+            <p>
+              These answers can help customers decide what to send first. Later,
+              the same FAQ can become a knowledge base for AI intake or chat.
+            </p>
+          </div>
+
+          <div class="faq-list" aria-label="Frequently asked questions">
+            <details class="faq-item">
+              <summary>Do you offer free estimates?</summary>
+              <p>
+                Yes. Customers can request a free estimate by phone or through
+                the form. Final pricing depends on roof access, condition,
+                materials, urgency, and the exact scope of work.
+              </p>
+            </details>
+
+            <details class="faq-item">
+              <summary>Do you work with insurance?</summary>
+              <p>
+                For storm damage or leak-related work, the team can document
+                visible roof issues with photos and explain repair options.
+                Insurance handling details should be confirmed directly before
+                the job starts.
+              </p>
+            </details>
+
+            <details class="faq-item">
+              <summary>How fast can you come out?</summary>
+              <p>
+                Availability depends on schedule, location, weather, and urgency.
+                Active leaks and emergency roof issues should be handled by
+                calling directly for the fastest response.
+              </p>
+            </details>
+
+            <details class="faq-item">
+              <summary>Do I need to be home for an estimate?</summary>
+              <p>
+                Not always. For some exterior roof issues, photos, address,
+                access notes, and a phone call may be enough to start. The team
+                can confirm whether an on-site visit is needed.
+              </p>
+            </details>
+
+            <details class="faq-item">
+              <summary>Can I send roof photos first?</summary>
+              <p>
+                Yes. Photos are helpful for leaks, missing shingles, moss,
+                gutters, flat roof membrane issues, and storm damage. Include
+                wide shots, close-up details, and the address if possible.
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
+
       <section class="section white" id="estimate">
         <div class="wrap estimate-layout">
           <div class="estimate-copy">
@@ -2371,7 +3116,7 @@
             </div>
               <div class="contact-row">
                 <span>Area</span>
-                <strong>Your city and surrounding communities</strong>
+                <strong>Seattle and nearby communities</strong>
               </div>
             </div>
           </div>
@@ -2676,11 +3421,6 @@
         </div>
       </div>
     </dialog>
-
-    <div class="mobile-cta" aria-label="Mobile contact actions">
-      <a class="button primary" href="#estimate">Estimate</a>
-      <a class="button" href="tel:+12066366773">Call Now</a>
-    </div>
 
     <script>
       const menuButton = document.querySelector("#menu-button");
