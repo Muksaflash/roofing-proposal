@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Thank You | Octopus Roofing Co.</title>
+    <meta
+      name="description"
+      content="Thank you for requesting a roofing estimate from Octopus Roofing Co."
+    />
+    <link rel="icon" href="favicon.ico" />
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+    <style>
+      :root {
+        --navy: #002244;
+        --green: #69be28;
+        --gray: #a5acaf;
+        --ink: #111820;
+        --muted: #5d6872;
+        --soft: #f2f6f7;
+        --line: #dce5e7;
+        --paper: #ffffff;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        min-height: 100vh;
+        margin: 0;
+        display: grid;
+        place-items: center;
+        background:
+          linear-gradient(135deg, rgba(0, 34, 68, 0.96), rgba(0, 92, 92, 0.88)),
+          var(--navy);
+        color: var(--ink);
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      main {
+        width: min(100% - 32px, 760px);
+        border: 1px solid rgba(255, 255, 255, 0.24);
+        border-radius: 14px;
+        padding: clamp(24px, 5vw, 46px);
+        background: rgba(255, 255, 255, 0.96);
+        box-shadow: 0 24px 70px rgba(0, 10, 20, 0.32);
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 28px;
+        color: var(--ink);
+        text-decoration: none;
+      }
+
+      .brand img {
+        width: 52px;
+        height: 52px;
+        border-radius: 9px;
+        object-fit: cover;
+      }
+
+      .brand strong {
+        display: block;
+        font-size: 18px;
+        line-height: 1.1;
+      }
+
+      .brand span {
+        display: block;
+        color: var(--muted);
+        font-size: 13px;
+        font-weight: 700;
+      }
+
+      h1 {
+        max-width: 640px;
+        margin: 0;
+        font-size: clamp(34px, 7vw, 64px);
+        line-height: 0.98;
+        letter-spacing: 0;
+      }
+
+      p {
+        max-width: 620px;
+        margin: 18px 0 0;
+        color: var(--muted);
+        font-size: 18px;
+        line-height: 1.55;
+      }
+
+      .summary {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+        margin: 28px 0;
+      }
+
+      .summary div {
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 14px;
+        background: var(--soft);
+      }
+
+      .summary span {
+        display: block;
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .summary strong {
+        display: block;
+        margin-top: 6px;
+        color: var(--navy);
+        font-size: 17px;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .button {
+        min-height: 46px;
+        border: 1px solid var(--line);
+        border-radius: 7px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 16px;
+        background: #fff;
+        color: var(--ink);
+        font-weight: 900;
+        text-decoration: none;
+      }
+
+      .button.primary {
+        border-color: var(--green);
+        background: var(--green);
+        color: var(--navy);
+      }
+
+      .note {
+        margin-top: 22px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      @media (max-width: 640px) {
+        body {
+          place-items: stretch;
+        }
+
+        main {
+          width: 100%;
+          min-height: 100vh;
+          border-radius: 0;
+        }
+
+        .summary {
+          grid-template-columns: 1fr;
+        }
+
+        .button {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <a class="brand" href="index.html" aria-label="Back to Octopus Roofing home">
+        <img src="assets/octopus-roofing-logo.webp" alt="Octopus Roofing Co. logo" />
+        <span>
+          <strong>Octopus Roofing Co.</strong>
+          <span>Repair - Maintenance - Installation</span>
+        </span>
+      </a>
+
+      <h1>Thank you. Your estimate request is drafted.</h1>
+      <p>
+        This preview page is ready for conversion tracking. In the live version,
+        a real form submit can send the lead to email, Google Sheets, CRM, SMS,
+        or an AI intake workflow.
+      </p>
+
+      <div class="summary" aria-label="Submitted request summary">
+        <div>
+          <span>Service</span>
+          <strong data-lead-service>Estimate request</strong>
+        </div>
+        <div>
+          <span>Urgency</span>
+          <strong data-lead-urgency>To be reviewed</strong>
+        </div>
+        <div>
+          <span>Source</span>
+          <strong data-lead-source>Direct or unknown</strong>
+        </div>
+        <div>
+          <span>Photos</span>
+          <strong data-lead-photos>Optional</strong>
+        </div>
+      </div>
+
+      <div class="actions">
+        <a class="button primary" href="tel:+12066366773" data-event="call_click">Call Now</a>
+        <a class="button" href="index.html#estimate" data-event="estimate_click">Back to Form</a>
+        <a class="button" href="index.html" data-event="home_click">Back to Home</a>
+      </div>
+
+      <p class="note">
+        Tracking-ready source examples: /?src=truck, /?src=card, /?src=yard-sign.
+      </p>
+    </main>
+
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const attributionKeys = ["src", "utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"];
+
+      const getStoredLead = () => {
+        try {
+          return JSON.parse(sessionStorage.getItem("octopusLastLead") || "{}");
+        } catch (error) {
+          return {};
+        }
+      };
+
+      const lead = getStoredLead();
+      const source = params.get("src") || lead.source || "Direct or unknown";
+
+      document.querySelector("[data-lead-service]").textContent = lead.service || "Estimate request";
+      document.querySelector("[data-lead-urgency]").textContent = lead.urgency || "To be reviewed";
+      document.querySelector("[data-lead-source]").textContent = source;
+      document.querySelector("[data-lead-photos]").textContent =
+        Number(lead.photo_count || 0) > 0 ? `${lead.photo_count} uploaded` : "Optional";
+
+      const attribution = {};
+      attributionKeys.forEach((key) => {
+        const value = params.get(key);
+        if (value) {
+          attribution[key] = value;
+        }
+      });
+
+      const trackEvent = (eventName, detail = {}) => {
+        const payload = {
+          event: eventName,
+          page_path: window.location.pathname,
+          ...attribution,
+          ...detail,
+        };
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push(payload);
+        document.dispatchEvent(new CustomEvent("octopus:track", { detail: payload }));
+      };
+
+      trackEvent("thank_you_view", {
+        service: lead.service || "",
+        urgency: lead.urgency || "",
+        photo_count: Number(lead.photo_count || 0),
+      });
+
+      document.querySelectorAll("[data-event]").forEach((element) => {
+        element.addEventListener("click", () =>
+          trackEvent(element.dataset.event, { label: element.textContent.trim() }),
+        );
+      });
+    </script>
+  </body>
+</html>

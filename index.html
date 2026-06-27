@@ -870,6 +870,136 @@
         line-height: 1.6;
       }
 
+      .urgent-cta {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 24px;
+        align-items: center;
+        border-radius: var(--radius);
+        padding: clamp(24px, 5vw, 40px);
+        background:
+          linear-gradient(135deg, rgba(0, 34, 68, 0.96), rgba(0, 92, 92, 0.92)),
+          var(--dark);
+        color: #fff;
+      }
+
+      .urgent-cta h2 {
+        max-width: 760px;
+        margin: 0;
+        font-size: clamp(32px, 5vw, 56px);
+        line-height: 1.02;
+        letter-spacing: 0;
+      }
+
+      .urgent-cta p {
+        max-width: 680px;
+        margin: 14px 0 0;
+        color: rgba(255, 255, 255, 0.78);
+        font-size: 17px;
+      }
+
+      .urgent-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: flex-end;
+      }
+
+      .credentials-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .credential-card {
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: 20px;
+        background: var(--paper);
+        box-shadow: 0 10px 28px rgba(0, 34, 68, 0.07);
+      }
+
+      .credential-card span {
+        display: block;
+        margin-bottom: 10px;
+        color: var(--green);
+        font-size: 12px;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+        line-height: 1;
+        text-transform: uppercase;
+      }
+
+      .credential-card strong {
+        display: block;
+        color: var(--ink);
+        font-size: 21px;
+        line-height: 1.18;
+      }
+
+      .credential-card p {
+        margin: 10px 0 0;
+        color: var(--muted);
+        font-size: 15px;
+      }
+
+      .team-photo-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .team-photo-slot {
+        min-height: 128px;
+        border: 1px dashed rgba(0, 34, 68, 0.28);
+        border-radius: 10px;
+        display: grid;
+        align-content: end;
+        gap: 6px;
+        padding: 14px;
+        background:
+          linear-gradient(145deg, rgba(255, 255, 255, 0.92), rgba(238, 243, 243, 0.86)),
+          radial-gradient(circle at 20% 10%, rgba(105, 190, 40, 0.18), transparent 34%);
+      }
+
+      .team-photo-slot strong {
+        color: var(--ink);
+        font-size: 15px;
+        line-height: 1.2;
+      }
+
+      .team-photo-slot span {
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.35;
+      }
+
+      .consent-field {
+        grid-column: 1 / -1;
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr);
+        gap: 10px;
+        align-items: start;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 12px;
+        background: var(--soft);
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.45;
+      }
+
+      .consent-field input {
+        width: 18px;
+        height: 18px;
+        margin-top: 2px;
+        accent-color: var(--green);
+      }
+
+      .consent-field strong {
+        color: var(--dark);
+      }
+
       .trust-layout {
         display: grid;
         grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.25fr);
@@ -1692,6 +1822,14 @@
           grid-template-columns: 1fr;
         }
 
+        .urgent-cta {
+          grid-template-columns: 1fr;
+        }
+
+        .urgent-actions {
+          justify-content: flex-start;
+        }
+
         .process-grid {
           grid-template-columns: repeat(2, minmax(0, 1fr));
         }
@@ -1759,6 +1897,7 @@
 
         .reviews-grid,
         .process-grid,
+        .credentials-grid,
         .automation-features,
         .trust-grid,
         .feature-list,
@@ -1788,6 +1927,10 @@
 
         .area-panel {
           padding: 18px;
+        }
+
+        .team-photo-grid {
+          grid-template-columns: 1fr;
         }
 
         .faq-item summary {
@@ -2667,6 +2810,27 @@
         </div>
       </section>
 
+      <section class="section soft" id="emergency">
+        <div class="wrap">
+          <div class="urgent-cta">
+            <div>
+              <p class="eyebrow">Emergency roof help</p>
+              <h2>Active leak or storm damage? Call for urgent repair help.</h2>
+              <p>
+                If water is coming in, shingles are missing after wind, or a
+                roof opening cannot wait, calling is the fastest path. Photos
+                and the address can help the team understand the situation quickly.
+              </p>
+            </div>
+
+            <div class="urgent-actions" aria-label="Emergency contact actions">
+              <a class="button primary" href="tel:+12066366773">Call Now</a>
+              <a class="button" href="#estimate">Send Photos</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section class="section dark-band" id="trust">
         <div class="wrap">
           <div class="section-head">
@@ -2705,6 +2869,39 @@
                 <span>Bond — Contractor License — General Liability Insurance.</span>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section white" id="credentials">
+        <div class="wrap">
+          <div class="section-head">
+            <h2>License, bond, and insurance details.</h2>
+            <p>
+              This area is reserved for real verification details before launch.
+              Until the exact numbers are confirmed, the page should avoid
+              pretending to show official license or policy information.
+            </p>
+          </div>
+
+          <div class="credentials-grid" aria-label="License and insurance placeholders">
+            <article class="credential-card">
+              <span>Contractor License</span>
+              <strong>License number to be added</strong>
+              <p>Placeholder for the verified contractor license number and issuing state.</p>
+            </article>
+
+            <article class="credential-card">
+              <span>Bond</span>
+              <strong>Bond details to be added</strong>
+              <p>Placeholder for bond status, bond provider, or verification note.</p>
+            </article>
+
+            <article class="credential-card">
+              <span>General Liability Insurance</span>
+              <strong>Insurance info to be added</strong>
+              <p>Placeholder for current liability coverage details after confirmation.</p>
+            </article>
           </div>
         </div>
       </section>
@@ -2986,6 +3183,21 @@
               <li>Roof and gutter cleaning</li>
               <li>Photo-based estimates</li>
             </ul>
+
+            <div class="team-photo-grid" aria-label="Future real company photo slots">
+              <div class="team-photo-slot">
+                <strong>Owner portrait</strong>
+                <span>Real photo of Artem or the owner goes here.</span>
+              </div>
+              <div class="team-photo-slot">
+                <strong>Crew photo</strong>
+                <span>Team or work truck photo for local trust.</span>
+              </div>
+              <div class="team-photo-slot">
+                <strong>Job-site photo</strong>
+                <span>Clean real project photo with tools, roof, or crew.</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -3122,6 +3334,11 @@
           </div>
 
           <form class="estimate-form" id="estimate-form">
+            <input type="hidden" id="lead-source" name="source" />
+            <input type="hidden" id="lead-utm-source" name="utm_source" />
+            <input type="hidden" id="lead-utm-medium" name="utm_medium" />
+            <input type="hidden" id="lead-utm-campaign" name="utm_campaign" />
+
             <div class="form-grid">
               <div class="field">
                 <label for="name">Name</label>
@@ -3184,7 +3401,7 @@
 
               <div class="field full">
                 <label for="photos">Roof photos</label>
-                <input id="photos" name="photos" type="file" accept="image/*" multiple />
+                <input id="photos" name="photos" type="file" accept="image/*" multiple data-event="photo_upload" />
               </div>
 
               <div class="field full">
@@ -3195,10 +3412,20 @@
                   placeholder="Example: Leak near the chimney after heavy rain."
                 ></textarea>
               </div>
+
+              <label class="consent-field" for="contact-consent">
+                <input id="contact-consent" name="contact_consent" type="checkbox" required />
+                <span>
+                  <strong>Contact consent:</strong>
+                  I agree that Octopus Roofing Co. can contact me by phone,
+                  email, or SMS about this estimate request. Message/data rates
+                  may apply.
+                </span>
+              </label>
             </div>
 
             <div class="form-actions">
-              <button class="button primary" type="submit" data-testid="form-submit">Get Free Estimate</button>
+              <button class="button primary" type="submit" data-testid="form-submit" data-event="form_submit">Get Free Estimate</button>
               <a class="button" href="tel:+12066366773" data-testid="form-call">Call Now</a>
             </div>
 
@@ -3308,6 +3535,14 @@
               <div class="automation-feature">
                 <strong>Voice AI позже</strong>
                 <span>Подключаем только если реальный поток звонков покажет необходимость.</span>
+              </div>
+              <div class="automation-feature">
+                <strong>Tracking-ready события</strong>
+                <span>call_click, estimate_click, form_submit, photo_upload, service_open и language_switch уже заложены как события.</span>
+              </div>
+              <div class="automation-feature">
+                <strong>QR / print source links</strong>
+                <span>Можно печатать QR с /?src=truck, /?src=card или /?src=yard-sign и видеть источник заявок.</span>
               </div>
               <div class="automation-feature">
                 <strong>Bonjoro / персональные видео-сообщения</strong>
@@ -3427,6 +3662,105 @@
       const nav = document.querySelector("#site-nav");
       const form = document.querySelector("#estimate-form");
       const formStatus = document.querySelector("#form-status");
+      const photoInput = document.querySelector("#photos");
+      const attributionKeys = ["src", "utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"];
+
+      const getAttribution = () => {
+        const params = new URLSearchParams(window.location.search);
+        const current = {};
+        attributionKeys.forEach((key) => {
+          const value = params.get(key);
+          if (value) {
+            current[key] = value;
+          }
+        });
+
+        if (Object.keys(current).length) {
+          try {
+            sessionStorage.setItem("octopusAttribution", JSON.stringify(current));
+          } catch (error) {
+            // Attribution still works for this page even if storage is unavailable.
+          }
+          return current;
+        }
+
+        try {
+          return JSON.parse(sessionStorage.getItem("octopusAttribution") || "{}");
+        } catch (error) {
+          return {};
+        }
+      };
+
+      const attribution = getAttribution();
+
+      const setHiddenValue = (id, value) => {
+        const input = document.querySelector(id);
+        if (input) {
+          input.value = value || "";
+        }
+      };
+
+      setHiddenValue("#lead-source", attribution.src);
+      setHiddenValue("#lead-utm-source", attribution.utm_source);
+      setHiddenValue("#lead-utm-medium", attribution.utm_medium);
+      setHiddenValue("#lead-utm-campaign", attribution.utm_campaign);
+
+      const trackEvent = (eventName, detail = {}) => {
+        const payload = {
+          event: eventName,
+          page_path: window.location.pathname,
+          ...attribution,
+          ...detail,
+        };
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push(payload);
+        document.dispatchEvent(new CustomEvent("octopus:track", { detail: payload }));
+      };
+
+      const withAttribution = (path) => {
+        const target = new URL(path, window.location.href);
+        attributionKeys.forEach((key) => {
+          if (attribution[key]) {
+            target.searchParams.set(key, attribution[key]);
+          }
+        });
+        return `${target.pathname}${target.search}${target.hash}`;
+      };
+
+      document.querySelectorAll('a[href^="tel:"]').forEach((link) => {
+        link.dataset.event = link.dataset.event || "call_click";
+        link.addEventListener("click", () =>
+          trackEvent("call_click", { label: link.textContent.trim() || "Call Now" }),
+        );
+      });
+
+      document.querySelectorAll('a[href="#estimate"]').forEach((link) => {
+        link.dataset.event = link.dataset.event || "estimate_click";
+        link.addEventListener("click", () =>
+          trackEvent("estimate_click", { label: link.textContent.trim() || "Get Free Estimate" }),
+        );
+      });
+
+      document.querySelectorAll(".service-item").forEach((item) => {
+        const summary = item.querySelector("summary");
+        summary?.addEventListener("click", () => {
+          if (!item.open) {
+            const title = item.querySelector("strong")?.textContent.trim() || "Service";
+            trackEvent("service_open", { service: title });
+          }
+        });
+      });
+
+      document.querySelectorAll(".language-option").forEach((button) => {
+        button.dataset.event = button.dataset.event || "language_switch";
+        button.addEventListener("click", () =>
+          trackEvent("language_switch", { language: button.textContent.trim() }),
+        );
+      });
+
+      photoInput?.addEventListener("change", () => {
+        trackEvent("photo_upload", { photo_count: photoInput.files.length });
+      });
 
       menuButton.addEventListener("click", () => {
         const isOpen = nav.classList.toggle("is-open");
@@ -3446,9 +3780,29 @@
 
       form.addEventListener("submit", (event) => {
         event.preventDefault();
+        const formData = new FormData(form);
+        const photoCount = photoInput?.files.length || 0;
+        const leadSummary = {
+          service: formData.get("service") || "",
+          urgency: formData.get("urgency") || "",
+          source: attribution.src || "",
+          photo_count: photoCount,
+        };
+
+        trackEvent("form_submit", {
+          ...leadSummary,
+          has_photos: photoCount > 0,
+        });
+
+        try {
+          sessionStorage.setItem("octopusLastLead", JSON.stringify(leadSummary));
+        } catch (error) {
+          // The thank-you page can still show generic confirmation.
+        }
+
         formStatus.textContent =
-          "Спасибо. Это черновая форма: позже подключим email, Google Sheets, CRM или AI intake.";
-        form.reset();
+          "Thanks. This draft form is ready for a thank-you page, analytics, CRM, and AI intake.";
+        window.location.href = withAttribution("thank-you.html");
       });
 
       const stageLabel = (stage) => (stage === "before" ? "Before" : "After");

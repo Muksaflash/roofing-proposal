@@ -16,6 +16,7 @@ New-Item -ItemType Directory -Force -Path (Join-Path $publicPath "assets") | Out
 New-Item -ItemType Directory -Force -Path (Join-Path $publicPath "assets/projects") | Out-Null
 
 Copy-Item -LiteralPath (Join-Path $workspace "index.html") -Destination (Join-Path $publicPath "index.html") -Force
+Copy-Item -LiteralPath (Join-Path $workspace "thank-you.html") -Destination (Join-Path $publicPath "thank-you.html") -Force
 Copy-Item -LiteralPath (Join-Path $workspace "favicon.ico") -Destination (Join-Path $publicPath "favicon.ico") -Force
 Copy-Item `
   -LiteralPath (Join-Path $workspace "assets/roofing-hero-placeholder.png") `
