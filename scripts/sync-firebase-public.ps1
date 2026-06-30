@@ -17,6 +17,9 @@ New-Item -ItemType Directory -Force -Path (Join-Path $publicPath "assets/project
 
 Copy-Item -LiteralPath (Join-Path $workspace "index.html") -Destination (Join-Path $publicPath "index.html") -Force
 Copy-Item -LiteralPath (Join-Path $workspace "thank-you.html") -Destination (Join-Path $publicPath "thank-you.html") -Force
+Copy-Item -LiteralPath (Join-Path $workspace "privacy-policy.html") -Destination (Join-Path $publicPath "privacy-policy.html") -Force
+Copy-Item -LiteralPath (Join-Path $workspace "terms-of-use.html") -Destination (Join-Path $publicPath "terms-of-use.html") -Force
+Copy-Item -LiteralPath (Join-Path $workspace "accessibility-statement.html") -Destination (Join-Path $publicPath "accessibility-statement.html") -Force
 Copy-Item -LiteralPath (Join-Path $workspace "favicon.ico") -Destination (Join-Path $publicPath "favicon.ico") -Force
 Copy-Item `
   -LiteralPath (Join-Path $workspace "assets/roofing-hero-placeholder.png") `

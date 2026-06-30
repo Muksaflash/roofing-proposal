@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta
       name="description"
-      content="Octopus Roofing Co. landing page with roofing services, trust signals, gallery, reviews, and free estimate CTA."
+      content="Octopus Roofing Co roofing services in the Tacoma, Seattle, and Everett area with free estimates, emergency roof repair, and project photos."
     />
     <link rel="icon" href="favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png" />
     <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+    <link rel="canonical" href="https://octopusroofing.com/" />
     <link
       rel="preload"
       as="image"
@@ -20,7 +21,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;850;900&display=swap" rel="stylesheet">
-    <title>Octopus Roofing Co. | Get Free Estimate</title>
+    <title>Octopus Roofing Co | Get Free Estimate</title>
     <style>
       :root {
         --navy: #002244;
@@ -560,6 +561,10 @@
         align-items: start;
       }
 
+      .services-list + .section-head {
+        margin-top: clamp(36px, 6vw, 64px);
+      }
+
       .services-column {
         display: grid;
         gap: 14px;
@@ -808,6 +813,64 @@
         font-size: 15px;
       }
 
+      .maintenance-packages {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .package-card {
+        display: grid;
+        gap: 16px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: 20px;
+        background: var(--paper);
+        box-shadow: 0 10px 28px rgba(0, 34, 68, 0.07);
+      }
+
+      .package-card h3 {
+        margin: 0;
+        font-size: 22px;
+        line-height: 1.14;
+      }
+
+      .package-list {
+        display: grid;
+        gap: 8px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .package-list li {
+        border-left: 3px solid var(--green);
+        padding-left: 10px;
+        color: var(--muted);
+        font-size: 15px;
+      }
+
+      .package-price {
+        margin-top: auto;
+        border-top: 1px solid var(--line);
+        padding-top: 14px;
+      }
+
+      .package-price strong {
+        display: block;
+        color: var(--dark);
+        font-size: 24px;
+        line-height: 1.1;
+      }
+
+      .package-price span {
+        display: block;
+        margin-top: 6px;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.4;
+      }
+
       .faq-list {
         display: grid;
         gap: 10px;
@@ -972,6 +1035,63 @@
         color: var(--muted);
         font-size: 13px;
         line-height: 1.35;
+      }
+
+      .proof-stats {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .proof-stat {
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 16px;
+        background: var(--soft);
+      }
+
+      .proof-stat strong {
+        display: block;
+        color: var(--dark);
+        font-size: 22px;
+        line-height: 1.1;
+      }
+
+      .proof-stat span {
+        display: block;
+        margin-top: 6px;
+        color: var(--muted);
+        font-size: 13px;
+        font-weight: 750;
+        line-height: 1.35;
+      }
+
+      .qr-readiness {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+        margin-top: 14px;
+      }
+
+      .qr-source {
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 14px;
+        background: rgba(255, 255, 255, 0.74);
+      }
+
+      .qr-source strong {
+        display: block;
+        color: var(--dark);
+        font-size: 15px;
+      }
+
+      .qr-source code {
+        display: block;
+        margin-top: 6px;
+        color: var(--muted);
+        font-size: 12px;
+        overflow-wrap: anywhere;
       }
 
       .consent-field {
@@ -1745,6 +1865,7 @@
 
       .footer-inner {
         display: flex;
+        flex-wrap: wrap;
         align-items: center;
         justify-content: space-between;
         gap: 18px;
@@ -1897,10 +2018,13 @@
 
         .reviews-grid,
         .process-grid,
+        .maintenance-packages,
         .credentials-grid,
         .automation-features,
         .trust-grid,
         .feature-list,
+        .proof-stats,
+        .qr-readiness,
         .form-grid {
           grid-template-columns: 1fr;
         }
@@ -2177,11 +2301,11 @@
       <div class="wrap header-inner">
         <a class="brand" href="#top" aria-label="Go to top">
           <span class="logo-slot has-image">
-            <img src="assets/octopus-roofing-logo.webp" alt="Octopus Roofing Co. logo" />
+            <img src="assets/octopus-roofing-logo.webp" alt="Octopus Roofing Co logo" />
           </span>
           <span class="brand-text">
-            <span class="brand-name">Octopus Roofing Co.</span>
-            <span class="brand-area">Repair • Maintenance • Installation</span>
+            <span class="brand-name">Octopus Roofing Co</span>
+            <span class="brand-area">Repair - Maintenance - Installation</span>
           </span>
         </a>
 
@@ -2251,22 +2375,21 @@
         </div>
         <div class="wrap hero-content">
           <p class="eyebrow">Local roofing contractor</p>
-          <h1>Reliable Roofing Services in Your Area</h1>
+          <h1>Reliable Roofing Services from Tacoma to Everett</h1>
           <p class="hero-lede">
-            Roof repair, replacement, inspections, storm damage help, and clean
-            residential work from a local crew you can call directly.
+            Roof repair, replacement, inspections, moss treatment, storm damage
+            help, and clean work from a local crew you can call directly.
           </p>
           <div class="hero-actions" aria-label="Primary calls to action">
             <a class="button primary" href="#estimate" data-testid="hero-estimate">Get Free Estimate</a>
             <a class="button dark" href="tel:+12066366773" data-testid="hero-call">Call Now</a>
           </div>
           <div class="hero-meta" aria-label="Quick trust highlights">
-            <span class="meta-pill">Free Estimate</span>
-            <span class="meta-pill">24/7 emergency service</span>
-            <span class="meta-pill">Bond</span>
-            <span class="meta-pill">Contractor License</span>
-            <span class="meta-pill">General Liability Insurance</span>
-            <span class="meta-pill">Commercial and residential</span>
+            <span class="meta-pill">8+ years roofing experience</span>
+            <span class="meta-pill">Free estimates</span>
+            <span class="meta-pill">Emergency roof services</span>
+            <span class="meta-pill">Workmanship warranty</span>
+            <span class="meta-pill">Residential and Commercial roofing</span>
           </div>
         </div>
         <button
@@ -2285,8 +2408,9 @@
           <div class="section-head">
             <h2>Roofing help for urgent repairs and planned upgrades.</h2>
             <p>
-              Список лучше держать коротким и практичным. В финальной версии
-              подставим реальные приоритетные услуги и города/районы работы.
+              Octopus Roofing Co handles repairs, replacements, maintenance,
+              moss treatment, gutters, and modern roof systems for residential
+              and commercial properties.
             </p>
           </div>
 
@@ -2729,6 +2853,56 @@
               </details>
             </div>
           </div>
+
+          <div class="section-head" id="maintenance-packages">
+            <h2>Roof moss and maintenance packages.</h2>
+            <p>
+              Starting prices help customers understand the entry point without
+              locking complex roofs into one flat number. Final price depends on
+              roof size, pitch, access, gutter length, and moss buildup.
+            </p>
+          </div>
+
+          <div class="maintenance-packages" aria-label="Roof maintenance package pricing">
+            <article class="package-card">
+              <h3>Package 1 - Roof Moss Removal</h3>
+              <ul class="package-list">
+                <li>Roof moss removal</li>
+                <li>Preventative treatment for regrowth</li>
+                <li>Free inspection</li>
+              </ul>
+              <div class="package-price">
+                <strong>Starting at $499</strong>
+                <span>For a small one-story home. Final price depends on roof size, pitch, and moss buildup.</span>
+              </div>
+            </article>
+
+            <article class="package-card">
+              <h3>Package 2 - Moss Removal + Gutters</h3>
+              <ul class="package-list">
+                <li>Everything in Package 1</li>
+                <li>Full gutter cleaning</li>
+                <li>Free inspection</li>
+              </ul>
+              <div class="package-price">
+                <strong>Starting at $699</strong>
+                <span>Final price depends on roof size, access, gutter length, and debris level.</span>
+              </div>
+            </article>
+
+            <article class="package-card">
+              <h3>Package 3 - Complete Roof Maintenance</h3>
+              <ul class="package-list">
+                <li>Moss removal and treatment</li>
+                <li>Gutter and downspout cleaning</li>
+                <li>Photo report and free inspection</li>
+              </ul>
+              <div class="package-price">
+                <strong>Starting at $899-$999</strong>
+                <span>Recommended for seasonal maintenance and roofs that need a fuller cleanup.</span>
+              </div>
+            </article>
+          </div>
         </div>
       </section>
 
@@ -2736,37 +2910,35 @@
         <div class="wrap service-area-layout">
           <div class="area-copy">
             <p class="eyebrow">Service area</p>
-            <h2>Serving Seattle and nearby communities.</h2>
+            <h2>Serving Tacoma, Seattle, Everett, and surrounding areas.</h2>
             <p>
-              Local roofing customers want to know the crew can actually reach
-              them. This section gives the page a clear local signal for trust,
-              ads, and future SEO work.
+              Octopus Roofing Co serves Tacoma, Seattle, Everett, and surrounding
+              areas across the Puget Sound region.
             </p>
             <p class="area-note">
-              Final cities and travel radius should be confirmed with Artem
-              before launch.
+              Jobs over 60 miles may require an extra travel fee. Send your city
+              or ZIP with the estimate request and the team can confirm availability.
             </p>
           </div>
 
           <div class="area-panel">
-            <h3>Draft coverage area</h3>
-            <ul class="area-list" aria-label="Draft roofing service cities">
+            <h3>Coverage area</h3>
+            <ul class="area-list" aria-label="Roofing service cities">
+              <li>Tacoma</li>
+              <li>Federal Way</li>
+              <li>Kent</li>
+              <li>Renton</li>
               <li>Seattle</li>
               <li>Bellevue</li>
-              <li>Renton</li>
-              <li>Tacoma</li>
-              <li>Kent</li>
-              <li>Federal Way</li>
               <li>Kirkland</li>
               <li>Redmond</li>
-              <li>Bothell</li>
               <li>Shoreline</li>
               <li>Lynnwood</li>
               <li>Everett</li>
             </ul>
             <p>
-              Not sure if your home is inside the service area? Send the address
-              with your estimate request and the team can confirm availability.
+              Nearby communities can also be reviewed by city, ZIP, or project
+              location.
             </p>
           </div>
         </div>
@@ -2791,8 +2963,8 @@
 
             <article class="process-step">
               <span class="step-number">2</span>
-              <h3>Send photos and address</h3>
-              <p>Photos, location, and access details help the team understand the scope faster.</p>
+              <h3>Send photos and location</h3>
+              <p>Photos, city or ZIP, and access details help the team understand the scope faster.</p>
             </article>
 
             <article class="process-step">
@@ -2819,7 +2991,7 @@
               <p>
                 If water is coming in, shingles are missing after wind, or a
                 roof opening cannot wait, calling is the fastest path. Photos
-                and the address can help the team understand the situation quickly.
+                and the project location can help the team understand the situation quickly.
               </p>
             </div>
 
@@ -2865,8 +3037,8 @@
                 <span>Respect for the home, driveway, landscaping, and neighbors.</span>
               </div>
               <div class="trust-item">
-                <strong>Bonded and insured</strong>
-                <span>Bond — Contractor License — General Liability Insurance.</span>
+                <strong>General Liability Insurance</strong>
+                <span>General liability insurance in place. Insurance details available upon request.</span>
               </div>
             </div>
           </div>
@@ -2876,31 +3048,32 @@
       <section class="section white" id="credentials">
         <div class="wrap">
           <div class="section-head">
-            <h2>License, bond, and insurance details.</h2>
+            <h2>Business and insurance details.</h2>
             <p>
-              This area is reserved for real verification details before launch.
-              Until the exact numbers are confirmed, the page should avoid
-              pretending to show official license or policy information.
+              Octopus Roofing Co LLC has Washington business formation details
+              confirmed and Commercial General Liability insurance in place.
+              Contractor license/registration and bond details will be added
+              only after final confirmation.
             </p>
           </div>
 
-          <div class="credentials-grid" aria-label="License and insurance placeholders">
+          <div class="credentials-grid" aria-label="Business and insurance details">
             <article class="credential-card">
-              <span>Contractor License</span>
-              <strong>License number to be added</strong>
-              <p>Placeholder for the verified contractor license number and issuing state.</p>
-            </article>
-
-            <article class="credential-card">
-              <span>Bond</span>
-              <strong>Bond details to be added</strong>
-              <p>Placeholder for bond status, bond provider, or verification note.</p>
+              <span>Washington LLC</span>
+              <strong>UBI 606 226 499</strong>
+              <p>Certificate of Formation effective 05/26/2026 for Octopus Roofing Co LLC.</p>
             </article>
 
             <article class="credential-card">
               <span>General Liability Insurance</span>
-              <strong>Insurance info to be added</strong>
-              <p>Placeholder for current liability coverage details after confirmation.</p>
+              <strong>$1M / $2M coverage</strong>
+              <p>Commercial General Liability policy period: 06/25/2026 - 06/25/2027.</p>
+            </article>
+
+            <article class="credential-card">
+              <span>License and Bond</span>
+              <strong>Pending confirmation</strong>
+              <p>Contractor license/registration and bond details will be added once confirmed.</p>
             </article>
           </div>
         </div>
@@ -3158,46 +3331,74 @@
       <section class="section white" id="about">
         <div class="wrap about-layout">
           <div class="owner-photo">
-            <img src="assets/octopus-roofing-logo.webp" alt="Octopus Roofing Co. logo artwork" />
+            <img src="assets/octopus-roofing-logo.webp" alt="Octopus Roofing Co logo artwork" />
           </div>
 
           <div class="about-copy">
             <p class="eyebrow">About the company</p>
-            <h2>A local roofing team that keeps the process clear.</h2>
+            <h2>A small family-owned roofing company built on workmanship and trust.</h2>
             <p>
-              Этот текст заменим на реальную историю владельца: опыт, районы
-              работы, специализацию и почему клиентам можно доверять команде.
+              Welcome to Octopus Roofing Co, my name is Artem, founder of the
+              company. For over eight years, I worked in the
+              roofing industry, gaining hands-on experience in roof repairs,
+              maintenance, and complete roof replacements.
             </p>
             <p>
-              Тон должен остаться простым и человеческим: прямая коммуникация,
-              честные рекомендации, чистые объекты и крыши под местный климат.
+              I started Octopus Roofing Co to build a small business where
+              quality, integrity, and customer satisfaction come first. Whether
+              it is a small repair, emergency leak, or complete roof replacement,
+              we approach every project with care, clear communication, and
+              respect for the property.
             </p>
+            <div class="proof-stats" aria-label="Company proof points">
+              <div class="proof-stat">
+                <strong>8+ years</strong>
+                <span>Hands-on roofing experience</span>
+              </div>
+              <div class="proof-stat">
+                <strong>Free estimates</strong>
+                <span>Photo-based or on-site review</span>
+              </div>
+              <div class="proof-stat">
+                <strong>Warranty</strong>
+                <span>Workmanship backed by the company</span>
+              </div>
+              <div class="proof-stat">
+                <strong>Emergency help</strong>
+                <span>Leak and storm damage response</span>
+              </div>
+              <div class="proof-stat">
+                <strong>Residential</strong>
+                <span>Homes, repairs, maintenance, replacements</span>
+              </div>
+              <div class="proof-stat">
+                <strong>Commercial</strong>
+                <span>Flat roofs and modern roof systems</span>
+              </div>
+              <div class="proof-stat">
+                <strong>General liability</strong>
+                <span>Insurance details available upon request</span>
+              </div>
+            </div>
             <ul class="feature-list" aria-label="Company highlights">
               <li>Residential roofing</li>
               <li>Commercial roofing</li>
-              <li>24/7 emergency service</li>
+              <li>Emergency roof repairs</li>
+              <li>Leak detection and repair</li>
+              <li>Roof inspections</li>
+              <li>Full roof replacements</li>
               <li>Roof moss treatment</li>
-              <li>PVC flat roofs</li>
-              <li>Waterproof membranes</li>
+              <li>Gutter cleaning</li>
               <li>Roof painting</li>
-              <li>Roof and gutter cleaning</li>
+              <li>Skylight installation</li>
+              <li>Ventilation repair</li>
+              <li>Flashing repair</li>
+              <li>Asphalt shingles</li>
+              <li>Metal roofing</li>
+              <li>TPO, PVC, EPDM, Torch Down</li>
               <li>Photo-based estimates</li>
             </ul>
 
-            <div class="team-photo-grid" aria-label="Future real company photo slots">
-              <div class="team-photo-slot">
-                <strong>Owner portrait</strong>
-                <span>Real photo of Artem or the owner goes here.</span>
-              </div>
-              <div class="team-photo-slot">
-                <strong>Crew photo</strong>
-                <span>Team or work truck photo for local trust.</span>
-              </div>
-              <div class="team-photo-slot">
-                <strong>Job-site photo</strong>
-                <span>Clean real project photo with tools, roof, or crew.</span>
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -3205,43 +3406,28 @@
       <section class="section soft" id="reviews">
         <div class="wrap">
           <div class="section-head">
-            <h2>Short reviews that make the next call easier.</h2>
+            <h2>Customer reviews coming soon.</h2>
             <p>
-              Когда появятся реальные отзывы из Google, Yelp или Facebook,
-              заменим ими эти черновые цитаты. Сейчас здесь показан нужный
-              формат и длина.
+              Real Google and Yelp reviews should be added here after the first
+              public profiles and customer feedback are ready. Until then, this
+              section explains what customers can expect from the company.
             </p>
           </div>
 
           <div class="reviews-grid">
             <article class="review-card">
-              <div class="stars" aria-label="Five star rating">*****</div>
-              <blockquote>
-                "They showed up when they said they would, found the leak, and
-                explained the repair clearly."
-              </blockquote>
-              <h3>Sarah M.</h3>
-              <p>Homeowner, local area</p>
+              <h3>Honest communication</h3>
+              <p>Clear recommendations, practical next steps, and no pressure to approve unnecessary work.</p>
             </article>
 
             <article class="review-card">
-              <div class="stars" aria-label="Five star rating">*****</div>
-              <blockquote>
-                "The crew kept the job site clean and finished our roof faster
-                than expected."
-              </blockquote>
-              <h3>Michael T.</h3>
-              <p>Roof replacement customer</p>
+              <h3>Clean job sites</h3>
+              <p>Respect for the home, driveway, landscaping, neighbors, and daily cleanup expectations.</p>
             </article>
 
             <article class="review-card">
-              <div class="stars" aria-label="Five star rating">*****</div>
-              <blockquote>
-                "After the storm, they inspected everything, took photos, and
-                gave us a clear plan."
-              </blockquote>
-              <h3>Jessica R.</h3>
-              <p>Storm damage inspection</p>
+              <h3>Photo updates</h3>
+              <p>Project photos can help document roof condition, completed work, and repair details.</p>
             </article>
           </div>
         </div>
@@ -3289,7 +3475,7 @@
             <details class="faq-item">
               <summary>Do I need to be home for an estimate?</summary>
               <p>
-                Not always. For some exterior roof issues, photos, address,
+                Not always. For some exterior roof issues, photos, location,
                 access notes, and a phone call may be enough to start. The team
                 can confirm whether an on-site visit is needed.
               </p>
@@ -3300,7 +3486,7 @@
               <p>
                 Yes. Photos are helpful for leaks, missing shingles, moss,
                 gutters, flat roof membrane issues, and storm damage. Include
-                wide shots, close-up details, and the address if possible.
+                wide shots, close-up details, and the city or ZIP if possible.
               </p>
             </details>
           </div>
@@ -3324,11 +3510,11 @@
             </div>
             <div class="contact-row">
               <span>Email</span>
-                <strong>Добавим email позже</strong>
+                <strong>Email to be added</strong>
             </div>
               <div class="contact-row">
                 <span>Area</span>
-                <strong>Seattle and nearby communities</strong>
+                <strong>Tacoma, Seattle, Everett and surrounding areas</strong>
               </div>
             </div>
           </div>
@@ -3368,6 +3554,7 @@
                   <option value="">Choose one</option>
                   <option>Roof repair</option>
                   <option>Asphalt Shingles</option>
+                  <option>Metal roofing</option>
                   <option>TPO Roofing</option>
                   <option>PVC Roofing</option>
                   <option>EPDM Roofing</option>
@@ -3376,6 +3563,10 @@
                   <option>Roof Cleaning & Moss Removal</option>
                   <option>Roof Moss Treatment & Prevention</option>
                   <option>Comprehensive Maintenance Package (Cleaning + Gutters + Inspection)</option>
+                  <option>Metal roof painting and restoration</option>
+                  <option>Skylight installation or replacement</option>
+                  <option>Roof ventilation repair or installation</option>
+                  <option>Flashing repair or replacement</option>
                   <option>Storm damage</option>
                   <option>Gutters</option>
                   <option>24/7 emergency service</option>
@@ -3395,7 +3586,7 @@
               </div>
 
               <div class="field">
-                <label for="location">City or address</label>
+                <label for="location">City or ZIP</label>
                 <input id="location" name="location" autocomplete="street-address" />
               </div>
 
@@ -3417,9 +3608,11 @@
                 <input id="contact-consent" name="contact_consent" type="checkbox" required />
                 <span>
                   <strong>Contact consent:</strong>
-                  I agree that Octopus Roofing Co. can contact me by phone,
+                  I agree that Octopus Roofing Co can contact me by phone,
                   email, or SMS about this estimate request. Message/data rates
-                  may apply.
+                  may apply. Consent is not a condition of purchase. See our
+                  <a href="privacy-policy.html">Privacy Policy</a> and
+                  <a href="terms-of-use.html">Terms of Use</a>.
                 </span>
               </label>
             </div>
@@ -3430,7 +3623,7 @@
             </div>
 
             <p class="form-note">
-              Перед запуском нужно заменить телефон, email, service area, логотип и фото.
+              24/7 emergency roofing service is available. Warranty details are confirmed in writing by project.
             </p>
             <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
           </form>
@@ -3542,7 +3735,7 @@
               </div>
               <div class="automation-feature">
                 <strong>QR / print source links</strong>
-                <span>Можно печатать QR с /?src=truck, /?src=card или /?src=yard-sign и видеть источник заявок.</span>
+                <span>Можно печатать QR с octopusroofing.com/?src=truck, /?src=card или /?src=yard-sign и видеть источник заявок.</span>
               </div>
               <div class="automation-feature">
                 <strong>Bonjoro / персональные видео-сообщения</strong>
@@ -3556,6 +3749,33 @@
                 </span>
               </div>
             </div>
+
+            <div class="qr-readiness" aria-label="QR and review link readiness">
+              <div class="qr-source">
+                <strong>Truck QR</strong>
+                <code>https://octopusroofing.com/?src=truck</code>
+              </div>
+              <div class="qr-source">
+                <strong>Business card QR</strong>
+                <code>https://octopusroofing.com/?src=card</code>
+              </div>
+              <div class="qr-source">
+                <strong>Yard sign QR</strong>
+                <code>https://octopusroofing.com/?src=yard-sign</code>
+              </div>
+              <div class="qr-source">
+                <strong>Google Maps QR</strong>
+                <code>Google Business Profile link needed</code>
+              </div>
+              <div class="qr-source">
+                <strong>Yelp QR</strong>
+                <code>Yelp profile link needed</code>
+              </div>
+              <div class="qr-source">
+                <strong>Flyer QR</strong>
+                <code>https://octopusroofing.com/?src=flyer</code>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -3564,10 +3784,10 @@
         <div class="wrap">
           <div class="final-cta">
             <div>
-              <h2>Готовы превратить черновик в рабочую lead-страницу?</h2>
+              <h2>Ready to protect your roof?</h2>
               <p>
-                Добавим название компании, телефон, service area, логотип,
-                реальные фото и отзывы. Потом подключим estimate form.
+                Send a few roof photos, describe the issue, and Octopus Roofing
+                Co LLC will help you understand the next step.
               </p>
             </div>
             <a class="button primary" href="#estimate">Get Free Estimate</a>
@@ -3578,10 +3798,12 @@
 
     <footer class="footer">
       <div class="wrap footer-inner">
-        <span>Черновик landing page для Octopus Roofing Co.</span>
+        <span>Octopus Roofing Co - octopusroofing.com - Tacoma, Seattle, Everett and surrounding areas. Legal name: Octopus Roofing Co LLC. General liability insurance in place. Insurance details available upon request.</span>
         <div class="footer-links">
           <a href="#services">Services</a>
-          <a href="#lead-system">Система лидов</a>
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="terms-of-use.html">Terms of Use</a>
+          <a href="accessibility-statement.html">Accessibility</a>
           <a href="#estimate">Get Free Estimate</a>
           <a href="tel:+12066366773">Call Now</a>
         </div>
