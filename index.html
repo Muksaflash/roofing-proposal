@@ -104,12 +104,13 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 18px;
+        gap: clamp(10px, 2vw, 18px);
         min-height: 72px;
       }
 
       .brand {
         display: inline-flex;
+        flex: 1 1 210px;
         align-items: center;
         gap: 12px;
         min-width: 0;
@@ -161,6 +162,11 @@
         white-space: nowrap;
       }
 
+      .brand-word,
+      .brand-rest {
+        display: inline;
+      }
+
       .brand-area {
         display: block;
         color: var(--muted);
@@ -171,11 +177,15 @@
 
       .nav {
         display: flex;
+        flex: 0 1 auto;
         align-items: center;
         gap: 6px;
+        justify-content: flex-end;
+        min-width: 0;
       }
 
       .nav a {
+        flex: 0 0 auto;
         border-radius: 7px;
         padding: 9px 10px;
         color: var(--muted);
@@ -183,6 +193,7 @@
         font-weight: 750;
         line-height: 1;
         text-decoration: none;
+        white-space: nowrap;
       }
 
       .nav a:hover,
@@ -229,8 +240,13 @@
 
       .header-actions {
         display: flex;
+        flex: 0 0 auto;
         align-items: center;
         gap: 10px;
+      }
+
+      .header-language-switch {
+        display: none;
       }
 
       .button {
@@ -286,23 +302,60 @@
 
       .menu-button {
         display: none;
+        position: relative;
         width: 44px;
+        height: 44px;
+        min-height: 44px;
+        border-radius: 12px;
         padding: 0;
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(246, 250, 250, 0.96));
+        box-shadow:
+          inset 0 1px 0 rgba(255, 255, 255, 0.9),
+          0 8px 20px rgba(0, 34, 68, 0.08);
       }
 
       .menu-button span,
       .menu-button::before,
       .menu-button::after {
         display: block;
-        width: 18px;
+        position: absolute;
+        left: 50%;
+        width: 20px;
         height: 2px;
         border-radius: 999px;
         background: currentColor;
         content: "";
+        transform: translateX(-50%);
+        transition: top 0.22s ease, opacity 0.18s ease, transform 0.22s ease;
+      }
+
+      .menu-button::before {
+        top: 15px;
       }
 
       .menu-button span {
-        margin: 4px 0;
+        top: 21px;
+        margin: 0;
+      }
+
+      .menu-button::after {
+        top: 27px;
+      }
+
+      body.menu-open .menu-button::before {
+        top: 50%;
+        transform: translate(-50%, -50%) rotate(45deg);
+      }
+
+      body.menu-open .menu-button span {
+        opacity: 0;
+        transform: translateX(-50%) scaleX(0.35);
+      }
+
+      body.menu-open .menu-button::after {
+        top: 50%;
+        transform: translate(-50%, -50%) rotate(-45deg);
       }
 
       .hero {
@@ -435,6 +488,17 @@
         color: rgba(255, 255, 255, 0.88);
         font-size: 13px;
         font-weight: 800;
+        text-decoration: none;
+        transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease, transform 0.18s ease;
+      }
+
+      .meta-pill:hover,
+      .meta-pill:focus-visible {
+        border-color: rgba(105, 190, 40, 0.62);
+        background: rgba(105, 190, 40, 0.2);
+        color: #fff;
+        outline: 0;
+        transform: translateY(-1px);
       }
 
       .hero-gallery-trigger {
@@ -561,14 +625,117 @@
         align-items: start;
       }
 
-      .services-list + .section-head {
-        margin-top: clamp(36px, 6vw, 64px);
+      .service-list-head {
+        margin-top: clamp(10px, 2vw, 20px);
       }
 
-      .services-column {
+      .service-group {
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: var(--paper);
+        box-shadow: 0 12px 32px rgba(0, 34, 68, 0.08);
+      }
+
+      .service-group[open] {
+        background: linear-gradient(180deg, #fff 0%, #f7fafb 100%);
+      }
+
+      .service-group > summary {
         display: grid;
-        gap: 14px;
-        align-content: start;
+        grid-template-columns: minmax(0, 1fr) 38px;
+        gap: 18px;
+        align-items: center;
+        padding: 20px 22px;
+        cursor: pointer;
+        list-style: none;
+      }
+
+      .service-group > summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .service-group-copy {
+        display: grid;
+        gap: 7px;
+        min-width: 0;
+      }
+
+      .service-group-copy strong {
+        color: var(--ink);
+        font-size: clamp(22px, 2.4vw, 30px);
+        line-height: 1.1;
+      }
+
+      .service-group-copy span {
+        color: var(--muted);
+        font-size: 15px;
+        line-height: 1.38;
+      }
+
+      .service-group-count {
+        width: fit-content;
+        border-left: 3px solid var(--green);
+        padding-left: 10px;
+        color: var(--dark);
+        font-size: 12px;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+        line-height: 1;
+        text-transform: uppercase;
+      }
+
+      .group-toggle {
+        display: grid;
+        place-items: center;
+        width: 38px;
+        height: 38px;
+        border: 1px solid var(--line);
+        border-radius: 50%;
+        background: var(--soft);
+        color: var(--dark);
+        font-size: 24px;
+        font-weight: 850;
+        line-height: 1;
+      }
+
+      .group-toggle::before {
+        content: "+";
+      }
+
+      .service-group[open] .group-toggle {
+        border-color: rgba(105, 190, 40, 0.5);
+        background: rgba(105, 190, 40, 0.16);
+      }
+
+      .service-group[open] .group-toggle::before {
+        content: "-";
+      }
+
+      .service-items {
+        display: grid;
+        gap: 10px;
+        padding: 0 14px 14px;
+      }
+
+      .service-group .service-item {
+        box-shadow: none;
+      }
+
+      .service-group .service-item summary {
+        grid-template-columns: minmax(0, 1fr) 30px;
+        gap: 12px;
+        padding: 14px 16px;
+      }
+
+      .service-group .service-item summary strong {
+        font-size: clamp(17px, 1.6vw, 21px);
+      }
+
+      .service-group .service-toggle {
+        width: 30px;
+        height: 30px;
+        font-size: 20px;
       }
 
       .service-item {
@@ -830,9 +997,20 @@
       }
 
       .package-card h3 {
+        display: grid;
+        gap: 5px;
         margin: 0;
         font-size: 22px;
         line-height: 1.14;
+      }
+
+      .package-kicker {
+        color: var(--green);
+        font-size: 12px;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+        line-height: 1;
+        text-transform: uppercase;
       }
 
       .package-list {
@@ -869,6 +1047,14 @@
         color: var(--muted);
         font-size: 13px;
         line-height: 1.4;
+      }
+
+      .package-actions {
+        display: grid;
+      }
+
+      .package-actions .button {
+        width: 100%;
       }
 
       .faq-list {
@@ -1537,54 +1723,124 @@
 
       .about-layout {
         display: grid;
-        grid-template-columns: minmax(280px, 0.82fr) minmax(0, 1.18fr);
-        gap: 36px;
-        align-items: center;
+        grid-template-columns: minmax(0, 1fr) minmax(320px, 0.9fr);
+        gap: 28px;
+        align-items: start;
       }
 
-      .owner-photo {
-        min-height: 430px;
-        border: 1px solid rgba(0, 34, 68, 0.12);
-        border-radius: var(--radius);
-        display: grid;
-        place-items: center;
-        overflow: hidden;
-        padding: clamp(22px, 4vw, 42px);
-        background:
-          linear-gradient(145deg, rgba(255, 255, 255, 0.94), rgba(238, 243, 243, 0.92)),
-          radial-gradient(circle at 20% 20%, rgba(105, 190, 40, 0.14), transparent 38%),
-          radial-gradient(circle at 80% 80%, rgba(0, 92, 92, 0.14), transparent 36%);
-        box-shadow: 0 16px 42px rgba(0, 34, 68, 0.08);
-      }
-
-      .owner-photo img {
-        width: min(100%, 430px);
-        border-radius: 7px;
+      #about {
+        padding-block: clamp(44px, 6vw, 68px);
       }
 
       .about-copy {
         display: grid;
-        gap: 20px;
+        gap: 18px;
       }
 
       .about-copy p {
         margin: 0;
       }
 
-      .feature-list {
+      .about-lede {
+        max-width: 680px;
+        color: var(--muted);
+        font-size: 18px;
+        line-height: 1.62;
+      }
+
+      .about-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 4px;
+      }
+
+      .about-panel {
+        display: grid;
+        gap: 14px;
+        border: 1px solid rgba(0, 34, 68, 0.12);
+        border-radius: var(--radius);
+        padding: 20px;
+        background:
+          linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(246, 250, 250, 0.94)),
+          radial-gradient(circle at 20% 10%, rgba(105, 190, 40, 0.14), transparent 34%);
+        box-shadow: 0 14px 34px rgba(0, 34, 68, 0.08);
+      }
+
+      .about-logo-line {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .about-logo-line img {
+        width: 58px;
+        height: 58px;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        object-fit: cover;
+      }
+
+      .about-logo-line strong {
+        display: block;
+        color: var(--dark);
+        font-size: 18px;
+        line-height: 1.15;
+      }
+
+      .about-logo-line span {
+        display: block;
+        margin-top: 4px;
+        color: var(--muted);
+        font-size: 13px;
+        font-weight: 750;
+        line-height: 1.3;
+      }
+
+      .about-proof-grid {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 10px;
-        margin: 4px 0 0;
+        gap: 8px;
+      }
+
+      .about-proof-card {
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 12px;
+        background: rgba(255, 255, 255, 0.74);
+      }
+
+      .about-proof-card strong {
+        display: block;
+        color: var(--dark);
+        font-size: 17px;
+        line-height: 1.1;
+      }
+
+      .about-proof-card span {
+        display: block;
+        margin-top: 5px;
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 750;
+        line-height: 1.3;
+      }
+
+      .about-checklist {
+        display: grid;
+        gap: 8px;
+        margin: 0;
         padding: 0;
         list-style: none;
       }
 
-      .feature-list li {
+      .about-checklist li {
         border-left: 3px solid var(--green);
-        padding: 6px 0 6px 12px;
+        padding: 5px 0 5px 11px;
         color: var(--dark-2);
+        font-size: 14px;
         font-weight: 800;
+        line-height: 1.32;
       }
 
       .reviews-grid {
@@ -1914,11 +2170,15 @@
         }
 
         .nav .language-switch {
-          width: 100%;
+          display: none;
         }
 
-        .nav .language-option {
-          flex: 1;
+        .header-language-switch {
+          display: inline-flex;
+        }
+
+        .header-call-link {
+          display: none;
         }
 
         .menu-button {
@@ -1971,6 +2231,28 @@
 
         .brand-name {
           max-width: 170px;
+          overflow: visible;
+          text-overflow: clip;
+          white-space: normal;
+        }
+
+        .brand-word,
+        .brand-rest {
+          display: block;
+        }
+
+        .brand-word {
+          font-size: 17px;
+          line-height: 0.98;
+        }
+
+        .brand-rest {
+          margin-top: 2px;
+          color: var(--muted);
+          font-size: 12px;
+          font-weight: 850;
+          line-height: 1;
+          letter-spacing: 0;
         }
 
         .brand-area {
@@ -2022,11 +2304,119 @@
         .credentials-grid,
         .automation-features,
         .trust-grid,
-        .feature-list,
         .proof-stats,
         .qr-readiness,
         .form-grid {
           grid-template-columns: 1fr;
+        }
+
+        .about-panel {
+          gap: 12px;
+          padding: 14px;
+        }
+
+        .about-proof-grid {
+          gap: 7px;
+        }
+
+        .about-proof-card {
+          padding: 10px;
+        }
+
+        .about-proof-card strong {
+          font-size: 15px;
+        }
+
+        .about-proof-card span {
+          font-size: 11px;
+        }
+
+        .about-checklist li {
+          font-size: 13px;
+        }
+
+        #maintenance-packages {
+          margin-bottom: 14px;
+        }
+
+        #maintenance-packages p {
+          font-size: 14px;
+          line-height: 1.45;
+        }
+
+        .maintenance-packages {
+          gap: 8px;
+        }
+
+        .package-card {
+          grid-template-columns: minmax(0, 1fr) auto;
+          grid-template-areas:
+            "title price"
+            "list list"
+            "action action";
+          gap: 10px 12px;
+          align-items: start;
+          border-radius: 14px;
+          padding: 14px;
+          box-shadow: 0 8px 18px rgba(0, 34, 68, 0.055);
+        }
+
+        .package-card h3 {
+          grid-area: title;
+          gap: 3px;
+          font-size: 18px;
+          line-height: 1.08;
+        }
+
+        .package-kicker {
+          font-size: 10px;
+          letter-spacing: 0.1em;
+        }
+
+        .package-list {
+          grid-area: list;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 6px;
+        }
+
+        .package-list li {
+          border: 1px solid rgba(0, 34, 68, 0.08);
+          border-left: 0;
+          border-radius: 999px;
+          padding: 5px 8px;
+          background: rgba(246, 250, 250, 0.92);
+          color: var(--dark-2);
+          font-size: 11px;
+          font-weight: 800;
+          line-height: 1;
+        }
+
+        .package-price {
+          grid-area: price;
+          margin-top: 0;
+          border-top: 0;
+          padding-top: 0;
+          text-align: right;
+        }
+
+        .package-price strong {
+          font-size: 17px;
+          white-space: nowrap;
+        }
+
+        .package-price span {
+          display: none;
+        }
+
+        .package-actions {
+          grid-area: action;
+        }
+
+        .package-actions .button {
+          min-height: 38px;
+          padding: 8px 10px;
+          font-size: 13px;
         }
 
         .service-item summary {
@@ -2035,6 +2425,43 @@
 
         .services-list {
           grid-template-columns: 1fr;
+        }
+
+        .service-group > summary {
+          grid-template-columns: minmax(0, 1fr) 34px;
+          gap: 12px;
+          padding: 14px 16px;
+        }
+
+        .service-group-copy {
+          gap: 6px;
+        }
+
+        .service-group-copy strong {
+          font-size: 21px;
+        }
+
+        .service-group-copy span:not(.service-group-count) {
+          font-size: 13px;
+        }
+
+        .group-toggle {
+          width: 34px;
+          height: 34px;
+          font-size: 22px;
+        }
+
+        .service-items {
+          gap: 8px;
+          padding: 0 10px 10px;
+        }
+
+        .service-group .service-item summary {
+          padding: 12px 12px;
+        }
+
+        .service-group .service-item summary span:last-child:not(.service-toggle) {
+          display: none;
         }
 
         .service-detail {
@@ -2229,10 +2656,6 @@
           grid-template-columns: 1fr;
         }
 
-        .owner-photo {
-          min-height: 300px;
-        }
-
         .contact-row {
           align-items: flex-start;
           flex-direction: column;
@@ -2271,6 +2694,15 @@
           gap: 8px;
         }
 
+        .brand-name {
+          max-width: 94px;
+        }
+
+        .header-language-switch .language-option {
+          min-height: 38px;
+          padding: 7px 8px;
+        }
+
         .header-actions .button:not(.menu-button) {
           min-height: 40px;
           padding: 9px 11px;
@@ -2304,7 +2736,10 @@
             <img src="assets/octopus-roofing-logo.webp" alt="Octopus Roofing Co logo" />
           </span>
           <span class="brand-text">
-            <span class="brand-name">Octopus Roofing Co</span>
+            <span class="brand-name">
+              <span class="brand-word">Octopus</span>
+              <span class="brand-rest">Roofing Co</span>
+            </span>
             <span class="brand-area">Repair - Maintenance - Installation</span>
           </span>
         </a>
@@ -2315,8 +2750,7 @@
           <a href="#trust">Why Us</a>
           <a href="#before-after">Results</a>
           <a href="#about">About</a>
-          <a href="#reviews">Reviews</a>
-          <a href="#faq">FAQ</a>
+          <a href="#estimate">Contact Us</a>
           <div class="language-switch" role="group" aria-label="Language selector draft">
             <button class="language-option is-active" type="button" aria-pressed="true">EN</button>
             <button
@@ -2324,7 +2758,7 @@
               type="button"
               aria-pressed="false"
               disabled
-              title="Испанский перевод добавим финальным проходом"
+              title="Spanish version will be added during the final localization pass"
             >
               ES
             </button>
@@ -2332,7 +2766,19 @@
         </nav>
 
         <div class="header-actions">
-          <a class="button" href="tel:+12066366773" data-testid="header-call">Call Now</a>
+          <div class="language-switch header-language-switch" role="group" aria-label="Language selector draft">
+            <button class="language-option is-active" type="button" aria-pressed="true">EN</button>
+            <button
+              class="language-option"
+              type="button"
+              aria-pressed="false"
+              disabled
+              title="Spanish version will be added during the final localization pass"
+            >
+              ES
+            </button>
+          </div>
+          <a class="button header-call-link" href="tel:+12066366773" data-testid="header-call">Call Now</a>
           <a class="button primary" href="#estimate" data-testid="header-estimate">Get Free Estimate</a>
           <button
             class="button menu-button"
@@ -2385,11 +2831,11 @@
             <a class="button dark" href="tel:+12066366773" data-testid="hero-call">Call Now</a>
           </div>
           <div class="hero-meta" aria-label="Quick trust highlights">
-            <span class="meta-pill">8+ years roofing experience</span>
-            <span class="meta-pill">Free estimates</span>
-            <span class="meta-pill">Emergency roof services</span>
-            <span class="meta-pill">Workmanship warranty</span>
-            <span class="meta-pill">Residential and Commercial roofing</span>
+            <a class="meta-pill" href="#about">8+ years roofing experience</a>
+            <a class="meta-pill" href="#estimate">Free estimates</a>
+            <a class="meta-pill" href="#emergency">Emergency roof services</a>
+            <a class="meta-pill" href="#about">Workmanship warranty</a>
+            <a class="meta-pill" href="#services">Residential and Commercial roofing</a>
           </div>
         </div>
         <button
@@ -2405,17 +2851,102 @@
 
       <section class="section white" id="services">
         <div class="wrap">
-          <div class="section-head">
-            <h2>Roofing help for urgent repairs and planned upgrades.</h2>
+          <div class="section-head" id="maintenance-packages">
+            <h2>Roof moss and maintenance packages.</h2>
             <p>
-              Octopus Roofing Co handles repairs, replacements, maintenance,
-              moss treatment, gutters, and modern roof systems for residential
-              and commercial properties.
+              Starting prices help customers understand the entry point without
+              locking complex roofs into one flat number. Final price depends on
+              roof size, pitch, access, gutter length, and moss buildup.
             </p>
           </div>
 
-          <div class="services-list" aria-label="Roofing services">
-            <div class="services-column">
+          <div class="maintenance-packages" aria-label="Roof maintenance package pricing">
+            <article class="package-card">
+              <h3><span class="package-kicker">Package 1</span><span>Roof Moss Removal</span></h3>
+              <ul class="package-list">
+                <li>Roof moss removal</li>
+                <li>Preventative treatment for regrowth</li>
+                <li>Free inspection</li>
+              </ul>
+              <div class="package-price">
+                <strong>Starting at $499</strong>
+                <span>For a small one-story home. Final price depends on roof size, pitch, and moss buildup.</span>
+              </div>
+              <div class="package-actions">
+                <a
+                  class="button primary"
+                  href="#estimate"
+                  data-package-service="Package 1 - Roof Moss Removal"
+                >
+                  Choose Package 1
+                </a>
+              </div>
+            </article>
+
+            <article class="package-card">
+              <h3><span class="package-kicker">Package 2</span><span>Moss Removal + Gutters</span></h3>
+              <ul class="package-list">
+                <li>Everything in Package 1</li>
+                <li>Full gutter cleaning</li>
+                <li>Free inspection</li>
+              </ul>
+              <div class="package-price">
+                <strong>Starting at $699</strong>
+                <span>Final price depends on roof size, access, gutter length, and debris level.</span>
+              </div>
+              <div class="package-actions">
+                <a
+                  class="button primary"
+                  href="#estimate"
+                  data-package-service="Package 2 - Moss Removal + Gutters"
+                >
+                  Choose Package 2
+                </a>
+              </div>
+            </article>
+
+            <article class="package-card">
+              <h3><span class="package-kicker">Package 3</span><span>Complete Roof Maintenance</span></h3>
+              <ul class="package-list">
+                <li>Moss removal and treatment</li>
+                <li>Gutter and downspout cleaning</li>
+                <li>Photo report and free inspection</li>
+              </ul>
+              <div class="package-price">
+                <strong>Starting at $899-$999</strong>
+                <span>Recommended for seasonal maintenance and roofs that need a fuller cleanup.</span>
+              </div>
+              <div class="package-actions">
+                <a
+                  class="button primary"
+                  href="#estimate"
+                  data-package-service="Package 3 - Complete Roof Maintenance"
+                >
+                  Choose Package 3
+                </a>
+              </div>
+            </article>
+          </div>
+
+          <div class="section-head service-list-head">
+            <h2>All roofing services by category.</h2>
+            <p>
+              Tap a category to see detailed service options, pricing notes,
+              and quick estimate or call buttons.
+            </p>
+          </div>
+
+          <div class="services-list" aria-label="Roofing service categories">
+            <details class="service-group">
+              <summary>
+                <span class="service-group-copy">
+                  <span class="service-group-count">7 services</span>
+                  <strong>Repairs, replacements &amp; roof systems</strong>
+                  <span>Roof repair, shingles, flat roof membranes, coatings, and waterproofing work.</span>
+                </span>
+                <span class="group-toggle" aria-hidden="true"></span>
+              </summary>
+              <div class="service-items">
               <details class="service-item">
               <summary>
                 <span class="service-summary-copy">
@@ -2632,9 +3163,19 @@
                 </div>
               </div>
               </details>
-            </div>
+              </div>
+            </details>
 
-            <div class="services-column">
+            <details class="service-group">
+              <summary>
+                <span class="service-group-copy">
+                  <span class="service-group-count">7 services</span>
+                  <strong>Cleaning, maintenance &amp; urgent help</strong>
+                  <span>Moss removal, gutters, inspections, storm damage, and emergency roof service.</span>
+                </span>
+                <span class="group-toggle" aria-hidden="true"></span>
+              </summary>
+              <div class="service-items">
               <details class="service-item">
               <summary>
                 <span class="service-summary-copy">
@@ -2851,57 +3392,8 @@
                 </div>
               </div>
               </details>
-            </div>
-          </div>
-
-          <div class="section-head" id="maintenance-packages">
-            <h2>Roof moss and maintenance packages.</h2>
-            <p>
-              Starting prices help customers understand the entry point without
-              locking complex roofs into one flat number. Final price depends on
-              roof size, pitch, access, gutter length, and moss buildup.
-            </p>
-          </div>
-
-          <div class="maintenance-packages" aria-label="Roof maintenance package pricing">
-            <article class="package-card">
-              <h3>Package 1 - Roof Moss Removal</h3>
-              <ul class="package-list">
-                <li>Roof moss removal</li>
-                <li>Preventative treatment for regrowth</li>
-                <li>Free inspection</li>
-              </ul>
-              <div class="package-price">
-                <strong>Starting at $499</strong>
-                <span>For a small one-story home. Final price depends on roof size, pitch, and moss buildup.</span>
               </div>
-            </article>
-
-            <article class="package-card">
-              <h3>Package 2 - Moss Removal + Gutters</h3>
-              <ul class="package-list">
-                <li>Everything in Package 1</li>
-                <li>Full gutter cleaning</li>
-                <li>Free inspection</li>
-              </ul>
-              <div class="package-price">
-                <strong>Starting at $699</strong>
-                <span>Final price depends on roof size, access, gutter length, and debris level.</span>
-              </div>
-            </article>
-
-            <article class="package-card">
-              <h3>Package 3 - Complete Roof Maintenance</h3>
-              <ul class="package-list">
-                <li>Moss removal and treatment</li>
-                <li>Gutter and downspout cleaning</li>
-                <li>Photo report and free inspection</li>
-              </ul>
-              <div class="package-price">
-                <strong>Starting at $899-$999</strong>
-                <span>Recommended for seasonal maintenance and roofs that need a fuller cleanup.</span>
-              </div>
-            </article>
+            </details>
           </div>
         </div>
       </section>
@@ -3037,8 +3529,8 @@
                 <span>Respect for the home, driveway, landscaping, and neighbors.</span>
               </div>
               <div class="trust-item">
-                <strong>General Liability Insurance</strong>
-                <span>General liability insurance in place. Insurance details available upon request.</span>
+                <strong>Registration, bond &amp; insurance</strong>
+                <span>WA Contractor Registration # OCTOPRC742LT. General liability insurance and contractor surety bond in place.</span>
               </div>
             </div>
           </div>
@@ -3051,9 +3543,8 @@
             <h2>Business and insurance details.</h2>
             <p>
               Octopus Roofing Co LLC has Washington business formation details
-              confirmed and Commercial General Liability insurance in place.
-              Contractor license/registration and bond details will be added
-              only after final confirmation.
+              confirmed, WA Contractor Registration # OCTOPRC742LT, and both
+              general liability insurance and contractor surety bond in place.
             </p>
           </div>
 
@@ -3071,9 +3562,9 @@
             </article>
 
             <article class="credential-card">
-              <span>License and Bond</span>
-              <strong>Pending confirmation</strong>
-              <p>Contractor license/registration and bond details will be added once confirmed.</p>
+              <span>WA Contractor Registration</span>
+              <strong># OCTOPRC742LT</strong>
+              <p>Contractor surety bond in place. Bond details available upon request.</p>
             </article>
           </div>
         </div>
@@ -3330,77 +3821,55 @@
 
       <section class="section white" id="about">
         <div class="wrap about-layout">
-          <div class="owner-photo">
-            <img src="assets/octopus-roofing-logo.webp" alt="Octopus Roofing Co logo artwork" />
-          </div>
-
           <div class="about-copy">
             <p class="eyebrow">About the company</p>
-            <h2>A small family-owned roofing company built on workmanship and trust.</h2>
-            <p>
-              Welcome to Octopus Roofing Co, my name is Artem, founder of the
-              company. For over eight years, I worked in the
-              roofing industry, gaining hands-on experience in roof repairs,
-              maintenance, and complete roof replacements.
+            <h2>Founder-led roofing work with clear communication.</h2>
+            <p class="about-lede">
+              Octopus Roofing Co is a small local roofing company led by Artem,
+              with 8+ years of hands-on roofing experience across repairs,
+              maintenance, replacements, moss treatment, and flat roof systems.
             </p>
-            <p>
-              I started Octopus Roofing Co to build a small business where
-              quality, integrity, and customer satisfaction come first. Whether
-              it is a small repair, emergency leak, or complete roof replacement,
-              we approach every project with care, clear communication, and
-              respect for the property.
-            </p>
-            <div class="proof-stats" aria-label="Company proof points">
-              <div class="proof-stat">
+            <div class="about-actions">
+              <a class="button primary" href="#estimate">Get Free Estimate</a>
+              <a class="button" href="#before-after">See Real Work</a>
+            </div>
+          </div>
+
+          <aside class="about-panel" aria-label="Company proof points">
+            <div class="about-logo-line">
+              <img src="assets/octopus-roofing-logo.webp" alt="Octopus Roofing Co logo" />
+              <div>
+                <strong>Octopus Roofing Co</strong>
+                <span>Tacoma, Seattle, Everett and surrounding areas</span>
+              </div>
+            </div>
+
+            <div class="about-proof-grid">
+              <div class="about-proof-card">
                 <strong>8+ years</strong>
                 <span>Hands-on roofing experience</span>
               </div>
-              <div class="proof-stat">
-                <strong>Free estimates</strong>
-                <span>Photo-based or on-site review</span>
+              <div class="about-proof-card">
+                <strong>WA registered</strong>
+                <span>OCTOPRC742LT</span>
               </div>
-              <div class="proof-stat">
+              <div class="about-proof-card">
+                <strong>Insured + bonded</strong>
+                <span>Details available upon request</span>
+              </div>
+              <div class="about-proof-card">
                 <strong>Warranty</strong>
-                <span>Workmanship backed by the company</span>
-              </div>
-              <div class="proof-stat">
-                <strong>Emergency help</strong>
-                <span>Leak and storm damage response</span>
-              </div>
-              <div class="proof-stat">
-                <strong>Residential</strong>
-                <span>Homes, repairs, maintenance, replacements</span>
-              </div>
-              <div class="proof-stat">
-                <strong>Commercial</strong>
-                <span>Flat roofs and modern roof systems</span>
-              </div>
-              <div class="proof-stat">
-                <strong>General liability</strong>
-                <span>Insurance details available upon request</span>
+                <span>Confirmed in writing by project</span>
               </div>
             </div>
-            <ul class="feature-list" aria-label="Company highlights">
-              <li>Residential roofing</li>
-              <li>Commercial roofing</li>
-              <li>Emergency roof repairs</li>
-              <li>Leak detection and repair</li>
-              <li>Roof inspections</li>
-              <li>Full roof replacements</li>
-              <li>Roof moss treatment</li>
-              <li>Gutter cleaning</li>
-              <li>Roof painting</li>
-              <li>Skylight installation</li>
-              <li>Ventilation repair</li>
-              <li>Flashing repair</li>
-              <li>Asphalt shingles</li>
-              <li>Metal roofing</li>
-              <li>TPO, PVC, EPDM, Torch Down</li>
-              <li>Photo-based estimates</li>
-            </ul>
 
+            <ul class="about-checklist">
+              <li>Residential and commercial roofing work.</li>
+              <li>Photo-based estimates and clear next steps.</li>
+              <li>Clean job sites and respect for the property.</li>
+            </ul>
+          </aside>
           </div>
-        </div>
       </section>
 
       <section class="section soft" id="reviews">
@@ -3562,6 +4031,9 @@
                   <option>Torch Down Roofing</option>
                   <option>Roof Cleaning & Moss Removal</option>
                   <option>Roof Moss Treatment & Prevention</option>
+                  <option>Package 1 - Roof Moss Removal</option>
+                  <option>Package 2 - Moss Removal + Gutters</option>
+                  <option>Package 3 - Complete Roof Maintenance</option>
                   <option>Comprehensive Maintenance Package (Cleaning + Gutters + Inspection)</option>
                   <option>Metal roof painting and restoration</option>
                   <option>Skylight installation or replacement</option>
@@ -3798,7 +4270,7 @@
 
     <footer class="footer">
       <div class="wrap footer-inner">
-        <span>Octopus Roofing Co - octopusroofing.com - Tacoma, Seattle, Everett and surrounding areas. Legal name: Octopus Roofing Co LLC. General liability insurance in place. Insurance details available upon request.</span>
+        <span>Octopus Roofing Co - octopusroofing.com - Tacoma, Seattle, Everett and surrounding areas. Legal name: Octopus Roofing Co LLC. WA Contractor Registration # OCTOPRC742LT. General liability insurance and contractor surety bond in place.</span>
         <div class="footer-links">
           <a href="#services">Services</a>
           <a href="privacy-policy.html">Privacy Policy</a>
@@ -3825,11 +4297,11 @@
         <div class="lightbox-stage">
           <button
             class="lightbox-nav lightbox-prev"
-            type="button"
-            data-lightbox-prev
-            aria-label="Previous project photo"
-            title="Previous photo"
-          >
+          type="button"
+          data-lightbox-prev
+          aria-label="Previous project photo"
+          title="Previous photo"
+        >
             &#8249;
           </button>
 
@@ -3853,11 +4325,11 @@
 
           <button
             class="lightbox-nav lightbox-next"
-            type="button"
-            data-lightbox-next
-            aria-label="Next project photo"
-            title="Next photo"
-          >
+          type="button"
+          data-lightbox-next
+          aria-label="Next project photo"
+          title="Next photo"
+        >
             &#8250;
           </button>
         </div>
@@ -3885,6 +4357,7 @@
       const form = document.querySelector("#estimate-form");
       const formStatus = document.querySelector("#form-status");
       const photoInput = document.querySelector("#photos");
+      const serviceSelect = document.querySelector("#service");
       const attributionKeys = ["src", "utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"];
 
       const getAttribution = () => {
@@ -3961,6 +4434,17 @@
         link.addEventListener("click", () =>
           trackEvent("estimate_click", { label: link.textContent.trim() || "Get Free Estimate" }),
         );
+      });
+
+      document.querySelectorAll("[data-package-service]").forEach((link) => {
+        link.addEventListener("click", () => {
+          const selectedPackage = link.dataset.packageService || "";
+          if (serviceSelect && selectedPackage) {
+            serviceSelect.value = selectedPackage;
+            serviceSelect.dispatchEvent(new Event("change", { bubbles: true }));
+          }
+          trackEvent("package_click", { package: selectedPackage });
+        });
       });
 
       document.querySelectorAll(".service-item").forEach((item) => {
