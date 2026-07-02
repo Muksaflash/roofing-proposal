@@ -245,10 +245,6 @@
         gap: 10px;
       }
 
-      .header-language-switch {
-        display: none;
-      }
-
       .button {
         display: inline-flex;
         align-items: center;
@@ -582,20 +578,6 @@
         color: rgba(255, 255, 255, 0.74);
       }
 
-      .review-card {
-        border: 1px solid var(--line);
-        border-radius: var(--radius);
-        background: var(--paper);
-        box-shadow: 0 10px 28px rgba(0, 34, 68, 0.07);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-      }
-
-      .review-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 15px 35px rgba(0, 34, 68, 0.12);
-        z-index: 2;
-      }
-
       .reveal {
         opacity: 0;
         transform: translateY(30px);
@@ -604,18 +586,6 @@
       .reveal.active {
         opacity: 1;
         transform: translateY(0);
-      }
-
-      .review-card h3 {
-        margin: 16px 0 8px;
-        font-size: 20px;
-        line-height: 1.2;
-      }
-
-      .review-card p {
-        margin: 0;
-        color: var(--muted);
-        font-size: 15px;
       }
 
       .services-list {
@@ -1152,44 +1122,6 @@
         flex-wrap: wrap;
         gap: 10px;
         justify-content: flex-end;
-      }
-
-      .credentials-grid {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 14px;
-      }
-
-      .credential-card {
-        border: 1px solid var(--line);
-        border-radius: var(--radius);
-        padding: 20px;
-        background: var(--paper);
-        box-shadow: 0 10px 28px rgba(0, 34, 68, 0.07);
-      }
-
-      .credential-card span {
-        display: block;
-        margin-bottom: 10px;
-        color: var(--green);
-        font-size: 12px;
-        font-weight: 900;
-        letter-spacing: 0.08em;
-        line-height: 1;
-        text-transform: uppercase;
-      }
-
-      .credential-card strong {
-        display: block;
-        color: var(--ink);
-        font-size: 21px;
-        line-height: 1.18;
-      }
-
-      .credential-card p {
-        margin: 10px 0 0;
-        color: var(--muted);
-        font-size: 15px;
       }
 
       .team-photo-grid {
@@ -1932,6 +1864,16 @@
         gap: 14px;
       }
 
+      .bot-field {
+        position: absolute;
+        left: -10000px;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        opacity: 0;
+        pointer-events: none;
+      }
+
       .field {
         display: grid;
         gap: 7px;
@@ -2634,22 +2576,7 @@
         }
 
         .lightbox-toolbar {
-          display: grid;
-          grid-template-columns: 42px minmax(0, 1fr);
-          align-items: center;
-          gap: 8px;
-          padding: 8px 10px 2px;
-          border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .lightbox-dots {
-          width: 100%;
-        }
-
-        .lightbox-thumb {
-          flex-basis: 58px;
-          width: 58px;
-          height: 44px;
+          display: none;
         }
 
         .roadmap-card {
@@ -2696,11 +2623,6 @@
 
         .brand-name {
           max-width: 94px;
-        }
-
-        .header-language-switch .language-option {
-          min-height: 38px;
-          padding: 7px 8px;
         }
 
         .header-actions .button:not(.menu-button) {
@@ -2751,33 +2673,9 @@
           <a href="#before-after">Results</a>
           <a href="#about">About</a>
           <a href="#estimate">Contact Us</a>
-          <div class="language-switch" role="group" aria-label="Language selector draft">
-            <button class="language-option is-active" type="button" aria-pressed="true">EN</button>
-            <button
-              class="language-option"
-              type="button"
-              aria-pressed="false"
-              disabled
-              title="Spanish version will be added during the final localization pass"
-            >
-              ES
-            </button>
-          </div>
         </nav>
 
         <div class="header-actions">
-          <div class="language-switch header-language-switch" role="group" aria-label="Language selector draft">
-            <button class="language-option is-active" type="button" aria-pressed="true">EN</button>
-            <button
-              class="language-option"
-              type="button"
-              aria-pressed="false"
-              disabled
-              title="Spanish version will be added during the final localization pass"
-            >
-              ES
-            </button>
-          </div>
           <a class="button header-call-link" href="tel:+12066366773" data-testid="header-call">Call Now</a>
           <a class="button primary" href="#estimate" data-testid="header-estimate">Get Free Estimate</a>
           <button
@@ -3398,111 +3296,14 @@
         </div>
       </section>
 
-      <section class="section soft" id="service-area">
-        <div class="wrap service-area-layout">
-          <div class="area-copy">
-            <p class="eyebrow">Service area</p>
-            <h2>Serving Tacoma, Seattle, Everett, and surrounding areas.</h2>
-            <p>
-              Octopus Roofing Co serves Tacoma, Seattle, Everett, and surrounding
-              areas across the Puget Sound region.
-            </p>
-            <p class="area-note">
-              Jobs over 60 miles may require an extra travel fee. Send your city
-              or ZIP with the estimate request and the team can confirm availability.
-            </p>
-          </div>
-
-          <div class="area-panel">
-            <h3>Coverage area</h3>
-            <ul class="area-list" aria-label="Roofing service cities">
-              <li>Tacoma</li>
-              <li>Federal Way</li>
-              <li>Kent</li>
-              <li>Renton</li>
-              <li>Seattle</li>
-              <li>Bellevue</li>
-              <li>Kirkland</li>
-              <li>Redmond</li>
-              <li>Shoreline</li>
-              <li>Lynnwood</li>
-              <li>Everett</li>
-            </ul>
-            <p>
-              Nearby communities can also be reviewed by city, ZIP, or project
-              location.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section class="section white" id="process">
-        <div class="wrap">
-          <div class="section-head">
-            <h2>How the estimate process works.</h2>
-            <p>
-              A simple process helps customers understand what happens after
-              they click the button, especially when the roof issue feels urgent.
-            </p>
-          </div>
-
-          <div class="process-grid" aria-label="Estimate process steps">
-            <article class="process-step">
-              <span class="step-number">1</span>
-              <h3>Request estimate</h3>
-              <p>Call or send the form with a short description of the roof issue.</p>
-            </article>
-
-            <article class="process-step">
-              <span class="step-number">2</span>
-              <h3>Send photos and location</h3>
-              <p>Photos, city or ZIP, and access details help the team understand the scope faster.</p>
-            </article>
-
-            <article class="process-step">
-              <span class="step-number">3</span>
-              <h3>Get quote or inspection</h3>
-              <p>The team can recommend next steps, request more details, or schedule an inspection.</p>
-            </article>
-
-            <article class="process-step">
-              <span class="step-number">4</span>
-              <h3>Schedule the work</h3>
-              <p>Once the scope is clear, the job can be scheduled with direct communication.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section soft" id="emergency">
-        <div class="wrap">
-          <div class="urgent-cta">
-            <div>
-              <p class="eyebrow">Emergency roof help</p>
-              <h2>Active leak or storm damage? Call for urgent repair help.</h2>
-              <p>
-                If water is coming in, shingles are missing after wind, or a
-                roof opening cannot wait, calling is the fastest path. Photos
-                and the project location can help the team understand the situation quickly.
-              </p>
-            </div>
-
-            <div class="urgent-actions" aria-label="Emergency contact actions">
-              <a class="button primary" href="tel:+12066366773">Call Now</a>
-              <a class="button" href="#estimate">Send Photos</a>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <section class="section dark-band" id="trust">
         <div class="wrap">
           <div class="section-head">
             <h2>Built around trust, speed, and visible work.</h2>
             <p>
-              Roofing customers want proof before they call. This block gives
-              the page the credibility signals needed for ads, Google, and
-              referrals.
+              Roofing customers want proof before they call. Octopus Roofing Co
+              keeps the process clear with fast contact, photo-based estimates,
+              visible project results, and clean job sites.
             </p>
           </div>
 
@@ -3517,55 +3318,26 @@
 
             <div class="trust-grid">
               <div class="trust-item">
-                <strong>Local company</strong>
-                <span>Clear service area, direct contact, and local references.</span>
+                <strong>Local roofing team</strong>
+                <span>Clear service area, direct contact, and practical recommendations.</span>
               </div>
               <div class="trust-item">
                 <strong>Free estimates</strong>
                 <span>Easy estimate requests for roof repair and replacement.</span>
               </div>
               <div class="trust-item">
-                <strong>Clean work</strong>
-                <span>Respect for the home, driveway, landscaping, and neighbors.</span>
+                <strong>Visible work</strong>
+                <span>Before/after photos and project updates help customers see what was done.</span>
               </div>
-              <div class="trust-item">
-                <strong>Registration, bond &amp; insurance</strong>
-                <span>WA Contractor Registration # OCTOPRC742LT. General liability insurance and contractor surety bond in place.</span>
+              <div class="trust-item trust-item-docs">
+                <strong>Registered, insured &amp; bonded</strong>
+                <div class="trust-badges" aria-label="Business trust details">
+                  <span>WA Registered</span>
+                  <span>General Liability</span>
+                  <span>Surety Bond</span>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section white" id="credentials">
-        <div class="wrap">
-          <div class="section-head">
-            <h2>Business and insurance details.</h2>
-            <p>
-              Octopus Roofing Co LLC has Washington business formation details
-              confirmed, WA Contractor Registration # OCTOPRC742LT, and both
-              general liability insurance and contractor surety bond in place.
-            </p>
-          </div>
-
-          <div class="credentials-grid" aria-label="Business and insurance details">
-            <article class="credential-card">
-              <span>Washington LLC</span>
-              <strong>UBI 606 226 499</strong>
-              <p>Certificate of Formation effective 05/26/2026 for Octopus Roofing Co LLC.</p>
-            </article>
-
-            <article class="credential-card">
-              <span>General Liability Insurance</span>
-              <strong>$1M / $2M coverage</strong>
-              <p>Commercial General Liability policy period: 06/25/2026 - 06/25/2027.</p>
-            </article>
-
-            <article class="credential-card">
-              <span>WA Contractor Registration</span>
-              <strong># OCTOPRC742LT</strong>
-              <p>Contractor surety bond in place. Bond details available upon request.</p>
-            </article>
           </div>
         </div>
       </section>
@@ -3851,7 +3623,7 @@
               </div>
               <div class="about-proof-card">
                 <strong>WA registered</strong>
-                <span>OCTOPRC742LT</span>
+                <span>Contractor registration in place</span>
               </div>
               <div class="about-proof-card">
                 <strong>Insured + bonded</strong>
@@ -3872,104 +3644,14 @@
           </div>
       </section>
 
-      <section class="section soft" id="reviews">
-        <div class="wrap">
-          <div class="section-head">
-            <h2>Customer reviews coming soon.</h2>
-            <p>
-              Real Google and Yelp reviews should be added here after the first
-              public profiles and customer feedback are ready. Until then, this
-              section explains what customers can expect from the company.
-            </p>
-          </div>
-
-          <div class="reviews-grid">
-            <article class="review-card">
-              <h3>Honest communication</h3>
-              <p>Clear recommendations, practical next steps, and no pressure to approve unnecessary work.</p>
-            </article>
-
-            <article class="review-card">
-              <h3>Clean job sites</h3>
-              <p>Respect for the home, driveway, landscaping, neighbors, and daily cleanup expectations.</p>
-            </article>
-
-            <article class="review-card">
-              <h3>Photo updates</h3>
-              <p>Project photos can help document roof condition, completed work, and repair details.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section white" id="faq">
-        <div class="wrap">
-          <div class="section-head">
-            <h2>Common roofing questions.</h2>
-            <p>
-              These answers can help customers decide what to send first. Later,
-              the same FAQ can become a knowledge base for AI intake or chat.
-            </p>
-          </div>
-
-          <div class="faq-list" aria-label="Frequently asked questions">
-            <details class="faq-item">
-              <summary>Do you offer free estimates?</summary>
-              <p>
-                Yes. Customers can request a free estimate by phone or through
-                the form. Final pricing depends on roof access, condition,
-                materials, urgency, and the exact scope of work.
-              </p>
-            </details>
-
-            <details class="faq-item">
-              <summary>Do you work with insurance?</summary>
-              <p>
-                For storm damage or leak-related work, the team can document
-                visible roof issues with photos and explain repair options.
-                Insurance handling details should be confirmed directly before
-                the job starts.
-              </p>
-            </details>
-
-            <details class="faq-item">
-              <summary>How fast can you come out?</summary>
-              <p>
-                Availability depends on schedule, location, weather, and urgency.
-                Active leaks and emergency roof issues should be handled by
-                calling directly for the fastest response.
-              </p>
-            </details>
-
-            <details class="faq-item">
-              <summary>Do I need to be home for an estimate?</summary>
-              <p>
-                Not always. For some exterior roof issues, photos, location,
-                access notes, and a phone call may be enough to start. The team
-                can confirm whether an on-site visit is needed.
-              </p>
-            </details>
-
-            <details class="faq-item">
-              <summary>Can I send roof photos first?</summary>
-              <p>
-                Yes. Photos are helpful for leaks, missing shingles, moss,
-                gutters, flat roof membrane issues, and storm damage. Include
-                wide shots, close-up details, and the city or ZIP if possible.
-              </p>
-            </details>
-          </div>
-        </div>
-      </section>
-
       <section class="section white" id="estimate">
         <div class="wrap estimate-layout">
           <div class="estimate-copy">
             <p class="eyebrow">Get a free estimate</p>
             <h2>Tell us what is happening with your roof.</h2>
             <p>
-              Сейчас форма работает как статичный черновик. Позже подключим
-              отправку заявок на email, в Google Sheets, CRM или AI intake flow.
+              Send the basics, add roof photos if you have them, and the team
+              will review the request and follow up with the next step.
             </p>
 
             <div class="contact-strip" aria-label="Contact details">
@@ -3979,7 +3661,7 @@
             </div>
             <div class="contact-row">
               <span>Email</span>
-                <strong>Email to be added</strong>
+                <strong><a href="mailto:octopusroofing@gmail.com">octopusroofing@gmail.com</a></strong>
             </div>
               <div class="contact-row">
                 <span>Area</span>
@@ -3993,6 +3675,18 @@
             <input type="hidden" id="lead-utm-source" name="utm_source" />
             <input type="hidden" id="lead-utm-medium" name="utm_medium" />
             <input type="hidden" id="lead-utm-campaign" name="utm_campaign" />
+            <input type="hidden" id="lead-utm-content" name="utm_content" />
+            <input type="hidden" id="lead-utm-term" name="utm_term" />
+            <input type="hidden" id="lead-page-url" name="page_url" />
+            <input type="hidden" id="lead-submitted-at" name="submitted_at" />
+            <input type="hidden" id="lead-user-agent" name="user_agent" />
+            <input type="hidden" id="lead-photo-count" name="photo_count" />
+            <input type="hidden" id="lead-photo-names" name="photo_names" />
+
+            <div class="bot-field" aria-hidden="true">
+              <label for="website">Website</label>
+              <input id="website" name="website" tabindex="-1" autocomplete="off" />
+            </div>
 
             <div class="form-grid">
               <div class="field">
@@ -4102,152 +3796,159 @@
         </div>
       </section>
 
-      <section class="section soft" id="lead-system">
-        <div class="wrap automation-layout">
-          <div class="automation-copy">
-            <p class="eyebrow">Будущая автоматизация лидов</p>
-            <h2>Система заявок, которую можно развивать после запуска сайта.</h2>
+      <section class="section soft" id="service-area">
+        <div class="wrap service-area-layout">
+          <div class="area-copy">
+            <p class="eyebrow">Service area</p>
+            <h2>Serving Tacoma, Seattle, Everett, and surrounding areas.</h2>
             <p>
-              Первый запуск можно оставить простым: сильный сайт, понятная форма
-              и быстрые уведомления владельцу. Когда пойдут реальные заявки,
-              эту же форму можно превратить в более умную intake-систему.
+              Octopus Roofing Co serves Tacoma, Seattle, Everett, and surrounding
+              areas across the Puget Sound region.
             </p>
-            <p class="automation-note">
-              Цель простая: меньше пропущенных обращений, чище данные по лидам
-              и быстрее follow-up без дорогого старта в первый день.
-            </p>
-            <p class="automation-note">
-              Демо-пометка: в шапке уже есть переключатель EN / ES, чтобы не
-              забыть про двухъязычную версию. Сейчас активен английский; испанский
-              перевод добавим финальным проходом после утверждения текстов.
+            <p class="area-note">
+              Jobs over 60 miles may require an extra travel fee. Send your city
+              or ZIP with the estimate request and the team can confirm availability.
             </p>
           </div>
 
-          <div>
-            <div class="roadmap" aria-label="Roadmap автоматизации лидов">
-              <article class="roadmap-card">
-                <span class="roadmap-step">Старт</span>
-                <div>
-                  <h3>Сайт + базовый поток заявок</h3>
-                  <p>
-                    Клиенты звонят, отправляют форму estimate, прикрепляют фото
-                    и сразу видят подтверждение, что заявка принята.
-                  </p>
-                </div>
-              </article>
+          <div class="area-panel">
+            <h3>Coverage area</h3>
+            <ul class="area-list" aria-label="Roofing service cities">
+              <li>Tacoma</li>
+              <li>Federal Way</li>
+              <li>Kent</li>
+              <li>Renton</li>
+              <li>Seattle</li>
+              <li>Bellevue</li>
+              <li>Kirkland</li>
+              <li>Redmond</li>
+              <li>Shoreline</li>
+              <li>Lynnwood</li>
+              <li>Everett</li>
+            </ul>
+            <p>
+              Nearby communities can also be reviewed by city, ZIP, or project
+              location.
+            </p>
+          </div>
+        </div>
+      </section>
 
-              <article class="roadmap-card">
-                <span class="roadmap-step">Лиды</span>
-                <div>
-                  <h3>Google Sheets или CRM pipeline</h3>
-                  <p>
-                    Каждую заявку можно сохранять, помечать по типу услуги,
-                    отправлять владельцу по email/SMS и вести по статусам.
-                  </p>
-                </div>
-              </article>
+      <section class="section white" id="process">
+        <div class="wrap">
+          <div class="section-head">
+            <h2>How the estimate process works.</h2>
+            <p>
+              A simple process helps customers understand what happens after
+              they click the button, especially when the roof issue feels urgent.
+            </p>
+          </div>
 
-              <article class="roadmap-card">
-                <span class="roadmap-step">AI</span>
-                <div>
-                  <h3>Smart intake, scoring и follow-up</h3>
-                  <p>
-                    AI может задавать правильные вопросы, выделять срочные
-                    протечки или storm damage, делать summary и готовить
-                    следующий шаг.
-                  </p>
-                </div>
-              </article>
+          <div class="process-grid" aria-label="Estimate process steps">
+            <article class="process-step">
+              <span class="step-number">1</span>
+              <h3>Request estimate</h3>
+              <p>Call or send the form with a short description of the roof issue.</p>
+            </article>
 
-              <article class="roadmap-card">
-                <span class="roadmap-step">SEO</span>
-                <div>
-                  <h3>Подготовка под органический рост</h3>
-                  <p>
-                    Сайт можно сразу заложить не просто как визитку, а как базу
-                    для дальнейшего роста: SEO-заголовки и описания, FAQ-блоки,
-                    страницы под услуги и локации, быстрая мобильная версия,
-                    связка с Google Business Profile, Yelp, отзывами, QR-кодами
-                    и аналитикой. Реклама может дать первые заявки быстрее, а
-                    органика нужна, чтобы со временем не зависеть только от
-                    платного трафика.
-                  </p>
-                </div>
-              </article>
+            <article class="process-step">
+              <span class="step-number">2</span>
+              <h3>Send photos and location</h3>
+              <p>Photos, city or ZIP, and access details help the team understand the scope faster.</p>
+            </article>
+
+            <article class="process-step">
+              <span class="step-number">3</span>
+              <h3>Get quote or inspection</h3>
+              <p>The team can recommend next steps, request more details, or schedule an inspection.</p>
+            </article>
+
+            <article class="process-step">
+              <span class="step-number">4</span>
+              <h3>Schedule the work</h3>
+              <p>Once the scope is clear, the job can be scheduled with direct communication.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section soft" id="emergency">
+        <div class="wrap">
+          <div class="urgent-cta">
+            <div>
+              <p class="eyebrow">Emergency roof help</p>
+              <h2>Active leak or storm damage? Call for urgent repair help.</h2>
+              <p>
+                If water is coming in, shingles are missing after wind, or a
+                roof opening cannot wait, calling is the fastest path. Photos
+                and the project location can help the team understand the situation quickly.
+              </p>
             </div>
 
-            <div class="automation-features" aria-label="Будущие опции автоматизации">
-              <div class="automation-feature">
-                <strong>AI FAQ-ассистент</strong>
-                <span>Отвечает на частые вопросы про услуги и районы работы.</span>
-              </div>
-              <div class="automation-feature">
-                <strong>Заметки по фото</strong>
-                <span>Помогает описывать загруженные фото крыши без обещаний по цене.</span>
-              </div>
-              <div class="automation-feature">
-                <strong>Горячие лиды</strong>
-                <span>Поднимает в приоритет leaks, storm damage и emergency-заявки.</span>
-              </div>
-              <div class="automation-feature">
-                <strong>Автоответ</strong>
-                <span>Подтверждает заявку и задает понятное ожидание ответа.</span>
-              </div>
-              <div class="automation-feature">
-                <strong>Автоматизация отзывов</strong>
-                <span>Просит оставить Google или Yelp review после завершенной работы.</span>
-              </div>
-              <div class="automation-feature">
-                <strong>Voice AI позже</strong>
-                <span>Подключаем только если реальный поток звонков покажет необходимость.</span>
-              </div>
-              <div class="automation-feature">
-                <strong>Tracking-ready события</strong>
-                <span>call_click, estimate_click, form_submit, photo_upload, service_open и language_switch уже заложены как события.</span>
-              </div>
-              <div class="automation-feature">
-                <strong>QR / print source links</strong>
-                <span>Можно печатать QR с octopusroofing.com/?src=truck, /?src=card или /?src=yard-sign и видеть источник заявок.</span>
-              </div>
-              <div class="automation-feature">
-                <strong>Bonjoro / персональные видео-сообщения</strong>
-                <span>
-                  Позже можно рассмотреть Bonjoro или похожий сервис: клиент
-                  оставляет заявку, владелец получает уведомление и отправляет
-                  короткое персональное видео с приветствием, уточнением деталей
-                  или благодарностью. Также можно использовать для testimonials
-                  после завершенной работы. Это не стартовый объём и не замена
-                  AI-автоматизации, а дополнительный trust/follow-up инструмент.
-                </span>
-              </div>
+            <div class="urgent-actions" aria-label="Emergency contact actions">
+              <a class="button primary" href="tel:+12066366773">Call Now</a>
+              <a class="button" href="#estimate">Send Photos</a>
             </div>
+          </div>
+        </div>
+      </section>
 
-            <div class="qr-readiness" aria-label="QR and review link readiness">
-              <div class="qr-source">
-                <strong>Truck QR</strong>
-                <code>https://octopusroofing.com/?src=truck</code>
-              </div>
-              <div class="qr-source">
-                <strong>Business card QR</strong>
-                <code>https://octopusroofing.com/?src=card</code>
-              </div>
-              <div class="qr-source">
-                <strong>Yard sign QR</strong>
-                <code>https://octopusroofing.com/?src=yard-sign</code>
-              </div>
-              <div class="qr-source">
-                <strong>Google Maps QR</strong>
-                <code>Google Business Profile link needed</code>
-              </div>
-              <div class="qr-source">
-                <strong>Yelp QR</strong>
-                <code>Yelp profile link needed</code>
-              </div>
-              <div class="qr-source">
-                <strong>Flyer QR</strong>
-                <code>https://octopusroofing.com/?src=flyer</code>
-              </div>
-            </div>
+      <section class="section white" id="faq">
+        <div class="wrap">
+          <div class="section-head">
+            <h2>Common roofing questions.</h2>
+            <p>
+              These answers can help customers decide what to send first and
+              understand how estimate requests are handled.
+            </p>
+          </div>
+
+          <div class="faq-list" aria-label="Frequently asked questions">
+            <details class="faq-item">
+              <summary>Do you offer free estimates?</summary>
+              <p>
+                Yes. Customers can request a free estimate by phone or through
+                the form. Final pricing depends on roof access, condition,
+                materials, urgency, and the exact scope of work.
+              </p>
+            </details>
+
+            <details class="faq-item">
+              <summary>Do you work with insurance?</summary>
+              <p>
+                For storm damage or leak-related work, the team can document
+                visible roof issues with photos and explain repair options.
+                Insurance handling details should be confirmed directly before
+                the job starts.
+              </p>
+            </details>
+
+            <details class="faq-item">
+              <summary>How fast can you come out?</summary>
+              <p>
+                Availability depends on schedule, location, weather, and urgency.
+                Active leaks and emergency roof issues should be handled by
+                calling directly for the fastest response.
+              </p>
+            </details>
+
+            <details class="faq-item">
+              <summary>Do I need to be home for an estimate?</summary>
+              <p>
+                Not always. For some exterior roof issues, photos, location,
+                access notes, and a phone call may be enough to start. The team
+                can confirm whether an on-site visit is needed.
+              </p>
+            </details>
+
+            <details class="faq-item">
+              <summary>Can I send roof photos first?</summary>
+              <p>
+                Yes. Photos are helpful for leaks, missing shingles, moss,
+                gutters, flat roof membrane issues, and storm damage. Include
+                wide shots, close-up details, and the city or ZIP if possible.
+              </p>
+            </details>
           </div>
         </div>
       </section>
@@ -4270,7 +3971,7 @@
 
     <footer class="footer">
       <div class="wrap footer-inner">
-        <span>Octopus Roofing Co - octopusroofing.com - Tacoma, Seattle, Everett and surrounding areas. Legal name: Octopus Roofing Co LLC. WA Contractor Registration # OCTOPRC742LT. General liability insurance and contractor surety bond in place.</span>
+        <span>Octopus Roofing Co - octopusroofing.com - octopusroofing@gmail.com - Tacoma, Seattle, Everett and surrounding areas. Legal name: Octopus Roofing Co LLC. Washington LLC UBI 606 226 499. Certificate of Formation effective 05/26/2026. WA Contractor Registration # OCTOPRC742LT. General liability insurance: $1M per occurrence / $2M aggregate, policy period 06/25/2026 - 06/25/2027. Contractor surety bond in place. Details available upon request.</span>
         <div class="footer-links">
           <a href="#services">Services</a>
           <a href="privacy-policy.html">Privacy Policy</a>
@@ -4359,6 +4060,12 @@
       const photoInput = document.querySelector("#photos");
       const serviceSelect = document.querySelector("#service");
       const attributionKeys = ["src", "utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"];
+      const LEAD_FORM_ENDPOINT =
+        "https://script.google.com/macros/s/AKfycbysWU0GsfNx9ksyrrsDRdUPW1uoRWUpzXmXOBSThpP5NSIEHM1WH9dVuU4flFi6a_9LtQ/exec";
+      const leadSubmitFrameName = "lead-submit-frame";
+      const submitButton = form.querySelector('button[type="submit"]');
+      let leadSubmitInProgress = false;
+      let leadSubmitTimer = null;
 
       const getAttribution = () => {
         const params = new URLSearchParams(window.location.search);
@@ -4399,6 +4106,55 @@
       setHiddenValue("#lead-utm-source", attribution.utm_source);
       setHiddenValue("#lead-utm-medium", attribution.utm_medium);
       setHiddenValue("#lead-utm-campaign", attribution.utm_campaign);
+      setHiddenValue("#lead-utm-content", attribution.utm_content);
+      setHiddenValue("#lead-utm-term", attribution.utm_term);
+
+      const setFormStatus = (message, state = "") => {
+        formStatus.textContent = message;
+        formStatus.dataset.state = state;
+      };
+
+      const isLeadEndpointConfigured = () =>
+        /^https:\/\/script\.google\.com\/macros\/s\/.+\/exec$/.test(LEAD_FORM_ENDPOINT);
+
+      const getPhotoNames = () =>
+        Array.from(photoInput?.files || [])
+          .map((file) => file.name)
+          .filter(Boolean)
+          .join(", ");
+
+      const prepareLeadMetadata = (photoCount) => {
+        setHiddenValue("#lead-page-url", window.location.href);
+        setHiddenValue("#lead-submitted-at", new Date().toISOString());
+        setHiddenValue("#lead-user-agent", window.navigator.userAgent || "");
+        setHiddenValue("#lead-photo-count", String(photoCount));
+        setHiddenValue("#lead-photo-names", getPhotoNames());
+      };
+
+      const ensureLeadSubmitFrame = () => {
+        let frame = document.querySelector(`iframe[name="${leadSubmitFrameName}"]`);
+        if (!frame) {
+          frame = document.createElement("iframe");
+          frame.name = leadSubmitFrameName;
+          frame.title = "Lead form submission";
+          frame.hidden = true;
+          document.body.appendChild(frame);
+        }
+
+        if (!frame.dataset.bound) {
+          frame.addEventListener("load", () => {
+            if (!leadSubmitInProgress) return;
+            window.clearTimeout(leadSubmitTimer);
+            leadSubmitInProgress = false;
+            submitButton.disabled = false;
+            setFormStatus("Thanks. Your request was sent.", "success");
+            window.location.href = withAttribution("thank-you.html");
+          });
+          frame.dataset.bound = "true";
+        }
+
+        return frame;
+      };
 
       const trackEvent = (eventName, detail = {}) => {
         const payload = {
@@ -4421,6 +4177,8 @@
         });
         return `${target.pathname}${target.search}${target.hash}`;
       };
+
+      ensureLeadSubmitFrame();
 
       document.querySelectorAll('a[href^="tel:"]').forEach((link) => {
         link.dataset.event = link.dataset.event || "call_click";
@@ -4457,13 +4215,6 @@
         });
       });
 
-      document.querySelectorAll(".language-option").forEach((button) => {
-        button.dataset.event = button.dataset.event || "language_switch";
-        button.addEventListener("click", () =>
-          trackEvent("language_switch", { language: button.textContent.trim() }),
-        );
-      });
-
       photoInput?.addEventListener("change", () => {
         trackEvent("photo_upload", { photo_count: photoInput.files.length });
       });
@@ -4486,6 +4237,16 @@
 
       form.addEventListener("submit", (event) => {
         event.preventDefault();
+
+        if (!isLeadEndpointConfigured()) {
+          setFormStatus(
+            "The estimate form is not connected yet. Please call (206) 636-6773 or email octopusroofing@gmail.com.",
+            "error",
+          );
+          trackEvent("form_submit_blocked", { reason: "missing_apps_script_endpoint" });
+          return;
+        }
+
         const formData = new FormData(form);
         const photoCount = photoInput?.files.length || 0;
         const leadSummary = {
@@ -4500,15 +4261,45 @@
           has_photos: photoCount > 0,
         });
 
+        prepareLeadMetadata(photoCount);
+
         try {
           sessionStorage.setItem("octopusLastLead", JSON.stringify(leadSummary));
         } catch (error) {
           // The thank-you page can still show generic confirmation.
         }
 
-        formStatus.textContent =
-          "Thanks. This draft form is ready for a thank-you page, analytics, CRM, and AI intake.";
-        window.location.href = withAttribution("thank-you.html");
+        const frame = ensureLeadSubmitFrame();
+        form.action = LEAD_FORM_ENDPOINT;
+        form.method = "post";
+        form.enctype = "multipart/form-data";
+        form.target = frame.name;
+
+        leadSubmitInProgress = true;
+        submitButton.disabled = true;
+        setFormStatus("Sending your request...", "pending");
+
+        try {
+          HTMLFormElement.prototype.submit.call(form);
+        } catch (error) {
+          leadSubmitInProgress = false;
+          submitButton.disabled = false;
+          setFormStatus(
+            "Something went wrong. Please call (206) 636-6773 or email octopusroofing@gmail.com.",
+            "error",
+          );
+          return;
+        }
+
+        leadSubmitTimer = window.setTimeout(() => {
+          if (!leadSubmitInProgress) return;
+          leadSubmitInProgress = false;
+          submitButton.disabled = false;
+          setFormStatus(
+            "Sending is taking longer than expected. Please try again or call (206) 636-6773.",
+            "error",
+          );
+        }, 20000);
       });
 
       const stageLabel = (stage) => (stage === "before" ? "Before" : "After");
